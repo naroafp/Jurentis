@@ -20,6 +20,16 @@ body {
     min-height: 70px; /* Ajuste opcional para el navbar */
 }
 
+.navbar-brand img {
+    height: 80px; /* Reduce a 80px para un tamaño más equilibrado; prueba 60px o 100px si prefieres */
+    width: auto; /* Mantiene la proporción */
+    vertical-align: middle; /* Alinea verticalmente con el texto */
+}
+.navbar {
+    min-height: 60px; /* Limita la altura del navbar */
+    padding: 0.5rem 1rem; /* Reduce el padding interno */
+}
+
 .navbar a, .navbar .nav-link {
     color: #FFFFFF !important; /* Texto blanco para contraste */
 }
@@ -86,3 +96,4 @@ p {
 }
 
 #contact-form .btn:hover
+
