@@ -21,7 +21,7 @@ body {
 }
 
 .navbar-brand img {
-    height: 80px; /* Reduce a 80px para un tamaño más equilibrado; prueba 60px o 100px si prefieres */
+    height: 160px; /* Reduce a 80px para un tamaño más equilibrado; prueba 60px o 100px si prefieres */
     width: auto; /* Mantiene la proporción */
     vertical-align: middle; /* Alinea verticalmente con el texto */
 }
@@ -96,4 +96,5 @@ p {
 }
 
 #contact-form .btn:hover
+
 
