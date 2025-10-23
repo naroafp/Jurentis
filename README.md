@@ -1,2 +1,2 @@
-# MINIATURALEGAL
+# MINIATURA LEGAL
 Prueba despacho
