@@ -21,13 +21,13 @@ body {
 }
 
 .navbar-brand img {
-    height: 100px; /* Reduce a 80px para un tamaño más equilibrado; prueba 60px o 100px si prefieres */
+    height: 150px; /* Reduce a 80px para un tamaño más equilibrado; prueba 60px o 100px si prefieres */
     width: auto; /* Mantiene la proporción */
     vertical-align: middle; /* Alinea verticalmente con el texto */
 }
 .navbar {
-    min-height: 60px; /* Limita la altura del navbar */
-    padding: 0.5rem 1rem; /* Reduce el padding interno */
+    min-height: 90px; /* Ajusta este valor para que encaje con el logo de 150px */
+    padding: 0.5rem 1rem; /* Mantiene el padding interno */
 }
 
 .navbar a, .navbar .nav-link {
@@ -96,6 +96,7 @@ p {
 }
 
 #contact-form .btn:hover
+
 
 
 
