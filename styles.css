@@ -2,10 +2,21 @@ body {
     padding-top: 56px; /* Ajuste para navbar fija */
     font-family: 'Trebuchet MS', sans-serif; /* Fuente principal */
     font-size: 16px; /* Tamaño de fuente base */
+    background-color: #F5F6F5; /* Fondo neutro claro (gris claro) para contraste */
+    color: #1B4D3E; /* Texto en verde oscuro para legibilidad */
 }
 
 .navbar {
+    background-color: #1B4D3E; /* Verde oscuro para la navbar */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a, .navbar .nav-link {
+    color: #FFFFFF !important; /* Texto blanco para contraste */
+}
+
+.navbar a:hover {
+    color: #2EC4B6 !important; /* Verde aguamarina en hover */
 }
 
 #inicio {
@@ -15,35 +26,56 @@ body {
     min-height: 400px;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
-/* Opcional: Estilos para encabezados */
+#inicio h1, #inicio p {
+    background: rgba(27, 77, 62, 0.7); /* Fondo verde oscuro semitransparente */
+    color: #FFFFFF; /* Texto blanco para contraste */
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* Estilos para encabezados */
 h1, h2, h3 {
-    font-family: 'Trebuchet MS', sans-serif; /* Misma fuente para consistencia */
-    font-weight: bold; /* Opcional: Negrita para destacar */
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    color: #1B4D3E; /* Verde oscuro para títulos */
 }
 
 h1 {
-    font-size: 2.5rem; /* Tamaño para títulos principales */
+    font-size: 2.5rem;
 }
 
 h2 {
-    font-size: 2rem; /* Tamaño para subtítulos */
+    font-size: 2rem;
 }
 
 p {
-    font-size: 1.1rem; /* Tamaño para párrafos */
-    line-height: 1.6; /* Mejora la legibilidad */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #4A7043; /* Verde neutro para párrafos */
 }
 
 .card {
+    background-color: #A8D5BA; /* Verde claro para las tarjetas */
+    border: 1px solid #1B4D3E; /* Borde en verde oscuro */
     transition: transform 0.3s;
 }
 
 .card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(27, 77, 62, 0.2); /* Sombra en verde oscuro */
 }
 
 #contact-form .btn {
     width: 100%;
+    background-color: #2EC4B6; /* Verde aguamarina para el botón */
+    color: #FFFFFF; /* Texto blanco */
+    border: none;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+#contact-form .btn:hover {
+    background-color: #1B4D3E; /* Verde oscuro en hover */
 }
