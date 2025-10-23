@@ -17,6 +17,7 @@ body {
 .navbar {
     background-color: var(--verde-oscuro); /* Verde oscuro para la navbar */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-height: 70px; /* Ajuste opcional para el navbar */
 }
 
 .navbar a, .navbar .nav-link {
@@ -84,12 +85,4 @@ p {
     font-family: 'Trebuchet MS', sans-serif;
 }
 
-#contact-form .btn:hover {
-    background-color: var(--verde-oscuro); /* Verde oscuro en hover */
-}
-
-/* Footer */
-footer {
-    background-color: var(--verde-oscuro);
-    color: var(--verde-aguamarina);
-}
+#contact-form .btn:hover
