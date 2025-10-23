@@ -39,7 +39,7 @@ body {
 }
 
 #inicio {
-    background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f'); /* Imagen de fondo */
+    background-image: url('images/backgrounds/madrid.png'); /* Imagen de fondo */
     background-size: cover;
     background-position: center;
     min-height: 400px;
@@ -96,5 +96,6 @@ p {
 }
 
 #contact-form .btn:hover
+
 
 
