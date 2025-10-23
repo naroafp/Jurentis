@@ -1,0 +1,29 @@
+/* Estilos personalizados */
+body {
+    padding-top: 56px; /* Ajuste para navbar fija */
+}
+
+.navbar {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#inicio {
+    background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f'); /* Imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+#contact-form .btn {
+    width: 100%;
+}
