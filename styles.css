@@ -87,3 +87,9 @@ p {
 #contact-form .btn:hover {
     background-color: var(--verde-oscuro); /* Verde oscuro en hover */
 }
+
+/* Footer */
+footer {
+    background-color: var(--verde-oscuro);
+    color: var(--verde-aguamarina);
+}
