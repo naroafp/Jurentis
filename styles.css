@@ -58,9 +58,9 @@ body {
     text-align: center;
 }
 
-@supports (background-image: url('images/madrid.webp')) {
+@supports (background-image: url('images/madrid.png')) {
     #inicio {
-        background-image: url('images/madrid.webp');
+        background-image: url('images/madrid.png');
     }
 }
 
@@ -233,3 +233,4 @@ footer a:hover {
         height: 60px;
     }
 }
+
