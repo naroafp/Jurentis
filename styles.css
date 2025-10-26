@@ -1,4 +1,3 @@
-/* Variables de color basadas en el logo */
 :root {
     --verde-oscuro: #1A3C34;
     --verde-aguamarina: #A3D8D0;
@@ -7,7 +6,6 @@
     --gris-claro: #F5F6F5;
 }
 
-/* Estilos generales */
 body {
     padding-top: 90px;
     font-family: 'Trebuchet MS', Arial, sans-serif;
@@ -17,7 +15,6 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Navbar */
 .navbar {
     background-color: var(--verde-oscuro);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -49,9 +46,8 @@ body {
     color: var(--verde-aguamarina) !important;
 }
 
-/* Banner (Inicio) */
 #inicio {
-    background-image: url('images/madrid.webp');
+    background-image: url('images/madrid.png'); /* Fallback */
     background-size: cover;
     background-position: center;
     min-height: 500px;
@@ -60,6 +56,12 @@ body {
     justify-content: center;
     position: relative;
     text-align: center;
+}
+
+@supports (background-image: url('images/madrid.webp')) {
+    #inicio {
+        background-image: url('images/madrid.webp');
+    }
 }
 
 #inicio::before {
@@ -100,7 +102,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Encabezados */
 h1, h2, h3 {
     font-family: 'Trebuchet MS', Arial, sans-serif;
     font-weight: bold;
@@ -119,7 +120,6 @@ h3 {
     font-size: 1.5rem;
 }
 
-/* Párrafos e íconos */
 p, i {
     font-family: 'Trebuchet MS', Arial, sans-serif;
     font-size: 1.1rem;
@@ -136,7 +136,6 @@ a:hover {
     color: var(--verde-aguamarina);
 }
 
-/* Tarjetas (Servicios y Nosotros) */
 .card {
     background-color: var(--verde-aguamarina);
     border: 1px solid var(--verde-oscuro);
@@ -160,7 +159,6 @@ a:hover {
     color: var(--verde-medio);
 }
 
-/* Formulario */
 #contact-form .form-label {
     font-family: 'Trebuchet MS', Arial, sans-serif;
     color: var(--verde-oscuro);
@@ -189,7 +187,6 @@ a:hover {
     transform: translateY(-2px);
 }
 
-/* Footer */
 footer {
     background-color: var(--verde-oscuro);
     color: var(--blanco);
@@ -205,7 +202,6 @@ footer a:hover {
     color: var(--blanco);
 }
 
-/* Botón de WhatsApp */
 .whatsapp-btn {
     position: fixed;
     bottom: 20px;
@@ -226,7 +222,6 @@ footer a:hover {
     transform: scale(1.1);
 }
 
-/* Ajustes para responsividad */
 @media (max-width: 768px) {
     #inicio h1 {
         font-size: 2rem;
