@@ -3,63 +3,110 @@
     --verde-oscuro: #1A3C34;
     --verde-aguamarina: #A3D8D0;
     --verde-medio: #2E7D68;
+    --blanco: #FFFFFF;
+    --gris-claro: #F5F6F5;
 }
 
 /* Estilos generales */
 body {
-    padding-top: 56px; /* Ajuste para navbar fija */
-    font-family: 'Trebuchet MS', sans-serif; /* Fuente principal */
-    font-size: 16px; /* Tamaño de fuente base */
-    background-color: #F5F6F5; /* Fondo neutro claro (gris claro) para contraste */
-    color: var(--verde-oscuro); /* Texto en verde oscuro para legibilidad */
+    padding-top: 90px; /* Ajustado para el nuevo min-height de la navbar */
+    font-family: 'Trebuchet MS', Arial, sans-serif; /* Fallback para compatibilidad */
+    font-size: 16px;
+    background-color: var(--gris-claro);
+    color: var(--verde-oscuro);
+    scroll-behavior: smooth;
 }
 
+/* Navbar */
 .navbar {
-    background-color: var(--verde-oscuro); /* Verde oscuro para la navbar */
+    background-color: var(--verde-oscuro);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    min-height: 70px; /* Ajuste opcional para el navbar */
+    min-height: 90px;
+    padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--blanco) !important;
 }
 
 .navbar-brand img {
-    height: 150px; /* Reduce a 80px para un tamaño más equilibrado; prueba 60px o 100px si prefieres */
-    width: auto; /* Mantiene la proporción */
-    vertical-align: middle; /* Alinea verticalmente con el texto */
-}
-.navbar {
-    min-height: 90px; /* Ajusta este valor para que encaje con el logo de 150px */
-    padding: 0.5rem 1rem; /* Mantiene el padding interno */
+    height: 80px; /* Reducido para mejor proporción */
+    width: auto;
+    vertical-align: middle;
 }
 
-.navbar a, .navbar .nav-link {
-    color: #FFFFFF !important; /* Texto blanco para contraste */
+.nav-link {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-size: 1.1rem;
+    color: var(--blanco) !important;
+    transition: color 0.3s ease;
 }
 
-.navbar a:hover {
-    color: var(--verde-aguamarina) !important; /* Verde aguamarina en hover */
+.nav-link:hover, .nav-link:focus {
+    color: var(--verde-aguamarina) !important;
 }
 
+/* Banner (Inicio) */
 #inicio {
-    background-image: url('images/madrid.png'); /* Imagen de fondo */
+    background-image: url('images/madrid.png');
     background-size: cover;
     background-position: center;
-    min-height: 400px;
+    min-height: 500px; /* Aumentado para mejor impacto visual */
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
+    text-align: center;
 }
 
-#inicio h1, #inicio p {
-    background: rgba(26, 60, 52, 0.7); /* Fondo verde oscuro semitransparente (ajustado) */
-    color: #FFFFFF; /* Texto blanco para contraste */
+#inicio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 60, 52, 0.7); /* Overlay verde oscuro */
+}
+
+#inicio h1, #inicio p, #inicio .btn {
+    position: relative; /* Para estar sobre el overlay */
+    z-index: 1;
+    background: none; /* Eliminado fondo individual */
+    color: var(--blanco);
     padding: 10px 20px;
-    border-radius: 5px;
 }
 
-/* Estilos para encabezados */
-h1, h2, h3 {
-    font-family: 'Trebuchet MS', sans-serif;
+#inicio h1 {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
     font-weight: bold;
-    color: var(--verde-oscuro); /* Verde oscuro para títulos */
+    font-size: 2.8rem; /* Ajustado para mejor jerarquía */
+}
+
+#inicio p {
+    font-size: 1.3rem;
+}
+
+#inicio .btn {
+    background-color: var(--verde-medio);
+    border: none;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#inicio .btn:hover, #inicio .btn:focus {
+    background-color: var(--verde-aguamarina);
+    transform: translateY(-2px);
+}
+
+/* Encabezados */
+h1, h2, h3, h4, h5 {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-weight: bold;
+    color: var(--verde-oscuro);
 }
 
 h1 {
@@ -70,39 +117,88 @@ h2 {
     font-size: 2rem;
 }
 
-p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--verde-medio); /* Verde neutro para párrafos */
+h3, h4, h5 {
+    font-size: 1.5rem;
 }
 
+/* Párrafos */
+p {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--verde-medio);
+}
+
+/* Tarjetas (Servicios y Nosotros) */
 .card {
-    background-color: var(--verde-aguamarina); /* Verde claro para las tarjetas */
-    border: 1px solid var(--verde-oscuro); /* Borde en verde oscuro */
-    transition: transform 0.3s;
+    background-color: var(--verde-aguamarina);
+    border: 1px solid var(--verde-oscuro);
+    border-radius: 10px;
+    padding: 1.5rem; /* Más espacio interno */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(26, 60, 52, 0.2); /* Sombra en verde oscuro */
+    box-shadow: 0 4px 10px rgba(26, 60, 52, 0.2);
+}
+
+.card-title {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-weight: bold;
+    color: var(--verde-oscuro);
+}
+
+.card-text, .card i {
+    color: var(--verde-medio);
+}
+
+/* Formulario */
+#contact-form .form-label {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: var(--verde-oscuro);
+}
+
+#contact-form .form-control {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    border-color: var(--verde-oscuro);
 }
 
 #contact-form .btn {
     width: 100%;
-    background-color: var(--verde-medio); /* Verde medio para el botón */
-    color: #FFFFFF; /* Texto blanco */
+    background-color: var(--verde-medio);
+    color: var(--blanco);
     border: none;
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-#contact-form .btn:hover
+#contact-form .btn:hover, #contact-form .btn:focus {
+    background-color: var(--verde-aguamarina);
+    transform: translateY(-2px);
+}
 
+/* Información de contacto */
+#contacto p, #contacto i {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: var(--verde-medio);
+}
+
+/* Footer */
+footer {
+    background-color: var(--verde-oscuro);
+    color: var(--blanco);
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    padding: 1.5rem 0;
+}
+
+/* Botón de WhatsApp */
 .whatsapp-btn {
     position: fixed;
     bottom: 20px;
     right: 20px;
     background-color: #25D366;
-    color: white;
+    color: var(--blanco);
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -113,11 +209,19 @@ p {
     transition: transform 0.3s ease;
 }
 
-.whatsapp-btn:hover {
+.whatsapp-btn:hover, .whatsapp-btn:focus {
     transform: scale(1.1);
 }
 
-
-
-
-
+/* Ajustes para responsividad */
+@media (max-width: 768px) {
+    #inicio h1 {
+        font-size: 2rem;
+    }
+    #inicio p {
+        font-size: 1rem;
+    }
+    .navbar-brand img {
+        height: 60px; /* Más pequeño en móviles */
+    }
+}
