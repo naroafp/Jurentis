@@ -14,14 +14,14 @@
     <meta property="og:type" content="website">
     <title>Abogados en Madrid - Miniatura Legal</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Trebuchet+MS:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="#" class="logo">
-                    <img src="images/logo.png" alt="Miniatura Legal" loading="lazy">
+                <a href="#" class="navbar-brand">
+                    <img src="images/logo.png" alt="Miniatura Legal">
                     MINIATURA LEGAL
                 </a>
                 <ul class="nav-links">
@@ -36,12 +36,13 @@
     </header>
 
     <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Miniatura Legal</h1>
-            <p class="hero-subtitle">Abogados en Madrid especializados en derecho civil, penal y laboral</p>
-            <a href="#contacto" class="cta-btn">Consulta Gratuita</a>
-        </div>
+        <div class="hero-overlay"></div>
         <canvas id="particles-canvas"></canvas>
+        <div class="hero-content">
+            <h1>Miniatura Legal</h1>
+            <p>Abogados en Madrid especializados en derecho civil, penal y laboral</p>
+            <a href="#contacto" class="btn">Solicita una Consulta Gratuita</a>
+        </div>
     </section>
 
     <section id="sobre-nosotros" class="about">
@@ -125,7 +126,7 @@
                         <input type="text" name="name" placeholder="Nombre completo" required>
                         <input type="email" name="email" placeholder="Correo electrónico" required>
                         <textarea name="message" placeholder="Tu mensaje" rows="5" required></textarea>
-                        <button type="submit">Enviar Consulta</button>
+                        <button type="submit" class="btn">Enviar Consulta</button>
                     </form>
                 </div>
                 <div class="contact-info">
