@@ -84,13 +84,30 @@ body {
 
 /* WHATSAPP */
 .whatsapp-btn {
-    position: fixed; bottom: 20px; right: 20px;
-    background: #25D366; color: white; width: 60px; height: 60px;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 1.8rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: 0.3s; z-index: 1000;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: var(--blanco);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    font-size: 24px; /* Tamaño fijo para el ícono */
+    line-height: 1; /* Evita desajustes verticales */
 }
-.whatsapp-btn:hover { transform: scale(1.1); }
+
+.whatsapp-btn i {
+    font-size: 24px; /* Tamaño específico para el ícono */
+}
+
+.whatsapp-btn:hover, .whatsapp-btn:focus {
+    transform: scale(1.1);
+}
 
 /* TOAST */
 .toast-notification {
@@ -102,3 +119,4 @@ body {
 }
 .toast-notification.success { background: var(--verde-medio); }
 .toast-notification.error { background: #d9534f; }
+
