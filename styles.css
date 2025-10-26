@@ -9,8 +9,8 @@
 
 /* Estilos generales */
 body {
-    padding-top: 90px; /* Ajustado para el nuevo min-height de la navbar */
-    font-family: 'Trebuchet MS', Arial, sans-serif; /* Fallback para compatibilidad */
+    padding-top: 90px; /* Ajustado para navbar fija */
+    font-family: 'Trebuchet MS', Arial, sans-serif;
     font-size: 16px;
     background-color: var(--gris-claro);
     color: var(--verde-oscuro);
@@ -33,7 +33,7 @@ body {
 }
 
 .navbar-brand img {
-    height: 80px; /* Reducido para mejor proporción */
+    height: 80px; /* Tamaño equilibrado */
     width: auto;
     vertical-align: middle;
 }
@@ -54,7 +54,7 @@ body {
     background-image: url('images/madrid.png');
     background-size: cover;
     background-position: center;
-    min-height: 500px; /* Aumentado para mejor impacto visual */
+    min-height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,17 +73,15 @@ body {
 }
 
 #inicio h1, #inicio p, #inicio .btn {
-    position: relative; /* Para estar sobre el overlay */
+    position: relative;
     z-index: 1;
-    background: none; /* Eliminado fondo individual */
     color: var(--blanco);
-    padding: 10px 20px;
 }
 
 #inicio h1 {
     font-family: 'Trebuchet MS', Arial, sans-serif;
     font-weight: bold;
-    font-size: 2.8rem; /* Ajustado para mejor jerarquía */
+    font-size: 2.8rem;
 }
 
 #inicio p {
@@ -121,8 +119,8 @@ h3, h4, h5 {
     font-size: 1.5rem;
 }
 
-/* Párrafos */
-p {
+/* Párrafos e íconos */
+p, i {
     font-family: 'Trebuchet MS', Arial, sans-serif;
     font-size: 1.1rem;
     line-height: 1.6;
@@ -134,7 +132,7 @@ p {
     background-color: var(--verde-aguamarina);
     border: 1px solid var(--verde-oscuro);
     border-radius: 10px;
-    padding: 1.5rem; /* Más espacio interno */
+    padding: 1.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -178,12 +176,6 @@ p {
     transform: translateY(-2px);
 }
 
-/* Información de contacto */
-#contacto p, #contacto i {
-    font-family: 'Trebuchet MS', Arial, sans-serif;
-    color: var(--verde-medio);
-}
-
 /* Footer */
 footer {
     background-color: var(--verde-oscuro);
@@ -222,6 +214,6 @@ footer {
         font-size: 1rem;
     }
     .navbar-brand img {
-        height: 60px; /* Más pequeño en móviles */
+        height: 60px;
     }
 }
