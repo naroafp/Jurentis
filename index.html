@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Despacho de abogados profesional ofreciendo servicios legales de calidad.">
-    <meta name="keywords" content="abogados, despacho legal, servicios jurídicos">
+    <meta name="keywords" content="abogados, despacho legal, servicios jurídicos, derecho civil, derecho penal, derecho laboral">
     <title>Despacho de Abogados - MINIATURA LEGAL</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Tu CSS personalizado -->
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- CSS personalizado -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,10 +18,10 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="images/logo.png" alt="MINIATURA LEGAL" class="me-2">
+                <img src="images/logo.png" alt="Logotipo de Miniatura Legal" class="me-2">
                 MINIATURA LEGAL
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -34,11 +36,11 @@
     </nav>
 
     <!-- Inicio (Banner) -->
-    <section id="inicio" class="bg-primary text-white text-center py-5">
+    <section id="inicio" class="text-white text-center py-5">
         <div class="container">
-            <h1 class="display-4"> MINIATURA LEGAL</h1>
+            <h1 class="display-4">MINIATURA LEGAL</h1>
             <p class="lead">Tu despacho de abogados de confianza.</p>
-            <a href="#contacto" class="btn btn-light btn-lg">Contáctanos</a>
+            <a href="#contacto" class="btn btn-primary btn-lg">Contáctanos</a>
         </div>
     </section>
 
@@ -49,14 +51,17 @@
             <p class="text-center">Somos un despacho de abogados con más de 10 años de experiencia, comprometidos con ofrecer soluciones legales personalizadas. Nuestro equipo de expertos está aquí para ayudarte en cualquier situación jurídica.</p>
             <div class="row mt-4">
                 <div class="col-md-4 text-center">
+                    <i class="fas fa-star fa-2x mb-3"></i>
                     <h4>EXPERIENCIA</h4>
                     <p>Amplio conocimiento en diversas áreas del derecho.</p>
                 </div>
                 <div class="col-md-4 text-center">
+                    <i class="fas fa-handshake fa-2x mb-3"></i>
                     <h4>COMPROMISO</h4>
                     <p>Atención personalizada para cada cliente.</p>
                 </div>
                 <div class="col-md-4 text-center">
+                    <i class="fas fa-trophy fa-2x mb-3"></i>
                     <h4>RESULTADOS</h4>
                     <p>Enfocados en obtener los mejores resultados.</p>
                 </div>
@@ -71,7 +76,8 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body text-center">
+                            <i class="fas fa-balance-scale fa-2x mb-3"></i>
                             <h5 class="card-title">Derecho Civil</h5>
                             <p class="card-text">Asesoría en contratos, herencias y disputas civiles.</p>
                         </div>
@@ -79,7 +85,8 @@
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body text-center">
+                            <i class="fas fa-gavel fa-2x mb-3"></i>
                             <h5 class="card-title">Derecho Penal</h5>
                             <p class="card-text">Defensa en casos penales con profesionalismo.</p>
                         </div>
@@ -87,7 +94,8 @@
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body text-center">
+                            <i class="fas fa-briefcase fa-2x mb-3"></i>
                             <h5 class="card-title">Derecho Laboral</h5>
                             <p class="card-text">Asesoría en conflictos laborales y contratos.</p>
                         </div>
@@ -122,14 +130,19 @@
                 </div>
                 <div class="col-md-6">
                     <h4>Información de Contacto</h4>
-                    
                     <p><strong>Teléfono:</strong> +34 000 000 000</p>
                     <p><strong>Correo:</strong> MINIATURALEGAL@GMAIL.COM</p>
                     <p><strong>Dirección:</strong> Av. De la Miniatura</p>
+                    <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" aria-label="Ubicación de Miniatura Legal"></iframe>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/+34000000000" class="whatsapp-btn" target="_blank" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp fa-2x"></i>
+    </a>
 
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-3">
@@ -141,56 +154,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-<!-- Añade FontAwesome en el <head> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-<!-- Modifica la sección de servicios -->
-<section id="servicios" class="bg-light py-5">
-    <div class="container">
-        <h2 class="text-center mb-4">Servicios</h2>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <i class="fas fa-balance-scale fa-2x mb-3 text-primary"></i>
-                        <h5 class="card-title">Derecho Civil</h5>
-                        <p class="card-text">Asesoría en contratos, herencias y disputas civiles.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <i class="fas fa-gavel fa-2x mb-3 text-primary"></i>
-                        <h5 class="card-title">Derecho Penal</h5>
-                        <p class="card-text">Defensa en casos penales con profesionalismo.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <i class="fas fa-briefcase fa-2x mb-3 text-primary"></i>
-                        <h5 class="card-title">Derecho Laboral</h5>
-                        <p class="card-text">Asesoría en conflictos laborales y contratos.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<img src="images/logo.png" alt="Logotipo de Miniatura Legal" class="me-2">
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-<a href="https://wa.me/+34000000000" class="whatsapp-btn" target="_blank" aria-label="Contactar por WhatsApp">
-    <i class="fab fa-whatsapp fa-2x"></i>
-</a>
-<div class="col-md-6">
-    <h4>Información de Contacto</h4>
-    <p><strong>Teléfono:</strong> +34 000 000 000</p>
-    <p><strong>Correo:</strong> MINIATURALEGAL@GMAIL.COM</p>
-    <p><strong>Dirección:</strong> Av. De la Miniatura</p>
-    <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-</div>
-
-
