@@ -118,6 +118,38 @@ canvas:not(:supported) + .fallback-bg {
     background: var(--verde-aguamarina);
 }
 
+/* ARTÍCULO */
+.article-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+.article-content h2 {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--verde-oscuro);
+}
+.article-content p {
+    margin-bottom: 1rem;
+}
+.article-content .btn {
+    background: var(--verde-medio);
+    border: none;
+}
+.article-content .btn:hover {
+    background: var(--verde-aguamarina);
+}
+.article-content .btn-outline-primary {
+    border-color: var(--verde-medio);
+    color: var(--verde-medio);
+}
+.article-content .btn-outline-primary:hover {
+    background: var(--verde-aguamarina);
+    color: var(--blanco);
+}
+
 /* FORMULARIO */
 #contact-form .form-control {
     border-color: var(--verde-oscuro);
