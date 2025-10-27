@@ -1,11 +1,3 @@
-// TEMA
-const themeToggle = document.querySelector('.theme-toggle');
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('light');
-    themeToggle.textContent = document.body.classList.contains('light') ? 'Sun' : 'Moon';
-    themeToggle.setAttribute('aria-pressed', document.body.classList.contains('light')); // Accesibilidad
-});
-
 // PARTÍCULAS
 const canvas = document.getElementById('particles-canvas');
 const ctx = canvas.getContext('2d');
