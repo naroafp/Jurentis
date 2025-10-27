@@ -1,14 +1,19 @@
 // TEMA
-document.querySelector('.theme-toggle').addEventListener('click', () => {
+const themeToggle = document.querySelector('.theme-toggle');
+themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('light');
-    this.textContent = document.body.classList.contains('light') ? 'Sun' : 'Moon';
+    themeToggle.textContent = document.body.classList.contains('light') ? 'Sun' : 'Moon';
+    themeToggle.setAttribute('aria-pressed', document.body.classList.contains('light')); // Accesibilidad
 });
 
 // PARTÍCULAS
 const canvas = document.getElementById('particles-canvas');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+const heroSection = document.getElementById('inicio');
+
+// Ajustar tamaño del canvas a la sección hero
+canvas.width = heroSection.offsetWidth;
+canvas.height = heroSection.offsetHeight;
 
 class Particle {
     constructor() {
@@ -19,24 +24,44 @@ class Particle {
         this.speedY = Math.random() * 1.5 - 0.75;
     }
     update() {
-        this.x += this.speedX; this.y += this.speedY;
+        this.x += this.speedX;
+        this.y += this.speedY;
         if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
         if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
     }
     draw() {
         ctx.fillStyle = 'rgba(163, 216, 208, 0.4)';
-        ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
         ctx.strokeStyle = 'rgba(46, 125, 104, 0.3)';
-        ctx.beginPath(); ctx.moveTo(this.x, this.y - this.size); ctx.lineTo(this.x, this.y + this.size); ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y - this.size);
+        ctx.lineTo(this.x, this.y + this.size);
+        ctx.stroke();
     }
 }
-const particles = Array.from({ length: 40 }, () => new Particle());
+
+// Ajustar número de partículas según tamaño de pantalla
+const particleCount = window.innerWidth < 768 ? 20 : 40;
+const particles = Array.from({ length: particleCount }, () => new Particle());
+
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     particles.forEach(p => { p.update(); p.draw(); });
     requestAnimationFrame(animate);
 }
 animate();
+
+// Redimensionamiento con limitador
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        canvas.width = heroSection.offsetWidth;
+        canvas.height = heroSection.offsetHeight;
+    }, 100);
+});
 
 // SCROLL SUAVE
 document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -52,7 +77,8 @@ form.addEventListener('submit', async e => {
     e.preventDefault();
     const btn = form.querySelector('button');
     const original = btn.textContent;
-    btn.disabled = true; btn.textContent = 'Enviando...';
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
 
     try {
         const res = await fetch(form.action, {
@@ -61,15 +87,27 @@ form.addEventListener('submit', async e => {
             headers: { 'Accept': 'application/json' }
         });
         if (res.ok) {
-            btn.textContent = 'Enviado'; btn.style.backgroundColor = '#2E7D68';
+            btn.textContent = 'Enviado';
+            btn.style.backgroundColor = '#2E7D68';
             form.reset();
             showToast('¡Gracias! Te responderemos en menos de 24h.', 'success');
-        } else throw new Error();
+        } else if (res.status === 429) {
+            btn.textContent = 'Error';
+            btn.style.backgroundColor = '#d9534f';
+            showToast('Demasiados envíos. Intenta de nuevo más tarde.', 'error');
+        } else {
+            throw new Error();
+        }
     } catch {
-        btn.textContent = 'Error'; btn.style.backgroundColor = '#d9534f';
+        btn.textContent = 'Error';
+        btn.style.backgroundColor = '#d9534f';
         showToast('Error. Intenta de nuevo o usa WhatsApp.', 'error');
     } finally {
-        setTimeout(() => { btn.textContent = original; btn.disabled = false; btn.style.backgroundColor = ''; }, 3000);
+        setTimeout(() => {
+            btn.textContent = original;
+            btn.disabled = false;
+            btn.style.backgroundColor = '';
+        }, 3000);
     }
 });
 
@@ -78,13 +116,13 @@ function showToast(msg, type) {
     if (existing) existing.remove();
     const toast = document.createElement('div');
     toast.className = `toast-notification ${type}`;
+    toast.setAttribute('role', 'alert'); // Accesibilidad
+    toast.setAttribute('aria-live', 'assertive'); // Accesibilidad
     toast.textContent = msg;
     document.body.appendChild(toast);
     setTimeout(() => toast.style.opacity = '1', 100);
-    setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 400); }, 4000);
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 400);
+    }, 4000);
 }
-
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
