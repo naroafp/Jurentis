@@ -120,9 +120,13 @@ function showToast(msg, type) {
     toast.setAttribute('aria-live', 'assertive'); // Accesibilidad
     toast.textContent = msg;
     document.body.appendChild(toast);
-    setTimeout(() => toast.style.opacity = '1', 100);
+    setTimeout(() => {
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateY(0)'; // Animar translateY para coincidir con CSS
+    }, 100);
     setTimeout(() => {
         toast.style.opacity = '0';
+        toast.style.transform = 'translateY(20px)'; // Restaurar posición inicial
         setTimeout(() => toast.remove(), 400);
     }, 4000);
 }
