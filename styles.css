@@ -137,16 +137,20 @@ canvas:not(:supported) + .fallback-bg {
 .article-content .btn {
     background: var(--verde-medio);
     border: none;
+    color: var(--blanco);
 }
 .article-content .btn:hover {
     background: var(--verde-aguamarina);
 }
 .article-content .btn-outline-primary {
     border-color: var(--verde-medio);
-    color: var(--verde-medio);
+    background-color: rgba(46, 125, 104, 0.1); /* Fondo ligero para contraste */
+    color: var(--verde-oscuro); /* Texto más oscuro para mayor legibilidad */
+    transition: all 0.3s ease;
 }
 .article-content .btn-outline-primary:hover {
     background: var(--verde-aguamarina);
+    border-color: var(--verde-aguamarina);
     color: var(--blanco);
 }
 
@@ -213,3 +217,4 @@ canvas:not(:supported) + .fallback-bg {
 .toast-notification.error {
     background: #d9534f;
 }
+
