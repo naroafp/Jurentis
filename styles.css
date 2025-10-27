@@ -144,14 +144,36 @@ canvas:not(:supported) + .fallback-bg {
 }
 .article-content .btn-outline-primary {
     border-color: var(--verde-medio);
-    background-color: rgba(46, 125, 104, 0.1); /* Fondo ligero para contraste */
-    color: var(--verde-oscuro); /* Texto más oscuro para mayor legibilidad */
+    background-color: rgba(46, 125, 104, 0.1);
+    color: var(--verde-oscuro);
     transition: all 0.3s ease;
 }
 .article-content .btn-outline-primary:hover {
     background: var(--verde-aguamarina);
     border-color: var(--verde-aguamarina);
     color: var(--blanco);
+}
+
+/* PREGUNTAS FRECUENTES */
+#preguntas-frecuentes .accordion-button {
+    background-color: var(--blanco);
+    color: var(--verde-oscuro);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+#preguntas-frecuentes .accordion-button:not(.collapsed) {
+    background-color: var(--verde-medio);
+    color: var(--blanco);
+    box-shadow: none;
+}
+#preguntas-frecuentes .accordion-button:focus {
+    box-shadow: 0 0 0 0.2rem rgba(46, 125, 104, 0.25);
+    outline: none;
+}
+#preguntas-frecuentes .accordion-body {
+    background-color: var(--blanco);
+    color: var(--verde-oscuro);
+    padding: 1.5rem;
 }
 
 /* FORMULARIO */
@@ -217,4 +239,3 @@ canvas:not(:supported) + .fallback-bg {
 .toast-notification.error {
     background: #d9534f;
 }
-
