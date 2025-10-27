@@ -9,14 +9,6 @@
     --dark: var(--verde-oscuro);
 }
 
-body.light {
-    --verde-oscuro: #F5F6F5;
-    --verde-medio: #2E7D68;
-    --verde-aguamarina: #A3D8D0;
-    --blanco: #1A3C34;
-    --gris-claro: #FFFFFF;
-}
-
 /* GENERAL */
 body {
     padding-top: 90px;
@@ -35,7 +27,7 @@ body {
 .navbar-brand {
     font-weight: bold;
     font-size: 1.5rem;
-    color: var(--blanco) !important; /* Asegurar visibilidad en ambos modos */
+    color: var(--blanco) !important;
 }
 .nav-link {
     color: var(--blanco) !important;
@@ -43,15 +35,6 @@ body {
 }
 .nav-link:hover {
     color: var(--verde-aguamarina) !important;
-}
-.theme-toggle {
-    cursor: pointer;
-    font-size: 1.3rem;
-    color: var(--blanco); /* Color para modo oscuro */
-    transition: color 0.3s; /* Transición suave para cambio de color */
-}
-body.light .theme-toggle {
-    color: var(--verde-oscuro); /* Color para modo claro */
 }
 
 /* HERO */
@@ -101,10 +84,7 @@ canvas:not(:supported) + .fallback-bg {
     height: 60px;
     margin: 0 auto 1rem;
     color: var(--verde-medio);
-    transition: transform 0.4s; /* Solo transform para la rotación */
-}
-body.light .geo-icon {
-    color: var(--verde-medio); /* Mantener color consistente en modo claro */
+    transition: transform 0.4s;
 }
 .value-card:hover .geo-icon, .service-card:hover .geo-icon {
     transform: rotate(360deg);
@@ -164,8 +144,8 @@ body.light .geo-icon {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     z-index: 2000;
     opacity: 0;
-    transform: translateY(20px); /* Posición inicial para animación */
-    transition: opacity 0.4s ease, transform 0.4s ease; /* Transiciones para opacidad y posición */
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 .toast-notification.success {
     background: var(--verde-medio);
@@ -173,3 +153,6 @@ body.light .geo-icon {
 .toast-notification.error {
     background: #d9534f;
 }
+    background: #d9534f;
+}
+
