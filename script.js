@@ -114,11 +114,11 @@ function showToast(msg, type) {
     document.body.appendChild(toast);
     setTimeout(() => {
         toast.style.opacity = '1';
-        toast.style.transform = 'translateY(0)'; // Animar translateY para coincidir con CSS
+        toast.style.transform = 'translateY(0)';
     }, 100);
     setTimeout(() => {
         toast.style.opacity = '0';
-        toast.style.transform = 'translateY(20px)'; // Restaurar posición inicial
+        toast.style.transform = 'translateY(20px)';
         setTimeout(() => toast.remove(), 400);
     }, 4000);
 }
