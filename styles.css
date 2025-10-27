@@ -71,11 +71,11 @@ canvas:not(:supported) + .fallback-bg {
 }
 
 /* TARJETAS */
-.value-card, .service-card {
+.value-card, .service-card, .blog-card {
     transition: all 0.4s ease;
     perspective: 1000px;
 }
-.value-card:hover, .service-card:hover {
+.value-card:hover, .service-card:hover, .blog-card:hover {
     transform: translateY(-12px) rotateX(5deg);
     box-shadow: 0 15px 30px rgba(26, 60, 52, 0.2);
 }
@@ -88,6 +88,34 @@ canvas:not(:supported) + .fallback-bg {
 }
 .value-card:hover .geo-icon, .service-card:hover .geo-icon {
     transform: rotate(360deg);
+}
+
+/* BLOG */
+.blog-card {
+    background-color: var(--blanco);
+    border: none;
+}
+.blog-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+.blog-card .card-body {
+    padding: 1.5rem;
+}
+.blog-card .card-title {
+    font-size: 1.5rem;
+    color: var(--verde-oscuro);
+}
+.blog-card .card-text {
+    color: var(--verde-oscuro);
+    margin-bottom: 1rem;
+}
+.blog-card .btn {
+    background: var(--verde-medio);
+    border: none;
+}
+.blog-card .btn:hover {
+    background: var(--verde-aguamarina);
 }
 
 /* FORMULARIO */
@@ -153,6 +181,3 @@ canvas:not(:supported) + .fallback-bg {
 .toast-notification.error {
     background: #d9534f;
 }
-    background: #d9534f;
-}
-
