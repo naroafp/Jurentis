@@ -240,31 +240,37 @@ canvas:not(:supported) + .fallback-bg {
     background: #d9534f;
 }
 
-/* === NAVBAR COMPACTO + LOGO GRANDE === */
+/* === NAVBAR COMPACTO + LOGO GRANDE + SIN LÍNEA BLANCA === */
 
-.navbar {
-    min-height: 70px !important;     /* Altura total del navbar */
-    padding: 8px 0 !important;       /* Espacio arriba/abajo */
-    display: flex;
-    align-items: center;
+/* 1. QUITAR LA LÍNEA BLANCA (padding del body) */
+body {
+    padding-top: 0 !important;   /* Quita el espacio blanco */
 }
 
-/* Forzar tamaño del logo (ajusta el 50px si quieres más grande) */
+/* 2. Navbar compacto */
+.navbar {
+    min-height: 70px !important;
+    padding: 10px 0 !important;
+    margin-bottom: 0 !important;
+    border: none !important;
+}
+
+/* 3. Logo GRANDE y CENTRADO */
 .navbar-brand {
     padding: 0 !important;
     margin: 0 !important;
-    height: 50px !important;         /* Altura fija para el contenedor del logo */
+    height: 55px !important;     /* Altura del contenedor del logo */
     display: flex;
     align-items: center;
 }
 
 .navbar-brand img {
-    height: 50px !important;         /* ← TAMAÑO DEL LOGO (cámbialo si quieres más grande) */
+    height: 55px !important;     /* ← TAMAÑO DEL LOGO (ajusta si quieres más grande) */
     width: auto !important;
-    max-height: 55px !important;
+    max-height: 60px !important;
 }
 
-/* Ajustar menú para que no se baje */
+/* 4. Menú centrado verticalmente */
 .navbar-nav {
     display: flex;
     align-items: center;
@@ -272,8 +278,14 @@ canvas:not(:supported) + .fallback-bg {
 }
 
 .navbar-nav .nav-link {
-    font-size: 0.95rem !important;
-    padding: 6px 14px !important;
+    font-size: 1rem !important;
+    padding: 8px 16px !important;
     display: flex;
     align-items: center;
+}
+
+/* 5. Evitar espacios extra */
+.container, .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
 }
