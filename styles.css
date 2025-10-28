@@ -289,3 +289,32 @@ body {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+/* === HERO CON ESPACIO PARA NAVBAR + TÍTULO LEGIBLE === */
+
+/* Espacio arriba del hero (ajusta 80px si el navbar es más alto) */
+.hero {
+    padding-top: 80px !important;     /* ← Espacio para que no tape el navbar */
+    padding-bottom: 60px !important;
+}
+
+/* Título BLANCO, GRANDE y con SOMBRA */
+.hero h1 {
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    font-size: 3.2rem !important;
+    text-shadow: 
+        2px 2px 6px rgba(0, 0, 0, 0.7),
+        0 0 12px rgba(0, 0, 0, 0.5) !important;
+    letter-spacing: 1.2px !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Subtítulo legible */
+.hero p {
+    color: #E8F5E9 !important;
+    font-size: 1.3rem !important;
+    font-weight: 500 !important;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6) !important;
+    margin-bottom: 2rem !important;
+}
