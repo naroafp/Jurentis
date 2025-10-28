@@ -239,3 +239,42 @@ canvas:not(:supported) + .fallback-bg {
 .toast-notification.error {
     background: #d9534f;
 }
+
+/* === REDUCIR NAVBAR A 60px Y MANTENER LOGO === */
+
+/* Reducir altura del navbar */
+.navbar {
+    min-height: 60px !important;
+    padding: 5px 0 !important; /* Reduce espacio interno */
+}
+
+/* Ajustar el contenido del navbar (logo + enlaces) */
+.navbar .container,
+.navbar .navbar-collapse {
+    align-items: center;
+    height: 100%;
+}
+
+/* Mantener el tamaño del logo (ajusta si es necesario) */
+.navbar-brand {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.navbar-brand img {
+    height: 45px !important;   /* Cambia este valor si tu logo es más grande/pequeño */
+    width: auto !important;
+    max-height: 50px !important;
+}
+
+/* Ajustar enlaces del menú (más pequeños pero legibles) */
+.navbar-nav .nav-link {
+    font-size: 0.95rem !important;   /* Un poco más pequeño */
+    padding: 8px 15px !important;    /* Espacio horizontal */
+    line-height: 1.4 !important;
+}
+
+/* Asegurar que el menú colapsable no rompa */
+.navbar-toggler {
+    padding: 4px 8px !important;
+    font-size: 1rem !important;
+}
