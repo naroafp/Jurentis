@@ -240,41 +240,40 @@ canvas:not(:supported) + .fallback-bg {
     background: #d9534f;
 }
 
-/* === REDUCIR NAVBAR A 60px Y MANTENER LOGO === */
+/* === NAVBAR COMPACTO + LOGO GRANDE === */
 
-/* Reducir altura del navbar */
 .navbar {
-    min-height: 60px !important;
-    padding: 5px 0 !important; /* Reduce espacio interno */
+    min-height: 70px !important;     /* Altura total del navbar */
+    padding: 8px 0 !important;       /* Espacio arriba/abajo */
+    display: flex;
+    align-items: center;
 }
 
-/* Ajustar el contenido del navbar (logo + enlaces) */
-.navbar .container,
-.navbar .navbar-collapse {
+/* Forzar tamaño del logo (ajusta el 50px si quieres más grande) */
+.navbar-brand {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 50px !important;         /* Altura fija para el contenedor del logo */
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    height: 50px !important;         /* ← TAMAÑO DEL LOGO (cámbialo si quieres más grande) */
+    width: auto !important;
+    max-height: 55px !important;
+}
+
+/* Ajustar menú para que no se baje */
+.navbar-nav {
+    display: flex;
     align-items: center;
     height: 100%;
 }
 
-/* Mantener el tamaño del logo (ajusta si es necesario) */
-.navbar-brand {
-    padding: 0 !important;
-    margin: 0 !important;
-}
-.navbar-brand img {
-    height: 45px !important;   /* Cambia este valor si tu logo es más grande/pequeño */
-    width: auto !important;
-    max-height: 50px !important;
-}
-
-/* Ajustar enlaces del menú (más pequeños pero legibles) */
 .navbar-nav .nav-link {
-    font-size: 0.95rem !important;   /* Un poco más pequeño */
-    padding: 8px 15px !important;    /* Espacio horizontal */
-    line-height: 1.4 !important;
-}
-
-/* Asegurar que el menú colapsable no rompa */
-.navbar-toggler {
-    padding: 4px 8px !important;
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
+    padding: 6px 14px !important;
+    display: flex;
+    align-items: center;
 }
