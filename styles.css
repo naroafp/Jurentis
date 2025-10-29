@@ -164,22 +164,23 @@ canvas:not(:supported) + .fallback-bg {
     background: var(--verde-aguamarina);
 }
 
-/* === FILTRO VERDE EN BLOG AL HOVER (igual que hero, más transparente) === */
+/* === FILTRO VERDE EN BLOG: SIEMPRE VISIBLE, SE QUITA EN HOVER === */
 .blog-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(26, 60, 52, 0);
-    transition: background 0.4s ease;
+    background: rgba(26, 60, 52, 0.35); /* Mismo verde que hero, 35% opacidad */
+    transition: opacity 0.4s ease;
     z-index: 1;
     pointer-events: none;
     border-radius: 8px;
+    opacity: 1;
 }
 .blog-card:hover::before {
-    background: rgba(26, 60, 52, 0.35); /* Mismo verde que hero, 35% opacidad */
+    opacity: 0; /* Filtro desaparece al hacer hover */
 }
 .blog-card:hover .card-img-top {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Zoom suave al mostrar imagen limpia */
 }
 
 /* ARTÍCULO */
