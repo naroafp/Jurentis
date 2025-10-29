@@ -42,7 +42,7 @@
     <!-- HERO -->
     <section id="inicio" class="hero text-white text-center py-5 position-relative overflow-hidden">
         <canvas id="particles-canvas" class="position-absolute top-0 start-0 w-100 h-100"></canvas>
-        <div class="fallback-bg"></div> <!-- Fallback para navegadores sin soporte para canvas -->
+        <div class="fallback-bg"></div>
         <div class="container position-relative" style="z-index: 2;">
             <h1 class="display-4 fw-bold">Jurentis</h1>
             <p class="lead">La firma legal en la que puedes confiar, en todo el territorio nacional.</p>
@@ -110,7 +110,7 @@
                         <p class="card-text">En algunos productos financieros como hipotecas, tarjetas, créditos o cuentas corrientes se imponen intereses usurarios y comisiones abusivas a los consumidores.<a href="#contacto">Revisa gratis tu contrato</a>.</p>
                     </div>
                 </div>
-                  <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4">
                     <div class="card service-card h-100 text-center p-4 shadow-sm">
                         <svg class="geo-icon mb-3" viewBox="0 0 60 60" aria-label="Icono de derecho laboral">
                             <circle cx="30" cy="30" r="25" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -121,7 +121,7 @@
                         <p class="card-text">Las entidades están obligadas a facilitar gratuitamente al consumidor una copia del contrato, cuadro de amortización y extractos mensuales. ¿No quieren dártelo? <a href="#contacto">Solicita ayuda</a>.</p>
                     </div>
                 </div>
-                  <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4">
                     <div class="card service-card h-100 text-center p-4 shadow-sm">
                         <svg class="geo-icon mb-3" viewBox="0 0 60 60" aria-label="Icono de derecho penal">
                             <circle cx="30" cy="30" r="25" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -132,18 +132,26 @@
                         <p class="card-text">Reclamamos frente a la entidad que ha dado de alta tus datos por una deuda en un fichero de solvencia como ASNEF, BADEXCUG o CIRBE. <a href="#contacto">Infórmate al respecto</a>.</p>
                     </div>
                 </div>
-              
+            </div>
+        </div>
     </section>
 
-    <!-- BLOG -->
+    <!-- BLOG: SOLO FILTRO VERDE SOBRE LA IMAGEN -->
     <section id="blog" class="py-5">
         <div class="container">
             <h2 class="text-center mb-4">Blog y Casos de Éxito</h2>
             <p class="text-center mb-5">Mantente informado con nuestras noticias legales y descubre cómo hemos ayudado a nuestros clientes a resolver sus asuntos.</p>
             <div class="row">
+
+                <!-- NOTICIA 1 -->
                 <div class="col-md-4 mb-4">
-                    <div class="card blog-card h-100 shadow-sm">
-                        <img src="images/blog1.jpg" class="card-img-top" alt="Noticia sobre cambios en la ley laboral" loading="lazy">
+                    <div class="card blog-card h-100 shadow-sm position-relative overflow-hidden">
+                        <div class="position-relative">
+                            <img src="images/blog1.jpg" class="card-img-top" alt="Financiación con T.A.E. usurario" loading="lazy">
+                            <!-- FILTRO VERDE -->
+                            <div class="position-absolute top-0 start-0 w-100 h-100" 
+                                 style="background: linear-gradient(135deg, rgba(0, 90, 0, 0.65), rgba(0, 45, 0, 0.75)); pointer-events: none;"></div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">Financiación de compras con T.A.E. usurario</h3>
                             <p class="card-text">Te explicamos como revisar si un interés remuneratorio es o no usurario.</p>
@@ -151,9 +159,16 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- NOTICIA 2 -->
                 <div class="col-md-4 mb-4">
-                    <div class="card blog-card h-100 shadow-sm">
-                        <img src="images/blog2.jpg" class="card-img-top" alt="Caso de éxito en derecho civil" loading="lazy">
+                    <div class="card blog-card h-100 shadow-sm position-relative overflow-hidden">
+                        <div class="position-relative">
+                            <img src="images/blog2.jpg" class="card-img-top" alt="Caso de éxito en derecho civil" loading="lazy">
+                            <!-- FILTRO VERDE -->
+                            <div class="position-absolute top-0 start-0 w-100 h-100" 
+                                 style="background: linear-gradient(135deg, rgba(0, 90, 0, 0.65), rgba(0, 45, 0, 0.75)); pointer-events: none;"></div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">Caso de éxito: oposición a un monitorio</h3>
                             <p class="card-text">Cómo ayudamos a un cliente a defenderse de un banco que reclamaba 25.678,47€.</p>
@@ -161,9 +176,16 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- NOTICIA 3 -->
                 <div class="col-md-4 mb-4">
-                    <div class="card blog-card h-100 shadow-sm">
-                        <img src="images/blog3.jpg" class="card-img-top" alt="Consejos para contratos legales" loading="lazy">
+                    <div class="card blog-card h-100 shadow-sm position-relative overflow-hidden">
+                        <div class="position-relative">
+                            <img src="images/blog3.jpg" class="card-img-top" alt="Consejos para contratos legales" loading="lazy">
+                            <!-- FILTRO VERDE -->
+                            <div class="position-absolute top-0 start-0 w-100 h-100" 
+                                 style="background: linear-gradient(135deg, rgba(0, 90, 0, 0.65), rgba(0, 45, 0, 0.75)); pointer-events: none;"></div>
+                        </div>
                         <div class="card-body">
                             <h3 class="card-title">Reclamación de deuda por empresa de recobro</h3>
                             <p class="card-text">Consejos para no pagar intereses o comisiones abusivas e indebidas.</p>
@@ -171,6 +193,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -261,7 +284,6 @@
                     <p><strong>Teléfono:</strong> <a href="tel:+34TuNumeroReal">+34 672 85 71 31</a></p>
                     <p><strong>Correo:</strong> <a href="mailto:tuCorreoReal@gmail.com">info@jurentis.es</a></p>
                     <p><strong>Dirección:</strong> C/ Rafael de Riego, 39, Madrid</p>
-                    <!-- Reemplazar con una URL válida de Google Maps para la dirección real -->
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.321!2d-3.703790!3d40.416775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42289a6b2c2b7f%3A0x1b7f1e2f0f1c2b7f!2sMadrid%2C%20Spain!5e0!3m2!1ses!2ses!4v1698341234567" width="100%" height="250" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
@@ -269,7 +291,6 @@
     </section>
 
     <!-- WHATSAPP -->
-    <!-- Reemplazar +34TuNumeroReal con un número de WhatsApp válido -->
     <a href="https://wa.me/+34672857131" class="whatsapp-btn" target="_blank" aria-label="Contactar por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -297,4 +318,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
