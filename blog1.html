@@ -17,29 +17,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 
-    <!-- CSS PERSONALIZADO: MÁS ESPACIO ENTRE NAVBAR Y TÍTULO -->
+    <!-- CSS: ESPACIO EQUILIBRADO ENTRE NAVBAR Y CONTENIDO -->
     <style>
-        /* Aumentamos el espacio después del navbar fijo */
+        /* Ajuste perfecto: solo lo necesario para no tapar */
         body {
-            padding-top: 100px !important; /* Más espacio que antes */
+            padding-top: 80px; /* Ideal: logo 60px + padding Bootstrap */
         }
 
-        /* En móviles: un poco menos para no ocupar toda la pantalla */
         @media (max-width: 991.98px) {
             body {
-                padding-top: 85px !important;
+                padding-top: 70px; /* Móvil: un poco menos */
             }
         }
 
-        /* Más espacio interno en la sección del artículo */
-        .article-hero {
-            padding: 3rem 0 2rem;
-        }
-
-        /* Espacio extra antes del título */
-        .article-title {
-            margin-top: 2rem;
-            margin-bottom: 2.5rem;
+        /* Sección con padding moderado */
+        .article-section {
+            padding: 2rem 0;
         }
     </style>
 </head>
@@ -67,50 +60,47 @@
         </div>
     </nav>
 
-    <!-- CONTENIDO PRINCIPAL CON MÁS RESPIRO -->
-    <main class="mt-5"> <!-- mt-5 = 3rem extra de margen superior -->
-        <section class="article-hero container">
-            <!-- TÍTULO CON MÁS ESPACIO -->
-            <h1 class="text-center article-title display-5 fw-bold">Financiación de compras con T.A.E. usurario</h1>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+        <section class="article-section container">
+            <h1 class="text-center mb-4 display-5 fw-bold">Financiación de compras con T.A.E. usurario</h1>
+            
+            <img src="images/blog1.jpg" class="img-fluid rounded mb-4 mx-auto d-block" alt="Compras con intereses usurarios" loading="lazy" style="max-height: 400px; object-fit: cover;">
 
-            <!-- IMAGEN -->
-            <img src="images/blog1.jpg" class="img-fluid rounded mb-5 mx-auto d-block" alt="Compras con intereses usurarios" loading="lazy" style="max-height: 420px; object-fit: cover; width: 100%;">
-
-            <!-- CONTENIDO DEL ARTÍCULO -->
-            <div class="article-content lead">
+            <div class="article-content">
                 <p><strong>Fecha: 29 de octubre de 2025</strong></p>
                 <p>En Jurentis queremos enseñarte a protegerte de las prácticas abusivas de ciertas entidades bancarias. Concretamente te ayudaremos a identificarlas y a revisar si el interés de tu contrato es o no usurario.</p>
                 
-                <h2 class="mt-5">¿Comenzamos?</h2>
+                <h2>¿Comenzamos?</h2>
                 <p>Hace unos días estábamos revisando el catálogo de productos de un conocido supermercado (colores azul, amarillo y rojo) y la información que se trasladaba en la última página nos sorprendió mucho. El supermercado en cuestión anunciaba que las compras online podían ser financiadas. Hasta ahí todo normal, plazo máximo de 36 meses y para compras a superiores a 60€, pero...</p>
                 
-                <h2 class="mt-4">¿Cuál es el interés que se aplica a la financiación?</h2>
+                <h2>¿Cuál es el interés que se aplica a la financiación?</h2>
                 <p>El T.A.E. de la operación es de <strong>16,9%</strong> (financiado por aplázame - Wizink). Sin embargo, el tipo medio de intereses publicado por el Banco de España asciende a <strong>6,97%</strong>.</p>
                 
-                <h2 class="mt-4 text-danger">¡ALERTA! Estamos ante un T.A.E. usurario</h2>
+                <h2 class="text-danger">¡ALERTA! Estamos ante un T.A.E. usurario</h2>
                 <p>Si realizamos una compra pequeña, puede parecer que la cantidad de intereses no es muy elevada, pero no olvidemos que la compra se realiza en un supermercado y para adquirir productos de primera necesidad en su mayoría.</p>
                 
-                <h2 class="mt-4">CONSEJO: revisa cuidadosamente el interés antes de financiar una compra</h2>
+                <h2>CONSEJO: revisa cuidadosamente el interés antes de financiar una compra</h2>
                 <p>Si ya has financiado alguna operación, no dudes en contactar con nuestro equipo y realizaremos un estudio de viabilidad de tu documentación</p>
                 
-                <div class="text-center mt-5">
-                    <a href="https://wa.me/+34672857131?text=Quiero%20consultar%20sobre%20T.A.E.%20usurario" class="btn btn-success btn-lg me-3" target="_blank">
+                <div class="text-center mt-4">
+                    <a href="https://wa.me/+34672857131?text=Quiero%20consultar%20sobre%20T.A.E.%20usurario" class="btn btn-success me-3" target="_blank">
                         <i class="fab fa-whatsapp"></i> Consulta Gratuita
                     </a>
-                    <a href="index.html#blog" class="btn btn-outline-primary btn-lg">Volver al Blog</a>
+                    <a href="index.html#blog" class="btn btn-outline-primary">Volver al Blog</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- WHATSAPP FLOAT -->
+    <!-- WHATSAPP -->
     <a href="https://wa.me/+34672857131" class="whatsapp-btn" target="_blank" aria-label="Contactar por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- FOOTER -->
-    <footer class="bg-dark text-white text-center py-5 mt-auto">
-        <p class="mb-2">&copy; 2025 Jurentis. Todos los derechos reservados.</p>
+    <footer class="bg-dark text-white text-center py-4">
+        <p>&copy; 2025 Jurentis. Todos los derechos reservados.</p>
         <p>
             <a href="https://www.linkedin.com/company/miniatura-legal" target="_blank" class="text-white mx-2">LinkedIn</a> |
             <a href="https://www.instagram.com/miniatura_legal" target="_blank" class="text-white mx-2">Instagram</a>
