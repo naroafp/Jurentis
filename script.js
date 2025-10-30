@@ -70,62 +70,23 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// === FORMULARIO CON REDIRECCIÓN A GRACIAS.HTML (USANDO _next) ===
+// === FORMULARIO SIN FETCH (FORMSPREE REDIRIGE A GRACIAS.HTML) ===
 const form = document.getElementById('contact-form');
 if (form) {
-    // REDIRIGE AUTOMÁTICAMENTE A TU PÁGINA GRACIAS.HTML
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xyzbpaeq?_next=gracias.html';
     const submitBtn = document.getElementById('submit-btn');
-    const originalText = submitBtn.innerHTML;
 
-    form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        // Estado: enviando
+    form.addEventListener('submit', function () {
+        // Cambiar botón a "Enviando..."
         submitBtn.disabled = true;
         submitBtn.innerHTML = `
             <span class="spinner-border spinner-border-sm" role="status"></span>
             Enviando...
         `;
 
-        try {
-            const response = await fetch(FORMSPREE_ENDPOINT, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
+        // Mostrar toast
+        showToast('Enviando mensaje...', 'success');
 
-            if (response.ok) {
-                // Éxito
-                submitBtn.classList.remove('error');
-                submitBtn.classList.add('success');
-                submitBtn.innerHTML = 'Enviado';
-                form.reset();
-
-                // Toast antes de que Formspree redirija
-                showToast('¡Mensaje enviado! Redirigiendo...', 'success');
-
-                // Formspree redirige automáticamente a gracias.html
-                // No necesitamos window.location.href
-            } else {
-                throw new Error('Error del servidor');
-            }
-        } catch (error) {
-            // Error de red o servidor
-            submitBtn.classList.remove('success');
-            submitBtn.classList.add('error');
-            submitBtn.innerHTML = 'Error';
-
-            showToast('Error al enviar. Usa WhatsApp: +34 672 85 71 31', 'error');
-
-            setTimeout(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-                submitBtn.classList.remove('success', 'error');
-            }, 3000);
-        }
+        // Formspree redirige a gracias.html automáticamente
     });
 }
 
