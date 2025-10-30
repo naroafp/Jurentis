@@ -219,26 +219,85 @@ canvas:not(:supported) + .fallback-bg {
     color: var(--blanco);
 }
 
-/* PREGUNTAS FRECUENTES */
+/* PREGUNTAS FRECUENTES - ESTILO COHERENTE */
+#preguntas-frecuentes {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+#preguntas-frecuentes h2 {
+    color: var(--verde-medio) !important;
+    font-weight: 700;
+    font-size: 2.8rem;
+}
+
+#preguntas-frecuentes .lead {
+    color: #6c757d !important;
+    font-size: 1.1rem;
+}
+
+/* ACORDEÓN */
+#preguntas-frecuentes .accordion-item {
+    border: none;
+    margin-bottom: 1rem;
+    border-radius: 12px !important;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-color: white;
+}
+
 #preguntas-frecuentes .accordion-button {
-    background-color: var(--blanco);
-    color: var(--verde-oscuro);
-    font-weight: 500;
+    background-color: white !important;
+    color: var(--verde-oscuro) !important;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 1.2rem 1.5rem;
+    border-radius: 12px !important;
+    transition: all 0.3s ease;
+    text-align: left;
+    box-shadow: none !important;
+}
+
+#preguntas-frecuentes .accordion-button:not(.collapsed) {
+    background-color: var(--verde-medio) !important;
+    color: white !important;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+#preguntas-frecuentes .accordion-button:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+#preguntas-frecuentes .accordion-button::after {
+    filter: brightness(0) saturate(100%) invert(30%) sepia(70%) saturate(500%) hue-rotate(140deg);
     transition: all 0.3s ease;
 }
-#preguntas-frecuentes .accordion-button:not(.collapsed) {
-    background-color: var(--verde-medio);
-    color: var(--blanco);
-    box-shadow: none;
+
+#preguntas-frecuentes .accordion-button:not(.collapsed)::after {
+    filter: brightness(0) invert(1);
 }
-#preguntas-frecuentes .accordion-button:focus {
-    box-shadow: 0 0 0 0.2rem rgba(46, 125, 104, 0.25);
-    outline: none;
-}
+
 #preguntas-frecuentes .accordion-body {
-    background-color: var(--blanco);
+    background-color: #f8f9fa;
     color: var(--verde-oscuro);
     padding: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    border-top: 1px solid rgba(46, 125, 104, 0.15);
+}
+
+#preguntas-frecuentes .accordion-body strong {
+    color: var(--verde-medio);
+}
+
+#preguntas-frecuentes .text-success {
+    color: var(--verde-medio) !important;
+}
+
+/* HOVER SUAVE */
+#preguntas-frecuentes .accordion-button:hover:not(.collapsed) {
+    background-color: #f8f9fa !important;
+    color: var(--verde-medio) !important;
 }
 
 /* FORMULARIO */
@@ -412,3 +471,4 @@ canvas:not(:supported) + .fallback-bg {
     height: 1rem;
     margin-right: 8px;
 }
+
