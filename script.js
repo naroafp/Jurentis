@@ -75,11 +75,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// === FORMULARIO CON FORMSPREE ===
+// === FORMULARIO CON FORMSPREE (ENDPOINT ACTUALIZADO) ===
 const form = document.getElementById('contact-form');
 if (form) {
-    // REEMPLAZA CON TU ENDPOINT REAL DE FORMSPREE
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xdknlkya'; // <--- AQUÍ TU ID
+    // TU ENDPOINT REAL INTEGRADO
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xyzbpaeq';
 
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
@@ -104,7 +104,7 @@ if (form) {
             });
 
             if (response.ok) {
-                submitBtn.innerHTML = 'Enviado';
+                submitBtn.innerHTML = 'Enviado ✓';
                 submitBtn.classList.remove('btn-primary');
                 submitBtn.classList.add('btn-success');
                 form.reset();
@@ -123,7 +123,7 @@ if (form) {
             showToast(
                 isRateLimit
                     ? 'Demasiados envíos. Intenta más tarde.'
-                    : 'Error al enviar. Usa WhatsApp: <a href="https://wa.me/+34672857131" style="color:white;text-decoration:underline;">+34 672 85 71 31</a>',
+                    : 'Error al enviar. Usa WhatsApp: <a href="https://wa.me/+34672857131" style="color:#155724;text-decoration:underline;">+34 672 85 71 31</a>',
                 'error'
             );
         } finally {
