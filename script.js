@@ -75,7 +75,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// === FORMULARIO CON FORMSPREE (ENDPOINT ACTUALIZADO) ===
+// === FORMULARIO CON REDIRECCIÓN A GRACIAS.HTML ===
 const form = document.getElementById('contact-form');
 if (form) {
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xyzbpaeq';
@@ -100,20 +100,31 @@ if (form) {
             });
 
             if (response.ok) {
+                // Éxito
                 submitBtn.classList.remove('error');
                 submitBtn.classList.add('success');
                 submitBtn.innerHTML = 'Enviado';
+
+                // Toast + redirección
+                showToast('¡Mensaje enviado! Redirigiendo...', 'success');
                 form.reset();
-                showToast('¡Mensaje enviado! Te contactaremos pronto.', 'success');
+
+                setTimeout(() => {
+                    window.location.href = 'gracias.html';
+                }, 1500);
+
             } else {
-                throw new Error();
+                throw new Error('Error en el servidor');
             }
         } catch (error) {
+            // Error
             submitBtn.classList.remove('success');
             submitBtn.classList.add('error');
             submitBtn.innerHTML = 'Error';
-            showToast('Error al enviar. Usa WhatsApp.', 'error');
-        } finally {
+
+            showToast('Error al enviar. Usa WhatsApp: +34 672 85 71 31', 'error');
+
+            // Restaurar botón tras 3 segundos
             setTimeout(() => {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalText;
@@ -125,6 +136,7 @@ if (form) {
 
 // === TOAST PERSONALIZADO ===
 function showToast(message, type = 'success') {
+    // Eliminar toasts anteriores
     document.querySelectorAll('.toast-notification').forEach(t => t.remove());
 
     const toast = document.createElement('div');
@@ -133,10 +145,10 @@ function showToast(message, type = 'success') {
     toast.setAttribute('aria-live', 'assertive');
     toast.innerHTML = `
         <div class="toast-content">
-            <span class="toast-icon">${type === 'success' ? '✓' : '✕'}</span>
+            <span class="toast-icon">${type === 'success' ? 'Check' : 'Cross'}</span>
             <span class="toast-message">${message}</span>
         </div>
-        <button class="toast-close" aria-label="Cerrar">&times;</button>
+        <button class="toast-close" aria-label="Cerrar">×</button>
     `;
 
     document.body.appendChild(toast);
@@ -145,14 +157,15 @@ function showToast(message, type = 'success') {
     toast.offsetHeight;
     toast.classList.add('show');
 
+    // Cerrar al hacer clic
     toast.querySelector('.toast-close').onclick = () => {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 400);
     };
 
+    // Auto-cerrar
     setTimeout(() => {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 400);
     }, 5000);
 }
-
