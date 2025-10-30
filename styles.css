@@ -7,25 +7,33 @@
     --gris-claro: #F5F6F5;
     --primary: var(--verde-medio);
     --dark: var(--verde-oscuro);
-}/* GENERAL */
+}
+
+/* GENERAL */
 body {
     padding-top: 0 !important;
     font-family: 'Trebuchet MS', Arial, sans-serif;
     background-color: var(--gris-claro);
     color: var(--verde-oscuro);
     scroll-behavior: smooth;
-}/* === TODOS LOS HIPERVÍNCULOS EN VERDE (excepto navbar y toast) === */
+}
+
+/* === TODOS LOS HIPERVÍNCULOS EN VERDE (excepto navbar y toast) === */
 a,
 a:link,
 a:visited {
     color: var(--verde-medio) !important;
     text-decoration: none !important;
     transition: color 0.3s ease;
-}a:hover,
+}
+
+a:hover,
 a:active {
     color: var(--verde-aguamarina) !important;
     text-decoration: underline !important;
-}/* Excepción: enlaces del navbar (blancos) */
+}
+
+/* Excepción: enlaces del navbar (blancos) */
 .navbar .nav-link,
 .navbar .nav-link:link,
 .navbar .nav-link:visited {
@@ -34,11 +42,15 @@ a:active {
 .navbar .nav-link:hover,
 .navbar .nav-link:active {
     color: var(--verde-aguamarina) !important;
-}/* Excepción: enlaces en toast (heredan color del toast) */
+}
+
+/* Excepción: enlaces en toast (heredan color del toast) */
 .toast-message a {
     color: inherit !important;
     text-decoration: underline !important;
-}/* === BOTONES: TODOS EN VERDE, TEXTO BLANCO, CONTRASTE PERFECTO === */
+}
+
+/* === BOTONES: TODOS EN VERDE, TEXTO BLANCO, CONTRASTE PERFECTO === */
 .btn,
 .btn:link,
 .btn:visited,
@@ -73,11 +85,15 @@ a:active {
     width: 100%;
     white-space: nowrap;
     font-size: 1.1rem !important;
-}.btn i,
+}
+
+.btn i,
 .btn-thank-you i,
 .blog-article-btn i {
     font-size: 1.3rem !important;
-}/* HOVER: fondo aguamarina, TEXTO BLANCO, borde verde */
+}
+
+/* HOVER: fondo aguamarina, TEXTO BLANCO, borde verde */
 .btn:hover,
 .btn-primary:hover,
 .btn-success:hover,
@@ -98,7 +114,9 @@ a:active {
     transform: translateY(-3px) !important;
     box-shadow: 0 8px 20px rgba(46, 125, 104, 0.4) !important;
     text-decoration: none !important;
-}/* Botones outline (Volver al Blog, etc.) */
+}
+
+/* Botones outline (Volver al Blog, etc.) */
 .btn-outline,
 .btn-home {
     background-color: transparent !important;
@@ -120,7 +138,9 @@ a:active {
     background-color: var(--verde-medio) !important;
     color: var(--blanco) !important;
     border-color: var(--verde-medio) !important;
-}/* Asegurar que el texto dentro de botones NO se vea afectado por reglas de 'a' */
+}
+
+/* Asegurar que el texto dentro de botones NO se vea afectado por reglas de 'a' */
 .btn,
 .btn *,
 .btn-primary *,
@@ -130,7 +150,9 @@ a:active {
 .blog-article-btn,
 .blog-article-btn * {
     color: inherit !important;
-}/* NAVBAR */
+}
+
+/* NAVBAR */
 .navbar {
     background-color: var(--verde-oscuro) !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -173,7 +195,9 @@ a:active {
 .container, .container-fluid {
     padding-left: 15px;
     padding-right: 15px;
-}/* HERO */
+}
+
+/* HERO */
 .hero {
     min-height: 500px;
     background: linear-gradient(rgba(26, 60, 52, 0.8), rgba(26, 60, 52, 0.8)), url('images/madrid.png') center/cover;
@@ -223,7 +247,9 @@ canvas:not(:supported) + .fallback-bg {
     color: var(--blanco);
     border: 2px solid var(--verde-medio);
     transform: translateY(-3px);
-}/* TARJETAS */
+}
+
+/* TARJETAS */
 .value-card, .service-card, .blog-card {
     transition: all 0.4s ease;
     perspective: 1000px;
@@ -241,7 +267,9 @@ canvas:not(:supported) + .fallback-bg {
 }
 .value-card:hover .geo-icon, .service-card:hover .geo-icon {
     transform: rotate(360deg);
-}/* BLOG - TARJETAS */
+}
+
+/* BLOG - TARJETAS */
 .blog-card {
     background-color: var(--blanco);
     border: none;
@@ -274,7 +302,9 @@ canvas:not(:supported) + .fallback-bg {
     background: var(--verde-aguamarina);
     color: var(--blanco);
     border: 2px solid var(--verde-medio);
-}/* FILTRO VERDE EN BLOG */
+}
+
+/* FILTRO VERDE EN BLOG */
 .blog-card::before {
     content: '';
     position: absolute;
@@ -291,7 +321,9 @@ canvas:not(:supported) + .fallback-bg {
 }
 .blog-card:hover .card-img-top {
     transform: scale(1.05);
-}/* ARTÍCULO */
+}
+
+/* ARTÍCULO */
 .article-content {
     max-width: 800px;
     margin: 0 auto;
@@ -327,7 +359,9 @@ canvas:not(:supported) + .fallback-bg {
     background: var(--verde-aguamarina);
     border-color: var(--verde-medio);
     color: var(--blanco);
-}/* PREGUNTAS FRECUENTES */
+}
+
+/* PREGUNTAS FRECUENTES */
 #preguntas-frecuentes .accordion-button {
     background-color: var(--blanco);
     color: var(--verde-oscuro);
@@ -347,7 +381,9 @@ canvas:not(:supported) + .fallback-bg {
     background-color: var(--blanco);
     color: var(--verde-oscuro);
     padding: 1.5rem;
-}/* FORMULARIO */
+}
+
+/* FORMULARIO */
 #contact-form .form-control {
     border-color: var(--verde-oscuro);
     transition: border-color 0.3s, box-shadow 0.3s;
@@ -365,7 +401,9 @@ canvas:not(:supported) + .fallback-bg {
     background: var(--verde-aguamarina);
     color: var(--blanco);
     border: 2px solid var(--verde-medio);
-}/* WHATSAPP */
+}
+
+/* WHATSAPP */
 .whatsapp-btn {
     position: fixed;
     bottom: 20px;
@@ -389,7 +427,9 @@ canvas:not(:supported) + .fallback-bg {
 }
 .whatsapp-btn:hover, .whatsapp-btn:focus {
     transform: scale(1.1);
-}/* TOAST MEJORADO */
+}
+
+/* TOAST MEJORADO */
 .toast-notification {
     position: fixed;
     bottom: 90px;
@@ -410,30 +450,44 @@ canvas:not(:supported) + .fallback-bg {
     transform: translateY(30px);
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     border: 1px solid rgba(46, 125, 104, 0.2);
-}.toast-notification.show {
+}
+
+.toast-notification.show {
     opacity: 1;
     transform: translateY(0);
-}.toast-notification.success {
+}
+
+.toast-notification.success {
     background: linear-gradient(135deg, #d4edda, #c3e6cb);
     color: #155724;
     border-color: #c3e6cb;
-}.toast-notification.error {
+}
+
+.toast-notification.error {
     background: linear-gradient(135deg, #f8d7da, #f5c6cb);
     color: #721c24;
     border-color: #f5c6cb;
-}.toast-icon {
+}
+
+.toast-icon {
     font-weight: bold;
     font-size: 1.4rem;
-}.toast-content {
+}
+
+.toast-content {
     display: flex;
     align-items: center;
     gap: 10px;
     flex: 1;
-}.toast-message a {
+}
+
+.toast-message a {
     color: inherit;
     text-decoration: underline;
     font-weight: bold;
-}.toast-close {
+}
+
+.toast-close {
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -446,14 +500,20 @@ canvas:not(:supported) + .fallback-bg {
     justify-content: center;
     border-radius: 50%;
     transition: all 0.2s;
-}.toast-close:hover {
+}
+
+.toast-close:hover {
     background: rgba(0,0,0,0.1);
     color: rgba(0,0,0,0.8);
-}/* SPINNER EN BOTÓN */
+}
+
+/* SPINNER EN BOTÓN */
 .spinner-border-sm {
     width: 1rem;
     height: 1rem;
-}/* BOTÓN ENVIAR CONSULTA - VERDE PERSONALIZADO */
+}
+
+/* BOTÓN ENVIAR CONSULTA - VERDE PERSONALIZADO */
 #submit-btn {
     background-color: var(--verde-medio) !important;
     color: white !important;
@@ -472,28 +532,40 @@ canvas:not(:supported) + .fallback-bg {
     justify-content: center !important;
     gap: 12px !important;
     font-size: 1.1rem !important;
-}#submit-btn:hover {
+}
+
+#submit-btn:hover {
     background-color: var(--verde-aguamarina) !important;
     color: var(--blanco) !important;
     border: 2px solid var(--verde-medio) !important;
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(46, 125, 104, 0.35);
-}#submit-btn:disabled {
+}
+
+#submit-btn:disabled {
     background-color: #1a5c50 !important;
     opacity: 0.8;
     cursor: not-allowed;
     transform: none;
-}#submit-btn.success {
+}
+
+#submit-btn.success {
     background-color: #d4edda !important;
     color: #155724 !important;
-}#submit-btn.error {
+}
+
+#submit-btn.error {
     background-color: #f8d7da !important;
     color: #721c24 !important;
-}#submit-btn .spinner-border-sm {
+}
+
+#submit-btn .spinner-border-sm {
     width: 1rem;
     height: 1rem;
     margin-right: 8px;
-}/* === BOTONES EN ARTÍCULOS DEL BLOG (MEJOR ESPACIADO) === */
+}
+
+/* === BOTONES EN ARTÍCULOS DEL BLOG (MEJOR ESPACIADO) === */
 .blog-article-buttons {
     display: flex;
     flex-direction: column;
@@ -501,7 +573,9 @@ canvas:not(:supported) + .fallback-bg {
     gap: 1.8rem !important;     /* ← MÁS SEPARACIÓN ENTRE BOTONES */
     margin-top: 3rem !important;
     padding: 0 1rem;
-}.blog-article-buttons .blog-article-btn,
+}
+
+.blog-article-buttons .blog-article-btn,
 .blog-article-buttons .btn-outline {
     width: 100%;
     max-width: 380px;
@@ -510,14 +584,20 @@ canvas:not(:supported) + .fallback-bg {
     gap: 12px !important;
     font-size: 1.1rem !important;
     padding: 14px 32px !important;
-}.blog-article-buttons .btn-outline {
+}
+
+.blog-article-buttons .btn-outline {
     background-color: transparent !important;
     color: var(--verde-medio) !important;
     border: 2px solid var(--verde-medio) !important;
-}.blog-article-buttons .btn-outline:hover {
+}
+
+.blog-article-buttons .btn-outline:hover {
     background-color: var(--verde-medio) !important;
     color: var(--blanco) !important;
-}/* === FORZAR EN GRACIAS.HTML === */
+}
+
+/* === FORZAR EN GRACIAS.HTML === */
 .btn-thank-you,
 .btn-home {
     display: flex !important;
@@ -525,7 +605,11 @@ canvas:not(:supported) + .fallback-bg {
     min-width: 220px !important;
     padding: 14px 32px !important;
     font-size: 1.1rem !important;
-}/* === BOTONES PRINCIPALES CON ICONOS Y CENTRADO === *//* 1. Botón Hero: "Consulta a un abogado gratis" */
+}
+
+/* === BOTONES PRINCIPALES CON ICONOS Y CENTRADO === */
+
+/* 1. Botón Hero: "Consulta a un abogado gratis" */
 .hero .btn-consulta {
     background-color: var(--verde-medio) !important;
     color: var(--blanco) !important;
@@ -543,15 +627,21 @@ canvas:not(:supported) + .fallback-bg {
     min-width: 320px !important;
     margin: 2rem auto 0 !important;
     text-align: center !important;
-}.hero .btn-consulta:hover {
+}
+
+.hero .btn-consulta:hover {
     background-color: var(--verde-aguamarina) !important;
     color: var(--blanco) !important;
     border: 2px solid var(--verde-medio) !important;
     transform: translateY(-4px) !important;
     box-shadow: 0 10px 25px rgba(46, 125, 104, 0.45) !important;
-}.hero .btn-consulta i {
+}
+
+.hero .btn-consulta i {
     font-size: 1.4rem !important;
-}/* 2. Botones "Leer Más" en tarjetas */
+}
+
+/* 2. Botones "Leer Más" en tarjetas */
 .card .btn-leer-mas,
 .blog-card .btn-leer-mas {
     background-color: var(--verde-medio) !important;
@@ -569,16 +659,22 @@ canvas:not(:supported) + .fallback-bg {
     margin: 1rem auto 0 !important;
     box-shadow: 0 4px 12px rgba(46, 125, 104, 0.3) !important;
     transition: all 0.3s ease !important;
-}.card .btn-leer-mas:hover,
+}
+
+.card .btn-leer-mas:hover,
 .blog-card .btn-leer-mas:hover {
     background-color: var(--verde-aguamarina) !important;
     color: var(--blanco) !important;
     border: 2px solid var(--verde-medio) !important;
     transform: translateY(-3px) !important;
-}.card .btn-leer-mas i,
+}
+
+.card .btn-leer-mas i,
 .blog-card .btn-leer-mas i {
     font-size: 1.1rem !important;
-}/* 3. Botón "Enviar Consulta" */
+}
+
+/* 3. Botón "Enviar Consulta" */
 #submit-btn {
     background-color: var(--verde-medio) !important;
     color: var(--blanco) !important;
@@ -594,13 +690,19 @@ canvas:not(:supported) + .fallback-bg {
     min-width: 240px !important;
     margin: 1.5rem auto 0 !important;
     box-shadow: 0 4px 12px rgba(46, 125, 104, 0.3) !important;
-}#submit-btn i {
+}
+
+#submit-btn i {
     font-size: 1.3rem !important;
-}#submit-btn:hover {
+}
+
+#submit-btn:hover {
     background-color: var(--verde-aguamarina) !important;
     border: 2px solid var(--verde-medio) !important;
     transform: translateY(-3px) !important;
-}/* 4. Botón "Volver al Blog" */
+}
+
+/* 4. Botón "Volver al Blog" */
 .btn-volver-blog {
     background-color: transparent !important;
     color: var(--verde-medio) !important;
@@ -616,15 +718,56 @@ canvas:not(:supported) + .fallback-bg {
     min-width: 220px !important;
     margin: 2rem auto 0 !important;
     transition: all 0.3s ease !important;
-}.btn-volver-blog:hover {
+}
+
+.btn-volver-blog:hover {
     background-color: var(--verde-medio) !important;
     color: var(--blanco) !important;
-}.btn-volver-blog i {
+}
+
+.btn-volver-blog i {
     font-size: 1.2rem !important;
-}/* === CENTRAR TODOS LOS BOTONES === */
+}
+
+/* === CENTRAR TODOS LOS BOTONES === */
 .btn-center-wrapper {
     display: flex;
     justify-content: center;
     margin: 2rem 0;
 }
 
+/* === CORRECCIÓN FINAL: BOTÓN "CONSULTA GRATUITA" EN BLOG (sin afectar hero) === */
+.blog-article-buttons .btn-consulta,
+.article-content .btn-consulta {
+    background-color: var(--verde-medio) !important;
+    color: var(--blanco) !important;
+    border: none !important;
+    border-radius: 50px !important;
+    padding: 14px 32px !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    min-width: 280px !important;
+    max-width: 380px !important;
+    width: 100% !important;
+    box-shadow: 0 4px 12px rgba(46, 125, 104, 0.3) !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+}
+
+.blog-article-buttons .btn-consulta:hover,
+.article-content .btn-consulta:hover {
+    background-color: var(--verde-aguamarina) !important;
+    color: var(--blanco) !important;
+    border: 2px solid var(--verde-medio) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 20px rgba(46, 125, 104, 0.4) !important;
+}
+
+.blog-article-buttons .btn-consulta i,
+.article-content .btn-consulta i {
+    font-size: 1.3rem !important;
+}
