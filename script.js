@@ -1,15 +1,20 @@
-// PARTÍCULAS
+// === PARTÍCULAS EN HERO ===
 const canvas = document.getElementById('particles-canvas');
-const ctx = canvas.getContext('2d');
+const ctx = canvas?.getContext('2d');
 const heroSection = document.getElementById('inicio');
 
-// Ajustar tamaño del canvas a la sección hero
-if (canvas && heroSection) {
-    canvas.width = heroSection.offsetWidth;
-    canvas.height = heroSection.offsetHeight;
+if (canvas && ctx && heroSection) {
+    const resizeCanvas = () => {
+        canvas.width = heroSection.offsetWidth;
+        canvas.height = heroSection.offsetHeight;
+    };
+    resizeCanvas();
 
     class Particle {
         constructor() {
+            this.reset();
+        }
+        reset() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
             this.size = Math.random() * 3 + 1;
@@ -27,7 +32,9 @@ if (canvas && heroSection) {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fill();
+
             ctx.strokeStyle = 'rgba(46, 125, 104, 0.3)';
+            ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(this.x, this.y - this.size);
             ctx.lineTo(this.x, this.y + this.size);
@@ -35,94 +42,128 @@ if (canvas && heroSection) {
         }
     }
 
-    // Ajustar número de partículas según tamaño de pantalla
-    const particleCount = window.innerWidth < 768 ? 20 : 40;
+    const particleCount = window.innerWidth < 768 ? 25 : 50;
     const particles = Array.from({ length: particleCount }, () => new Particle());
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => { p.update(); p.draw(); });
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
         requestAnimationFrame(animate);
     }
     animate();
 
-    // Redimensionamiento con limitador
+    // Redimensionar con debounce
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            canvas.width = heroSection.offsetWidth;
-            canvas.height = heroSection.offsetHeight;
-        }, 100);
+        resizeTimeout = setTimeout(resizeCanvas, 100);
     });
 }
 
-// SCROLL SUAVE
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-        e.preventDefault();
-        document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+// === SCROLL SUAVE ===
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
     });
 });
 
-// FORMSPREE + TOAST
+// === FORMULARIO CON FORMSPREE + TOAST ===
 const form = document.getElementById('contact-form');
 if (form) {
-    form.addEventListener('submit', async e => {
+    // === CAMBIA ESTO POR TU ENDPOINT REAL ===
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xdknlkya'; // ← TU ID AQUÍ
+
+    form.addEventListener('submit', async function (e) {
         e.preventDefault();
-        const btn = form.querySelector('button');
-        const original = btn.textContent;
-        btn.disabled = true;
-        btn.textContent = 'Enviando...';
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+
+        // Estado: enviando
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+            Enviando...
+        `;
 
         try {
-            const res = await fetch(form.action, {
+            const response = await fetch(FORMSPREE_ENDPOINT, {
                 method: 'POST',
                 body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
+                headers: {
+                    'Accept': 'application/json'
+                }
             });
-            if (res.ok) {
-                btn.textContent = 'Enviado';
-                btn.style.backgroundColor = '#2E7D68';
+
+            if (response.ok) {
+                submitBtn.innerHTML = 'Enviado';
+                submitBtn.classList.add('btn-success');
                 form.reset();
                 showToast('¡Gracias! Te responderemos en menos de 24h.', 'success');
-            } else if (res.status === 429) {
-                btn.textContent = 'Error';
-                btn.style.backgroundColor = '#d9534f';
-                showToast('Demasiados envíos. Intenta de nuevo más tarde.', 'error');
+            } else if (response.status === 429) {
+                throw new Error('Rate limit');
             } else {
-                throw new Error();
+                throw new Error('Server error');
             }
-        } catch {
-            btn.textContent = 'Error';
-            btn.style.backgroundColor = '#d9534f';
-            showToast('Error. Intenta de nuevo o usa WhatsApp.', 'error');
+        } catch (error) {
+            const isRateLimit = error.message === 'Rate limit';
+            submitBtn.innerHTML = 'Error';
+            submitBtn.classList.add('btn-danger');
+
+            showToast(
+                isRateLimit
+                    ? 'Demasiados envíos. Intenta más tarde.'
+                    : 'Error al enviar. Usa WhatsApp: +34 672 85 71 31',
+                'error'
+            );
         } finally {
+            // Restaurar botón tras 3 segundos
             setTimeout(() => {
-                btn.textContent = original;
-                btn.disabled = false;
-                btn.style.backgroundColor = '';
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+                submitBtn.className = submitBtn.className
+                    .replace(/btn-(success|danger)/g, '')
+                    .trim();
             }, 3000);
         }
     });
 }
 
-function showToast(msg, type) {
-    const existing = document.querySelector('.toast-notification');
-    if (existing) existing.remove();
+// === TOAST PERSONALIZADO ===
+function showToast(message, type = 'success') {
+    // Eliminar toast anterior
+    document.querySelectorAll('.toast-notification').forEach(t => t.remove());
+
     const toast = document.createElement('div');
-    toast.className = `toast-notification ${type}`;
+    toast.className = `toast-notification toast-${type}`;
     toast.setAttribute('role', 'alert');
     toast.setAttribute('aria-live', 'assertive');
-    toast.textContent = msg;
+    toast.innerHTML = `
+        <div class="toast-icon">${type === 'success' ? '✓' : '✕'}</div>
+        <div class="toast-message">${message}</div>
+        <button class="toast-close">&times;</button>
+    `;
+
     document.body.appendChild(toast);
+
+    // Forzar reflow
+    toast.offsetHeight;
+
+    toast.classList.add('show');
+
+    // Cerrar al hacer clic
+    toast.querySelector('.toast-close').onclick = () => toast.remove();
+
+    // Auto-cerrar
     setTimeout(() => {
-        toast.style.opacity = '1';
-        toast.style.transform = 'translateY(0)';
-    }, 100);
-    setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateY(20px)';
+        toast.classList.remove('show');
         setTimeout(() => toast.remove(), 400);
-    }, 4000);
+    }, 5000);
 }
