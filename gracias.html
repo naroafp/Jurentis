@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
-        /* === VARIABLES EMBEBIDAS (por si styles.css falla) === */
+        /* === VARIABLES DE SEGURIDAD === */
         :root {
             --verde-oscuro: #1A3C34;
             --verde-medio: #2E7D68;
@@ -24,7 +24,7 @@
             --gris-claro: #F5F6F5;
         }
 
-        /* === ESTILOS ESPECÍFICOS PARA GRACIAS.HTML (MÁS FUERTES) === */
+        /* === SECCIÓN GRACIAS === */
         .thank-you-section {
             padding-top: 180px !important;
             min-height: 100vh !important;
@@ -50,7 +50,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ICONO DE CHECK FORZADO */
+        /* CHECK ÚNICO Y PERFECTO */
         .check-icon {
             width: 90px !important;
             height: 90px !important;
@@ -66,14 +66,14 @@
             line-height: 1 !important;
         }
 
-        .check-icon::before {
-            content: '✓' !important; /* Fallback si Font Awesome falla */
+        .check-icon i {
             font-size: 2.5rem !important;
-            font-weight: bold !important;
+            display: block !important;
         }
 
-        .check-icon i {
-            display: block !important;
+        /* QUITAR DOBLE CHECK (eliminar ::before) */
+        .check-icon::before {
+            content: none !important;
         }
 
         .thank-you-card h1 {
@@ -94,7 +94,7 @@
             color: var(--verde-medio) !important;
         }
 
-        /* === BOTONES CONTRASTE MÁXIMO Y VISIBLES === */
+        /* BOTONES CON CONTRASTE PERFECTO */
         .btn-thank-you {
             background-color: var(--verde-medio) !important;
             color: var(--blanco) !important;
@@ -104,7 +104,7 @@
             font-weight: 600 !important;
             font-size: 1.1rem !important;
             min-width: 220px !important;
-            display: inline-flex !important;
+            display: flex !important;
             align-items: center !important;
             justify-content: center !important;
             gap: 12px !important;
@@ -112,18 +112,16 @@
             box-shadow: 0 4px 12px rgba(46, 125, 104, 0.3) !important;
             text-decoration: none !important;
             white-space: nowrap !important;
-            position: relative !important;
-            overflow: visible !important;
         }
 
         .btn-thank-you i {
             font-size: 1.3rem !important;
-            display: inline-block !important;
         }
 
+        /* HOVER: fondo claro + texto VERDE OSCURO (mejor contraste) */
         .btn-thank-you:hover {
-            background-color: var(--verde-aguamarina) !important;
-            color: var(--blanco) !important; /* BLANCO EN HOVER */
+            background-color: #e6f7f5 !important;     /* verde muy claro */
+            color: var(--verde-oscuro) !important;    /* texto oscuro */
             border: 2px solid var(--verde-medio) !important;
             transform: translateY(-3px) !important;
             box-shadow: 0 8px 20px rgba(46, 125, 104, 0.4) !important;
@@ -138,12 +136,15 @@
             padding: 12px 28px !important;
             font-weight: 600 !important;
             min-width: 200px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 10px !important;
         }
 
         .btn-home:hover {
             background-color: var(--verde-medio) !important;
             color: var(--blanco) !important;
-            border-color: var(--verde-medio) !important;
         }
 
         .divider {
@@ -177,7 +178,7 @@
                 <img src="images/logo.png" alt="Jurentis" class="me-2" loading="lazy" style="height: 55px;">
                 Jurentis
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -224,11 +225,8 @@
         </div>
     </section>
 
-    <!-- BOTÓN WHATSAPP FIJO -->
-    <a href="https://wa.me/+34672857131" 
-       class="whatsapp-btn" 
-       target="_blank" 
-       aria-label="Contactar por WhatsApp">
+    <!-- WHATSAPP FIJO -->
+    <a href="https://wa.me/+34672857131" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
