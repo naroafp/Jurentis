@@ -65,27 +65,32 @@ a:active {
 .card .btn,
 .blog-card .btn,
 .article-content .btn,
-.btn-thank-you {
+.btn-thank-you,
+.blog-article-btn {
     background-color: var(--verde-medio) !important;
     color: var(--blanco) !important;
     border: none !important;
     border-radius: 50px !important;
     font-weight: 600 !important;
-    padding: 12px 28px !important;
-    display: flex !important;                    /* CAMBIO CLAVE: inline-flex → flex */
+    padding: 14px 32px !important;
+    display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 10px !important;
+    gap: 12px !important;
     text-decoration: none !important;
     transition: all 0.3s ease !important;
-    box-shadow: 0 4px 10px rgba(46, 125, 104, 0.25) !important;
-    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(46, 125, 104, 0.3) !important;
+    min-width: 280px;
+    max-width: 380px;
+    width: 100%;
     white-space: nowrap;
+    font-size: 1.1rem !important;
 }
 
 .btn i,
-.btn-thank-you i {
-    font-size: 1.2rem;
+.btn-thank-you i,
+.blog-article-btn i {
+    font-size: 1.3rem !important;
 }
 
 /* HOVER: fondo aguamarina, TEXTO BLANCO, borde verde */
@@ -101,31 +106,34 @@ a:active {
 .card .btn:hover,
 .blog-card .btn:hover,
 .article-content .btn:hover,
-.btn-thank-you:hover {
+.btn-thank-you:hover,
+.blog-article-btn:hover {
     background-color: var(--verde-aguamarina) !important;
     color: var(--blanco) !important;
     border: 2px solid var(--verde-medio) !important;
     transform: translateY(-3px) !important;
-    box-shadow: 0 8px 20px rgba(46, 125, 104, 0.35) !important;
+    box-shadow: 0 8px 20px rgba(46, 125, 104, 0.4) !important;
     text-decoration: none !important;
 }
 
-/* Botones outline (si se usan) */
-.btn-outline-primary,
-.btn-outline-success,
+/* Botones outline (Volver al Blog, etc.) */
+.btn-outline,
 .btn-home {
     background-color: transparent !important;
     color: var(--verde-medio) !important;
     border: 2px solid var(--verde-medio) !important;
     border-radius: 50px !important;
-    padding: 10px 26px !important;
+    padding: 12px 28px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 10px !important;
+    min-width: 280px;
+    max-width: 380px;
+    width: 100%;
+    font-size: 1.1rem !important;
 }
-.btn-outline-primary:hover,
-.btn-outline-success:hover,
+.btn-outline:hover,
 .btn-home:hover {
     background-color: var(--verde-medio) !important;
     color: var(--blanco) !important;
@@ -138,7 +146,9 @@ a:active {
 .btn-primary *,
 .btn-success *,
 .btn-thank-you,
-.btn-thank-you * {
+.btn-thank-you *,
+.blog-article-btn,
+.blog-article-btn * {
     color: inherit !important;
 }
 
@@ -508,17 +518,20 @@ canvas:not(:supported) + .fallback-bg {
     background-color: var(--verde-medio) !important;
     color: white !important;
     border: none !important;
-    padding: 12px 20px;
+    padding: 14px 32px !important;
     font-weight: 600;
     border-radius: 50px;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    min-width: 200px;
+    min-width: 280px;
+    max-width: 380px;
+    width: 100%;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 8px !important;
+    gap: 12px !important;
+    font-size: 1.1rem !important;
 }
 
 #submit-btn:hover {
@@ -552,9 +565,44 @@ canvas:not(:supported) + .fallback-bg {
     margin-right: 8px;
 }
 
+/* === BOTONES EN ARTÍCULOS DEL BLOG (MEJOR ESPACIADO) === */
+.blog-article-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8rem !important;     /* ← MÁS SEPARACIÓN ENTRE BOTONES */
+    margin-top: 3rem !important;
+    padding: 0 1rem;
+}
+
+.blog-article-buttons .blog-article-btn,
+.blog-article-buttons .btn-outline {
+    width: 100%;
+    max-width: 380px;
+    min-width: 280px;
+    justify-content: center;
+    gap: 12px !important;
+    font-size: 1.1rem !important;
+    padding: 14px 32px !important;
+}
+
+.blog-article-buttons .btn-outline {
+    background-color: transparent !important;
+    color: var(--verde-medio) !important;
+    border: 2px solid var(--verde-medio) !important;
+}
+
+.blog-article-buttons .btn-outline:hover {
+    background-color: var(--verde-medio) !important;
+    color: var(--blanco) !important;
+}
+
 /* === FORZAR EN GRACIAS.HTML === */
 .btn-thank-you,
 .btn-home {
     display: flex !important;
-    gap: 10px !important;
+    gap: 12px !important;
+    min-width: 220px !important;
+    padding: 14px 32px !important;
+    font-size: 1.1rem !important;
 }
