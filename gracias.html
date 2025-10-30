@@ -15,25 +15,34 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
-        /* === ESTILOS ESPECÍFICOS PARA GRACIAS.HTML (FORZAR VISUALIZACIÓN) === */
+        /* === VARIABLES EMBEBIDAS (por si styles.css falla) === */
+        :root {
+            --verde-oscuro: #1A3C34;
+            --verde-medio: #2E7D68;
+            --verde-aguamarina: #A3D8D0;
+            --blanco: #FFFFFF;
+            --gris-claro: #F5F6F5;
+        }
+
+        /* === ESTILOS ESPECÍFICOS PARA GRACIAS.HTML (MÁS FUERTES) === */
         .thank-you-section {
             padding-top: 180px !important;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--gris-claro);
+            min-height: 100vh !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background-color: var(--gris-claro) !important;
         }
 
         .thank-you-card {
-            background: var(--blanco);
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 3rem;
-            border-radius: 1rem;
-            box-shadow: 0 15px 35px rgba(26, 60, 52, 0.15);
-            text-align: center;
-            animation: fadeInUp 0.6s ease-out;
+            background: var(--blanco) !important;
+            max-width: 700px !important;
+            margin: 0 auto !important;
+            padding: 3rem !important;
+            border-radius: 1rem !important;
+            box-shadow: 0 15px 35px rgba(26, 60, 52, 0.15) !important;
+            text-align: center !important;
+            animation: fadeInUp 0.6s ease-out !important;
         }
 
         @keyframes fadeInUp {
@@ -41,6 +50,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ICONO DE CHECK FORZADO */
         .check-icon {
             width: 90px !important;
             height: 90px !important;
@@ -53,27 +63,38 @@
             font-size: 2.5rem !important;
             margin: 0 auto 1.5rem !important;
             box-shadow: 0 6px 15px rgba(46, 125, 104, 0.3) !important;
+            line-height: 1 !important;
+        }
+
+        .check-icon::before {
+            content: '✓' !important; /* Fallback si Font Awesome falla */
+            font-size: 2.5rem !important;
+            font-weight: bold !important;
+        }
+
+        .check-icon i {
+            display: block !important;
         }
 
         .thank-you-card h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: var(--verde-medio);
-            margin-bottom: 1rem;
+            font-size: 2.8rem !important;
+            font-weight: 700 !important;
+            color: var(--verde-medio) !important;
+            margin-bottom: 1rem !important;
         }
 
         .thank-you-card .lead {
-            font-size: 1.2rem;
-            color: var(--verde-oscuro);
-            line-height: 1.7;
-            margin-bottom: 2rem;
+            font-size: 1.2rem !important;
+            color: var(--verde-oscuro) !important;
+            line-height: 1.7 !important;
+            margin-bottom: 2rem !important;
         }
 
         .thank-you-card .lead strong {
-            color: var(--verde-medio);
+            color: var(--verde-medio) !important;
         }
 
-        /* === BOTONES CON CONTRASTE Y VISUALIZACIÓN CORRECTA === */
+        /* === BOTONES CONTRASTE MÁXIMO Y VISIBLES === */
         .btn-thank-you {
             background-color: var(--verde-medio) !important;
             color: var(--blanco) !important;
@@ -82,7 +103,7 @@
             padding: 14px 32px !important;
             font-weight: 600 !important;
             font-size: 1.1rem !important;
-            min-width: 220px;
+            min-width: 220px !important;
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
@@ -90,16 +111,19 @@
             transition: all 0.3s ease !important;
             box-shadow: 0 4px 12px rgba(46, 125, 104, 0.3) !important;
             text-decoration: none !important;
-            white-space: nowrap;
+            white-space: nowrap !important;
+            position: relative !important;
+            overflow: visible !important;
         }
 
         .btn-thank-you i {
             font-size: 1.3rem !important;
+            display: inline-block !important;
         }
 
         .btn-thank-you:hover {
             background-color: var(--verde-aguamarina) !important;
-            color: var(--blanco) !important;
+            color: var(--blanco) !important; /* BLANCO EN HOVER */
             border: 2px solid var(--verde-medio) !important;
             transform: translateY(-3px) !important;
             box-shadow: 0 8px 20px rgba(46, 125, 104, 0.4) !important;
@@ -113,7 +137,7 @@
             border-radius: 50px !important;
             padding: 12px 28px !important;
             font-weight: 600 !important;
-            min-width: 200px;
+            min-width: 200px !important;
         }
 
         .btn-home:hover {
@@ -123,33 +147,24 @@
         }
 
         .divider {
-            background-color: #ddd;
-            height: 1px;
-            margin: 2.5rem 0;
+            background-color: #ddd !important;
+            height: 1px !important;
+            margin: 2.5rem 0 !important;
         }
 
         /* Responsive */
         @media (max-width: 576px) {
             .thank-you-card {
-                padding: 2rem;
-                margin: 1rem;
+                padding: 2rem !important;
+                margin: 1rem !important;
             }
             .thank-you-card h1 {
-                font-size: 2.2rem;
+                font-size: 2.2rem !important;
             }
             .btn-thank-you, .btn-home {
-                min-width: 100%;
-                font-size: 1rem;
+                min-width: 100% !important;
+                font-size: 1rem !important;
             }
-        }
-
-        /* Forzar variables si styles.css no carga */
-        :root {
-            --verde-medio: #2E7D68;
-            --verde-aguamarina: #A3D8D0;
-            --verde-oscuro: #1A3C34;
-            --blanco: #FFFFFF;
-            --gris-claro: #F5F6F5;
         }
     </style>
 </head>
