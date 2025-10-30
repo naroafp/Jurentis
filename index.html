@@ -246,9 +246,8 @@
                     <h3>Envíanos un Mensaje</h3>
                     <form 
                         id="contact-form" 
-                        action="https://formspree.io/f/xyzbpaeq" 
-                        method="POST"
-                        target="_self">
+                        action="https://api.web3forms.com/submit" 
+                        method="POST">
 
                         <div class="mb-3">
                             <label for="name" class="form-label">Nombre</label>
@@ -263,8 +262,14 @@
                             <textarea name="message" class="form-control" id="message" rows="5" required></textarea>
                         </div>
 
-                        <!-- REDIRECCIÓN CORRECTA -->
-                        <input type="hidden" name="_next" value="https://jurentis.es/gracias.html">
+                        <!-- TU ACCESS KEY -->
+                        <input type="hidden" name="access_key" value="ebf89d4b-74ce-4f28-9c29-740e03ac6645">
+
+                        <!-- REDIRECCIÓN A TU PÁGINA -->
+                        <input type="hidden" name="redirect" value="https://jurentis.es/gracias.html">
+
+                        <!-- ASUNTO DEL EMAIL -->
+                        <input type="hidden" name="subject" value="Nuevo mensaje desde Jurentis.es">
 
                         <button type="submit" id="submit-btn" class="btn w-100">
                             Enviar Consulta
@@ -288,7 +293,7 @@
                 </div>
             </div>
 
-            <!-- Banner de error (oculto por defecto) -->
+            <!-- Banner de error (opcional, tu JS lo usa) -->
             <div class="text-center mt-4 p-3 bg-light rounded text-danger d-none" id="whatsapp-fallback">
                 <p class="mb-0">
                     <strong>Error al enviar.</strong> Usa WhatsApp: 
