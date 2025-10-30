@@ -75,7 +75,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// === FORMULARIO CON REDIRECCIÓN A GRACIAS.HTML ===
+// === FORMULARIO CON REDIRECCIÓN A GRACIAS.HTML (SIN FORMSPREE INTERFERIR) ===
 const form = document.getElementById('contact-form');
 if (form) {
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xyzbpaeq';
@@ -96,35 +96,38 @@ if (form) {
             const response = await fetch(FORMSPREE_ENDPOINT, {
                 method: 'POST',
                 body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
+                headers: {
+                    'Accept': 'application/json'
+                },
+                // EVITA QUE FORMSPREE REDIRIGA
+                redirect: 'manual'
             });
 
-            if (response.ok) {
-                // Éxito
+            // SI ES ÉXITO O REDIRECCIÓN OPACA, NOSOTROS CONTROLAMOS
+            if (response.ok || response.type === 'opaqueredirect') {
                 submitBtn.classList.remove('error');
                 submitBtn.classList.add('success');
                 submitBtn.innerHTML = 'Enviado';
 
-                // Toast + redirección
                 showToast('¡Mensaje enviado! Redirigiendo...', 'success');
                 form.reset();
 
+                // REDIRIGIR A TU PÁGINA PERSONALIZADA
                 setTimeout(() => {
                     window.location.href = 'gracias.html';
                 }, 1500);
 
             } else {
-                throw new Error('Error en el servidor');
+                throw new Error('Error del servidor');
             }
         } catch (error) {
-            // Error
+            // Error de red o servidor
             submitBtn.classList.remove('success');
             submitBtn.classList.add('error');
             submitBtn.innerHTML = 'Error';
 
             showToast('Error al enviar. Usa WhatsApp: +34 672 85 71 31', 'error');
 
-            // Restaurar botón tras 3 segundos
             setTimeout(() => {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalText;
@@ -136,7 +139,6 @@ if (form) {
 
 // === TOAST PERSONALIZADO ===
 function showToast(message, type = 'success') {
-    // Eliminar toasts anteriores
     document.querySelectorAll('.toast-notification').forEach(t => t.remove());
 
     const toast = document.createElement('div');
@@ -148,7 +150,7 @@ function showToast(message, type = 'success') {
             <span class="toast-icon">${type === 'success' ? 'Check' : 'Cross'}</span>
             <span class="toast-message">${message}</span>
         </div>
-        <button class="toast-close" aria-label="Cerrar">×</button>
+        <button class="toast-close" aria-label="Cerrar">&times;</button>
     `;
 
     document.body.appendChild(toast);
