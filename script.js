@@ -78,19 +78,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // === FORMULARIO CON FORMSPREE (ENDPOINT ACTUALIZADO) ===
 const form = document.getElementById('contact-form');
 if (form) {
-    // TU ENDPOINT REAL INTEGRADO
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xyzbpaeq';
+    const submitBtn = document.getElementById('submit-btn');
+    const originalText = submitBtn.innerHTML;
 
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
 
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalHTML = submitBtn.innerHTML;
-
         // Estado: enviando
         submitBtn.disabled = true;
         submitBtn.innerHTML = `
-            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            <span class="spinner-border spinner-border-sm" role="status"></span>
             Enviando...
         `;
 
@@ -98,42 +96,28 @@ if (form) {
             const response = await fetch(FORMSPREE_ENDPOINT, {
                 method: 'POST',
                 body: new FormData(form),
-                headers: {
-                    'Accept': 'application/json'
-                }
+                headers: { 'Accept': 'application/json' }
             });
 
             if (response.ok) {
-                submitBtn.innerHTML = 'Enviado ✓';
-                submitBtn.classList.remove('btn-primary');
-                submitBtn.classList.add('btn-success');
+                submitBtn.classList.remove('error');
+                submitBtn.classList.add('success');
+                submitBtn.innerHTML = 'Enviado';
                 form.reset();
-                showToast('¡Mensaje enviado! Te contactaremos en menos de 24h.', 'success');
-            } else if (response.status === 429) {
-                throw new Error('Rate limit');
+                showToast('¡Mensaje enviado! Te contactaremos pronto.', 'success');
             } else {
-                throw new Error('Server error');
+                throw new Error();
             }
         } catch (error) {
-            const isRateLimit = error.message === 'Rate limit';
+            submitBtn.classList.remove('success');
+            submitBtn.classList.add('error');
             submitBtn.innerHTML = 'Error';
-            submitBtn.classList.remove('btn-primary');
-            submitBtn.classList.add('btn-danger');
-
-            showToast(
-                isRateLimit
-                    ? 'Demasiados envíos. Intenta más tarde.'
-                    : 'Error al enviar. Usa WhatsApp: <a href="https://wa.me/+34672857131" style="color:#155724;text-decoration:underline;">+34 672 85 71 31</a>',
-                'error'
-            );
+            showToast('Error al enviar. Usa WhatsApp.', 'error');
         } finally {
             setTimeout(() => {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = originalHTML;
-                submitBtn.className = submitBtn.className
-                    .replace(/btn-(success|danger)/g, '')
-                    .replace(/btn-primary/g, 'btn-primary')
-                    .trim();
+                submitBtn.innerHTML = originalText;
+                submitBtn.classList.remove('success', 'error');
             }, 3000);
         }
     });
@@ -171,3 +155,4 @@ function showToast(message, type = 'success') {
         setTimeout(() => toast.remove(), 400);
     }, 5000);
 }
+
