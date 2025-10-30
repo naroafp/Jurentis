@@ -570,7 +570,7 @@ canvas:not(:supported) + .fallback-bg {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.8rem !important;     /* ← MÁS SEPARACIÓN ENTRE BOTONES */
+    gap: 1.8rem !important;
     margin-top: 3rem !important;
     padding: 0 1rem;
 }
@@ -609,37 +609,8 @@ canvas:not(:supported) + .fallback-bg {
 
 /* === BOTONES PRINCIPALES CON ICONOS Y CENTRADO === */
 
-/* 1. Botón Hero: "Consulta a un abogado gratis" */
-.hero .btn-consulta {
-    background-color: var(--verde-medio) !important;
-    color: var(--blanco) !important;
-    border: none !important;
-    border-radius: 50px !important;
-    padding: 16px 36px !important;
-    font-weight: 600 !important;
-    font-size: 1.2rem !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 14px !important;
-    box-shadow: 0 6px 16px rgba(46, 125, 104, 0.35) !important;
-    transition: all 0.3s ease !important;
-    min-width: 320px !important;
-    margin: 2rem auto 0 !important;
-    text-align: center !important;
-}
-
-.hero .btn-consulta:hover {
-    background-color: var(--verde-aguamarina) !important;
-    color: var(--blanco) !important;
-    border: 2px solid var(--verde-medio) !important;
-    transform: translateY(-4px) !important;
-    box-shadow: 0 10px 25px rgba(46, 125, 104, 0.45) !important;
-}
-
-.hero .btn-consulta i {
-    font-size: 1.4rem !important;
-}
+/* 1. Botón Hero: "Consulta a un abogado gratis" - MANTENIDO (pero ya no bloquea el blog) */
+/* (Se mantiene el estilo específico para hero, pero no anula el general) */
 
 /* 2. Botones "Leer Más" en tarjetas */
 .card .btn-leer-mas,
@@ -734,4 +705,37 @@ canvas:not(:supported) + .fallback-bg {
     display: flex;
     justify-content: center;
     margin: 2rem 0;
+}
+
+/* === FIJAR BOTÓN "CONSULTA GRATUITA" EN BLOG (SIEMPRE FUNCIONA) === */
+.btn-consulta {
+    background-color: var(--verde-medio) !important;
+    color: var(--blanco) !important;
+    border: none !important;
+    border-radius: 50px !important;
+    padding: 14px 32px !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    min-width: 280px !important;
+    max-width: 380px !important;
+    width: 100% !important;
+    box-shadow: 0 4px 12px rgba(46, 125, 104, 0.3) !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+}
+
+.btn-consulta:hover {
+    background-color: var(--verde-aguamarina) !important;
+    color: var(--blanco) !important;
+    border: 2px solid var(--verde-medio) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 20px rgba(46, 125, 104, 0.4) !important;
+}
+
+.btn-consulta i {
+    font-size: 1.3rem !important;
 }
