@@ -1,7 +1,7 @@
-// script.js - Compatible con tu HTML actual
+// script.js - Compatible con tu HTML y REDIRECCIÓN a gracias.html
 document.addEventListener("DOMContentLoaded", function () {
     // ========================================
-    // 1. Partículas en el Hero (opcional, si usas canvas)
+    // 1. Partículas en el Hero (opcional)
     // ========================================
     const canvas = document.getElementById("particles-canvas");
     if (canvas) {
@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let particles = [];
         const particleCount = 80;
 
-        // Ajustar canvas al tamaño de la sección hero
         function resizeCanvas() {
             canvas.width = canvas.parentElement.offsetWidth;
             canvas.height = canvas.parentElement.offsetHeight;
@@ -17,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
         resizeCanvas();
         window.addEventListener("resize", resizeCanvas);
 
-        // Crear partícula
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
@@ -30,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-
                 if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
                 if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
             }
@@ -43,12 +40,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-        // Inicializar partículas
         for (let i = 0; i < particleCount; i++) {
             particles.push(new Particle());
         }
 
-        // Animación
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(p => {
@@ -61,44 +56,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ========================================
-    // 2. Manejo del formulario (AJAX + fallback)
+    // 2. Manejo del formulario (SIN AJAX → DEJA QUE FORMSPREE REDIRIGA)
     // ========================================
+    // ¡IMPORTANTE! No usamos AJAX para que _next funcione
+    // Solo mostramos "Enviando..." y deshabilitamos el botón
     const form = document.getElementById("contact-form");
     const submitBtn = document.getElementById("submit-btn");
     const fallbackBanner = document.getElementById("whatsapp-fallback");
 
     if (form && submitBtn) {
-        form.addEventListener("submit", async function (e) {
-            e.preventDefault(); // Evita envío normal
-
+        form.addEventListener("submit", function () {
             // Cambiar botón a "Enviando..."
-            const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status"></span> Enviando...`;
             submitBtn.disabled = true;
 
-            try {
-                const formData = new FormData(form);
+            // DEJAMOS QUE EL ENVÍO SEA NATIVO (Formspree manejará _next)
+            // No hacemos fetch, no hacemos preventDefault
+        });
 
-                const response = await fetch(form.action, {
-                    method: "POST",
-                    body: formData,
-                    headers: {
-                        "Accept": "application/json"
-                    }
-                });
-
-                if (response.ok) {
-                    // ÉXITO: Redirige a gracias.html (aunque _next ya lo hace)
-                    window.location.href = "https://jurentis.es/gracias.html";
-                } else {
-                    throw new Error("Error en el servidor");
-                }
-            } catch (error) {
-                // FALLBACK: Mostrar WhatsApp si falla
-                if (fallbackBanner) {
-                    fallbackBanner.classList.remove("d-none");
-                }
-                submitBtn.innerHTML = originalText;
+        // Si hay error (Formspree devuelve error), mostramos fallback
+        // (Esto solo se activa si el usuario regresa o hay problema)
+        window.addEventListener("pageshow", function () {
+            if (fallbackBanner && !fallbackBanner.classList.contains("d-none")) {
+                submitBtn.innerHTML = "Enviar Consulta";
                 submitBtn.disabled = false;
             }
         });
@@ -109,13 +89,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // ========================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: target.offsetTop - 80, // Ajuste por navbar fijo
-                    behavior: "smooth"
-                });
+            const href = this.getAttribute("href");
+            if (href === "#" || href.startsWith("#")) {
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: "smooth"
+                    });
+                }
             }
         });
     });
@@ -126,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
         link.addEventListener('click', () => {
             const navbarCollapse = document.querySelector('.navbar-collapse');
-            if (navbarCollapse.classList.contains('show')) {
+            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
                 new bootstrap.Collapse(navbarCollapse).hide();
             }
         });
