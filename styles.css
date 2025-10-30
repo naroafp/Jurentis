@@ -7,14 +7,120 @@
     --gris-claro: #F5F6F5;
     --primary: var(--verde-medio);
     --dark: var(--verde-oscuro);
-}/* GENERAL */
+}
+
+/* GENERAL */
 body {
     padding-top: 0 !important;
     font-family: 'Trebuchet MS', Arial, sans-serif;
     background-color: var(--gris-claro);
     color: var(--verde-oscuro);
     scroll-behavior: smooth;
-}/* NAVBAR */
+}
+
+/* === TODOS LOS HIPERVÍNCULOS EN VERDE (excepto navbar y toast) === */
+a,
+a:link,
+a:visited {
+    color: var(--verde-medio) !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease;
+}
+
+a:hover,
+a:active {
+    color: var(--verde-aguamarina) !important;
+    text-decoration: underline !important;
+}
+
+/* Excepción: enlaces del navbar (blancos) */
+.navbar .nav-link,
+.navbar .nav-link:link,
+.navbar .nav-link:visited {
+    color: var(--blanco) !important;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link:active {
+    color: var(--verde-aguamarina) !important;
+}
+
+/* Excepción: enlaces en toast (heredan color del toast) */
+.toast-message a {
+    color: inherit !important;
+    text-decoration: underline !important;
+}
+
+/* === BOTONES: TODOS EN VERDE, TEXTO BLANCO, LEGIBLES === */
+.btn,
+.btn:link,
+.btn:visited,
+.btn-primary,
+.btn-success,
+.btn-outline-primary,
+.btn-outline-success,
+.hero .btn,
+#submit-btn,
+.btn-consulta,
+.btn-leer-mas,
+.card .btn,
+.blog-card .btn,
+.article-content .btn {
+    background-color: var(--verde-medio) !important;
+    color: var(--blanco) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    padding: 10px 20px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 8px rgba(46, 125, 104, 0.2) !important;
+}
+
+.btn:hover,
+.btn-primary:hover,
+.btn-success:hover,
+.btn-outline-primary:hover,
+.btn-outline-success:hover,
+.hero .btn:hover,
+#submit-btn:hover,
+.btn-consulta:hover,
+.btn-leer-mas:hover,
+.card .btn:hover,
+.blog-card .btn:hover,
+.article-content .btn:hover {
+    background-color: var(--verde-aguamarina) !important;
+    color: var(--verde-oscuro) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 15px rgba(46, 125, 104, 0.3) !important;
+    text-decoration: none !important;
+}
+
+/* Botones outline (si se usan) */
+.btn-outline-primary,
+.btn-outline-success {
+    background-color: transparent !important;
+    border: 2px solid var(--verde-medio) !important;
+    color: var(--verde-medio) !important;
+}
+.btn-outline-primary:hover,
+.btn-outline-success:hover {
+    background-color: var(--verde-medio) !important;
+    color: var(--blanco) !important;
+    border-color: var(--verde-medio) !important;
+}
+
+/* Asegurar que el texto dentro de botones NO se vea afectado por reglas de 'a' */
+.btn,
+.btn *,
+.btn-primary *,
+.btn-success * {
+    color: inherit !important;
+}
+
+/* NAVBAR */
 .navbar {
     background-color: var(--verde-oscuro) !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -57,7 +163,9 @@ body {
 .container, .container-fluid {
     padding-left: 15px;
     padding-right: 15px;
-}/* HERO */
+}
+
+/* HERO */
 .hero {
     min-height: 500px;
     background: linear-gradient(rgba(26, 60, 52, 0.8), rgba(26, 60, 52, 0.8)), url('images/madrid.png') center/cover;
@@ -100,11 +208,15 @@ canvas:not(:supported) + .fallback-bg {
 .hero .btn {
     background: var(--verde-medio);
     border: none;
+    color: var(--blanco);
 }
 .hero .btn:hover {
     background: var(--verde-aguamarina);
+    color: var(--verde-oscuro);
     transform: translateY(-3px);
-}/* TARJETAS */
+}
+
+/* TARJETAS */
 .value-card, .service-card, .blog-card {
     transition: all 0.4s ease;
     perspective: 1000px;
@@ -122,7 +234,9 @@ canvas:not(:supported) + .fallback-bg {
 }
 .value-card:hover .geo-icon, .service-card:hover .geo-icon {
     transform: rotate(360deg);
-}/* BLOG - TARJETAS */
+}
+
+/* BLOG - TARJETAS */
 .blog-card {
     background-color: var(--blanco);
     border: none;
@@ -149,15 +263,19 @@ canvas:not(:supported) + .fallback-bg {
 .blog-card .btn {
     background: var(--verde-medio);
     border: none;
+    color: var(--blanco);
 }
 .blog-card .btn:hover {
     background: var(--verde-aguamarina);
-}/* === FILTRO VERDE EN BLOG: SIEMPRE VISIBLE, SE QUITA EN HOVER === */
+    color: var(--verde-oscuro);
+}
+
+/* FILTRO VERDE EN BLOG */
 .blog-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(26, 60, 52, 0.35); /* Mismo verde que hero, 35% opacidad */
+    background: rgba(26, 60, 52, 0.35);
     transition: opacity 0.4s ease;
     z-index: 1;
     pointer-events: none;
@@ -165,11 +283,13 @@ canvas:not(:supported) + .fallback-bg {
     opacity: 1;
 }
 .blog-card:hover::before {
-    opacity: 0; /* Filtro desaparece al hacer hover */
+    opacity: 0;
 }
 .blog-card:hover .card-img-top {
-    transform: scale(1.05); /* Zoom suave al mostrar imagen limpia */
-}/* ARTÍCULO */
+    transform: scale(1.05);
+}
+
+/* ARTÍCULO */
 .article-content {
     max-width: 800px;
     margin: 0 auto;
@@ -192,6 +312,7 @@ canvas:not(:supported) + .fallback-bg {
 }
 .article-content .btn:hover {
     background: var(--verde-aguamarina);
+    color: var(--verde-oscuro);
 }
 .article-content .btn-outline-primary {
     border-color: var(--verde-medio);
@@ -203,7 +324,9 @@ canvas:not(:supported) + .fallback-bg {
     background: var(--verde-aguamarina);
     border-color: var(--verde-aguamarina);
     color: var(--blanco);
-}/* PREGUNTAS FRECUENTES */
+}
+
+/* PREGUNTAS FRECUENTES */
 #preguntas-frecuentes .accordion-button {
     background-color: var(--blanco);
     color: var(--verde-oscuro);
@@ -223,7 +346,9 @@ canvas:not(:supported) + .fallback-bg {
     background-color: var(--blanco);
     color: var(--verde-oscuro);
     padding: 1.5rem;
-}/* FORMULARIO */
+}
+
+/* FORMULARIO */
 #contact-form .form-control {
     border-color: var(--verde-oscuro);
     transition: border-color 0.3s, box-shadow 0.3s;
@@ -235,10 +360,14 @@ canvas:not(:supported) + .fallback-bg {
 #contact-form .btn {
     background: var(--verde-medio);
     border: none;
+    color: var(--blanco);
 }
 #contact-form .btn:hover {
     background: var(--verde-aguamarina);
-}/* WHATSAPP */
+    color: var(--verde-oscuro);
+}
+
+/* WHATSAPP */
 .whatsapp-btn {
     position: fixed;
     bottom: 20px;
@@ -261,7 +390,9 @@ canvas:not(:supported) + .fallback-bg {
 }
 .whatsapp-btn:hover, .whatsapp-btn:focus {
     transform: scale(1.1);
-}/* TOAST MEJORADO */
+}
+
+/* TOAST MEJORADO */
 .toast-notification {
     position: fixed;
     bottom: 90px;
@@ -282,30 +413,44 @@ canvas:not(:supported) + .fallback-bg {
     transform: translateY(30px);
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     border: 1px solid rgba(46, 125, 104, 0.2);
-}.toast-notification.show {
+}
+
+.toast-notification.show {
     opacity: 1;
     transform: translateY(0);
-}.toast-notification.success {
+}
+
+.toast-notification.success {
     background: linear-gradient(135deg, #d4edda, #c3e6cb);
     color: #155724;
     border-color: #c3e6cb;
-}.toast-notification.error {
+}
+
+.toast-notification.error {
     background: linear-gradient(135deg, #f8d7da, #f5c6cb);
     color: #721c24;
     border-color: #f5c6cb;
-}.toast-icon {
+}
+
+.toast-icon {
     font-weight: bold;
     font-size: 1.4rem;
-}.toast-content {
+}
+
+.toast-content {
     display: flex;
     align-items: center;
     gap: 10px;
     flex: 1;
-}.toast-message a {
+}
+
+.toast-message a {
     color: inherit;
     text-decoration: underline;
     font-weight: bold;
-}.toast-close {
+}
+
+.toast-close {
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -318,16 +463,22 @@ canvas:not(:supported) + .fallback-bg {
     justify-content: center;
     border-radius: 50%;
     transition: all 0.2s;
-}.toast-close:hover {
+}
+
+.toast-close:hover {
     background: rgba(0,0,0,0.1);
     color: rgba(0,0,0,0.8);
-}/* SPINNER EN BOTÓN */
+}
+
+/* SPINNER EN BOTÓN */
 .spinner-border-sm {
     width: 1rem;
     height: 1rem;
-}/* BOTÓN ENVIAR CONSULTA - VERDE PERSONALIZADO */
+}
+
+/* BOTÓN ENVIAR CONSULTA - VERDE PERSONALIZADO */
 #submit-btn {
-    background-color: var(--verde-medio) !important; /* #2E7D68 */
+    background-color: var(--verde-medio) !important;
     color: white !important;
     border: none !important;
     padding: 12px 20px;
@@ -336,28 +487,34 @@ canvas:not(:supported) + .fallback-bg {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-}#submit-btn:hover {
-    background-color: var(--verde-aguamarina) !important; /* #A3D8D0 */
+}
+
+#submit-btn:hover {
+    background-color: var(--verde-aguamarina) !important;
     color: var(--verde-oscuro) !important;
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(46, 125, 104, 0.3);
-}#submit-btn:disabled {
+}
+
+#submit-btn:disabled {
     background-color: #1a5c50 !important;
     opacity: 0.8;
     cursor: not-allowed;
     transform: none;
-}/* Éxito */
+}
+
 #submit-btn.success {
     background-color: #d4edda !important;
     color: #155724 !important;
-}/* Error */
+}
+
 #submit-btn.error {
     background-color: #f8d7da !important;
     color: #721c24 !important;
-}/* Spinner dentro del botón */
+}
+
 #submit-btn .spinner-border-sm {
     width: 1rem;
     height: 1rem;
     margin-right: 8px;
 }
-
