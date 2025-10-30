@@ -50,7 +50,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* CHECK ÚNICO Y PERFECTO */
+        /* CHECK ÚNICO */
         .check-icon {
             width: 90px !important;
             height: 90px !important;
@@ -63,18 +63,14 @@
             font-size: 2.5rem !important;
             margin: 0 auto 1.5rem !important;
             box-shadow: 0 6px 15px rgba(46, 125, 104, 0.3) !important;
-            line-height: 1 !important;
         }
 
         .check-icon i {
             font-size: 2.5rem !important;
-            display: block !important;
         }
 
-        /* QUITAR DOBLE CHECK (eliminar ::before) */
-        .check-icon::before {
-            content: none !important;
-        }
+        /* QUITAR DOBLE CHECK */
+        .check-icon::before { content: none !important; }
 
         .thank-you-card h1 {
             font-size: 2.8rem !important;
@@ -94,7 +90,7 @@
             color: var(--verde-medio) !important;
         }
 
-        /* BOTONES CON CONTRASTE PERFECTO */
+        /* === BOTÓN "CHATEAR AHORA" - TEXTO BLANCO SIEMPRE === */
         .btn-thank-you {
             background-color: var(--verde-medio) !important;
             color: var(--blanco) !important;
@@ -118,10 +114,9 @@
             font-size: 1.3rem !important;
         }
 
-        /* HOVER: fondo claro + texto VERDE OSCURO (mejor contraste) */
         .btn-thank-you:hover {
-            background-color: #e6f7f5 !important;     /* verde muy claro */
-            color: var(--verde-oscuro) !important;    /* texto oscuro */
+            background-color: var(--verde-aguamarina) !important;
+            color: var(--blanco) !important; /* ¡BLANCO EN HOVER! */
             border: 2px solid var(--verde-medio) !important;
             transform: translateY(-3px) !important;
             box-shadow: 0 8px 20px rgba(46, 125, 104, 0.4) !important;
@@ -208,7 +203,7 @@
                     Te responderemos en menos de <strong>24 horas</strong>.
                 </p>
 
-                <!-- Botón WhatsApp -->
+                <!-- BOTÓN CHATEAR AHORA - TEXTO BLANCO -->
                 <a href="https://wa.me/+34672857131?text=Hola,%20acabo%20de%20enviar%20un%20mensaje%20desde%20la%20web" 
                    class="btn-thank-you mb-3" 
                    target="_blank">
@@ -217,7 +212,7 @@
 
                 <hr class="divider">
 
-                <!-- Volver al inicio -->
+                <!-- VOLVER AL INICIO -->
                 <a href="index.html" class="btn-thank-you btn-home">
                     <i class="fas fa-home"></i> Volver al inicio
                 </a>
