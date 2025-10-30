@@ -50,7 +50,7 @@ a:active {
     text-decoration: underline !important;
 }
 
-/* === BOTONES: TODOS EN VERDE, TEXTO BLANCO, LEGIBLES === */
+/* === BOTONES: TODOS EN VERDE, TEXTO BLANCO, CONTRASTE PERFECTO === */
 .btn,
 .btn:link,
 .btn:visited,
@@ -64,21 +64,31 @@ a:active {
 .btn-leer-mas,
 .card .btn,
 .blog-card .btn,
-.article-content .btn {
+.article-content .btn,
+.btn-thank-you {
     background-color: var(--verde-medio) !important;
     color: var(--blanco) !important;
     border: none !important;
-    border-radius: 8px !important;
+    border-radius: 50px !important;
     font-weight: 600 !important;
-    padding: 10px 20px !important;
+    padding: 12px 28px !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
+    gap: 10px !important;
     text-decoration: none !important;
     transition: all 0.3s ease !important;
-    box-shadow: 0 4px 8px rgba(46, 125, 104, 0.2) !important;
+    box-shadow: 0 4px 10px rgba(46, 125, 104, 0.25) !important;
+    min-width: 200px;
+    white-space: nowrap;
 }
 
+.btn i,
+.btn-thank-you i {
+    font-size: 1.2rem;
+}
+
+/* HOVER: fondo aguamarina, TEXTO BLANCO, borde verde */
 .btn:hover,
 .btn-primary:hover,
 .btn-success:hover,
@@ -90,23 +100,29 @@ a:active {
 .btn-leer-mas:hover,
 .card .btn:hover,
 .blog-card .btn:hover,
-.article-content .btn:hover {
+.article-content .btn:hover,
+.btn-thank-you:hover {
     background-color: var(--verde-aguamarina) !important;
-    color: var(--verde-oscuro) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 15px rgba(46, 125, 104, 0.3) !important;
+    color: var(--blanco) !important; /* ¡TEXTO BLANCO! */
+    border: 2px solid var(--verde-medio) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 20px rgba(46, 125, 104, 0.35) !important;
     text-decoration: none !important;
 }
 
 /* Botones outline (si se usan) */
 .btn-outline-primary,
-.btn-outline-success {
+.btn-outline-success,
+.btn-home {
     background-color: transparent !important;
-    border: 2px solid var(--verde-medio) !important;
     color: var(--verde-medio) !important;
+    border: 2px solid var(--verde-medio) !important;
+    border-radius: 50px !important;
+    padding: 10px 26px !important;
 }
 .btn-outline-primary:hover,
-.btn-outline-success:hover {
+.btn-outline-success:hover,
+.btn-home:hover {
     background-color: var(--verde-medio) !important;
     color: var(--blanco) !important;
     border-color: var(--verde-medio) !important;
@@ -116,7 +132,9 @@ a:active {
 .btn,
 .btn *,
 .btn-primary *,
-.btn-success * {
+.btn-success *,
+.btn-thank-you,
+.btn-thank-you * {
     color: inherit !important;
 }
 
@@ -212,7 +230,8 @@ canvas:not(:supported) + .fallback-bg {
 }
 .hero .btn:hover {
     background: var(--verde-aguamarina);
-    color: var(--verde-oscuro);
+    color: var(--blanco);
+    border: 2px solid var(--verde-medio);
     transform: translateY(-3px);
 }
 
@@ -267,7 +286,8 @@ canvas:not(:supported) + .fallback-bg {
 }
 .blog-card .btn:hover {
     background: var(--verde-aguamarina);
-    color: var(--verde-oscuro);
+    color: var(--blanco);
+    border: 2px solid var(--verde-medio);
 }
 
 /* FILTRO VERDE EN BLOG */
@@ -312,7 +332,8 @@ canvas:not(:supported) + .fallback-bg {
 }
 .article-content .btn:hover {
     background: var(--verde-aguamarina);
-    color: var(--verde-oscuro);
+    color: var(--blanco);
+    border: 2px solid var(--verde-medio);
 }
 .article-content .btn-outline-primary {
     border-color: var(--verde-medio);
@@ -322,7 +343,7 @@ canvas:not(:supported) + .fallback-bg {
 }
 .article-content .btn-outline-primary:hover {
     background: var(--verde-aguamarina);
-    border-color: var(--verde-aguamarina);
+    border-color: var(--verde-medio);
     color: var(--blanco);
 }
 
@@ -364,7 +385,8 @@ canvas:not(:supported) + .fallback-bg {
 }
 #contact-form .btn:hover {
     background: var(--verde-aguamarina);
-    color: var(--verde-oscuro);
+    color: var(--blanco);
+    border: 2px solid var(--verde-medio);
 }
 
 /* WHATSAPP */
@@ -384,6 +406,7 @@ canvas:not(:supported) + .fallback-bg {
     transition: transform 0.3s ease;
     font-size: 24px;
     line-height: 1;
+    z-index: 1000;
 }
 .whatsapp-btn i {
     font-size: 24px;
@@ -483,17 +506,19 @@ canvas:not(:supported) + .fallback-bg {
     border: none !important;
     padding: 12px 20px;
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: 50px;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    min-width: 200px;
 }
 
 #submit-btn:hover {
     background-color: var(--verde-aguamarina) !important;
-    color: var(--verde-oscuro) !important;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(46, 125, 104, 0.3);
+    color: var(--blanco) !important;
+    border: 2px solid var(--verde-medio) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(46, 125, 104, 0.35);
 }
 
 #submit-btn:disabled {
