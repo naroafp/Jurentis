@@ -11,9 +11,7 @@ if (canvas && ctx && heroSection) {
     resizeCanvas();
 
     class Particle {
-        constructor() {
-            this.reset();
-        }
+        constructor() { this.reset(); }
         reset() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
@@ -49,10 +47,7 @@ if (canvas && ctx && heroSection) {
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-            p.update();
-            p.draw();
-        });
+        particles.forEach(p => { p.update(); p.draw(); });
         requestAnimationFrame(animate);
     }
     animate();
@@ -75,10 +70,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// === FORMULARIO CON REDIRECCIÓN A GRACIAS.HTML (SIN FORMSPREE INTERFERIR) ===
+// === FORMULARIO CON REDIRECCIÓN A GRACIAS.HTML (USANDO _next) ===
 const form = document.getElementById('contact-form');
 if (form) {
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xyzbpaeq';
+    // REDIRIGE AUTOMÁTICAMENTE A TU PÁGINA GRACIAS.HTML
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xyzbpaeq?_next=gracias.html';
     const submitBtn = document.getElementById('submit-btn');
     const originalText = submitBtn.innerHTML;
 
@@ -98,25 +94,21 @@ if (form) {
                 body: new FormData(form),
                 headers: {
                     'Accept': 'application/json'
-                },
-                // EVITA QUE FORMSPREE REDIRIGA
-                redirect: 'manual'
+                }
             });
 
-            // SI ES ÉXITO O REDIRECCIÓN OPACA, NOSOTROS CONTROLAMOS
-            if (response.ok || response.type === 'opaqueredirect') {
+            if (response.ok) {
+                // Éxito
                 submitBtn.classList.remove('error');
                 submitBtn.classList.add('success');
                 submitBtn.innerHTML = 'Enviado';
-
-                showToast('¡Mensaje enviado! Redirigiendo...', 'success');
                 form.reset();
 
-                // REDIRIGIR A TU PÁGINA PERSONALIZADA
-                setTimeout(() => {
-                    window.location.href = 'gracias.html';
-                }, 1500);
+                // Toast antes de que Formspree redirija
+                showToast('¡Mensaje enviado! Redirigiendo...', 'success');
 
+                // Formspree redirige automáticamente a gracias.html
+                // No necesitamos window.location.href
             } else {
                 throw new Error('Error del servidor');
             }
@@ -154,18 +146,14 @@ function showToast(message, type = 'success') {
     `;
 
     document.body.appendChild(toast);
-
-    // Forzar reflow
     toast.offsetHeight;
     toast.classList.add('show');
 
-    // Cerrar al hacer clic
     toast.querySelector('.toast-close').onclick = () => {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 400);
     };
 
-    // Auto-cerrar
     setTimeout(() => {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 400);
