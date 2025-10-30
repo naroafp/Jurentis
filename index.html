@@ -11,8 +11,12 @@
     <meta property="og:description" content="Despacho de abogados en Madrid con experiencia en derecho civil, penal y laboral. Contacta para una consulta gratuita.">
     <meta property="og:type" content="website">
     <title>Abogados en Madrid - Jurentis</title>
+    
+    <!-- Bootstrap + Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Tu CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,10 +24,10 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="images/logo.png" alt="Jurentis" class="me-2" loading="lazy" style="height: 200px;">
+                <img src="images/logo.png" alt="Jurentis" class="me-2" loading="lazy" style="height: 55px;">
                 Jurentis
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -46,7 +50,14 @@
         <div class="container position-relative" style="z-index: 2;">
             <h1 class="display-4 fw-bold">Jurentis</h1>
             <p class="lead">La firma legal en la que puedes confiar, en todo el territorio nacional.</p>
-            <a href="https://wa.me/+34672857131" class="btn btn-primary btn-lg px-4" target="_blank" aria-label="Solicitar consulta gratuita por WhatsApp">CONSULTA A UN ABOGADO GRATIS</a>
+            
+            <!-- BOTÓN HERO CENTRADO CON ICONO -->
+            <div class="btn-center-wrapper">
+                <a href="https://wa.me/+34672857131?text=Hola,%20quiero%20una%20consulta%20gratuita" 
+                   class="btn-consulta" target="_blank">
+                    <i class="fab fa-whatsapp"></i> CONSULTA A UN ABOGADO GRATIS
+                </a>
+            </div>
         </div>
     </section>
 
@@ -146,10 +157,12 @@
                 <div class="col-md-4 mb-4">
                     <div class="card blog-card h-100 shadow-sm">
                         <img src="images/blog1.jpg" class="card-img-top" alt="Financiación con T.A.E. usurario" loading="lazy">
-                        <div class="card-body">
+                        <div class="card-body d-flex flex-column">
                             <h3 class="card-title">Financiación de compras con T.A.E. usurario</h3>
-                            <p class="card-text">Te explicamos como revisar si un interés remuneratorio es o no usurario.</p>
-                            <a href="blog1.html" class="btn btn-primary">Leer Más</a>
+                            <p class="card-text flex-grow-1">Te esperamos como revisar si un interés remuneratorio es o no usurario.</p>
+                            <a href="blog1.html" class="btn-leer-mas mt-auto">
+                                <i class="fas fa-arrow-right"></i> Leer Más
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -157,10 +170,12 @@
                 <div class="col-md-4 mb-4">
                     <div class="card blog-card h-100 shadow-sm">
                         <img src="images/blog2.jpg" class="card-img-top" alt="Caso de éxito en derecho civil" loading="lazy">
-                        <div class="card-body">
+                        <div class="card-body d-flex flex-column">
                             <h3 class="card-title">Caso de éxito: oposición a un monitorio</h3>
-                            <p class="card-text">Cómo ayudamos a un cliente a defenderse de un banco que reclamaba 25.678,47€.</p>
-                            <a href="blog2.html" class="btn btn-primary">Leer Más</a>
+                            <p class="card-text flex-grow-1">Cómo ayudamos a un cliente a defenderse de un banco que reclamaba 25.678,47€.</p>
+                            <a href="blog2.html" class="btn-leer-mas mt-auto">
+                                <i class="fas fa-arrow-right"></i> Leer Más
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -168,10 +183,12 @@
                 <div class="col-md-4 mb-4">
                     <div class="card blog-card h-100 shadow-sm">
                         <img src="images/blog3.jpg" class="card-img-top" alt="Consejos para contratos legales" loading="lazy">
-                        <div class="card-body">
+                        <div class="card-body d-flex flex-column">
                             <h3 class="card-title">Reclamación de deuda por empresa de recobro</h3>
-                            <p class="card-text">Consejos para no pagar intereses o comisiones abusivas e indebidas.</p>
-                            <a href="blog3.html" class="btn btn-primary">Leer Más</a>
+                            <p class="card-text flex-grow-1">Consejos para no pagar intereses o comisiones abusivas e indebidas.</p>
+                            <a href="blog3.html" class="btn-leer-mas mt-auto">
+                                <i class="fas fa-arrow-right"></i> Leer Más
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -187,7 +204,7 @@
             <div class="accordion" id="faqAccordion">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="faqHeading1">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="true" aria-controls="faqCollapse1">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1">
                             ¿Cómo solicito una consulta gratuita?
                         </button>
                     </h2>
@@ -199,7 +216,7 @@
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="faqHeading2">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2">
                             ¿Cuáles son sus honorarios?
                         </button>
                     </h2>
@@ -211,35 +228,35 @@
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="faqHeading3">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3">
                             ¿Cuánto tiempo tardan en resolver un caso?
                         </button>
                     </h2>
                     <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                        El tiempo depende de la naturaleza del caso y de los tribunales.
-                        <ul class="mb-0">
+                            El tiempo depende de la naturaleza del caso y de los tribunales.
+                            <ul class="mb-0">
                                 <li>Extrajudicial: <strong>1–3 meses</strong></li>
                                 <li>Judicial: <strong>6–18 meses</strong></li>
-                        </ul>
-                         Generalmente, informamos del tiempo estimado tras la consulta inicial y trabajamos para resolverlo lo antes posible.
+                            </ul>
+                            Generalmente, informamos del tiempo estimado tras la consulta inicial y trabajamos para resolverlo lo antes posible.
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="faqHeading4">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse4" aria-expanded="false" aria-controls="faqCollapse4">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse4">
                             ¿Qué necesito para reclamar un producto bancario?
                         </button>
                     </h2>
                     <div id="faqCollapse4" class="accordion-collapse collapse" aria-labelledby="faqHeading4" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                             Solo <strong>DNI + contrato + 3 últimos recibos</strong>. Si no dispone de esta documentación, <strong>nosotros se la pedimos al banco</strong>.
+                            Solo <strong>DNI + contrato + 3 últimos recibos</strong>. Si no dispone de esta documentación, <strong>nosotros se la pedimos al banco</strong>.
                         </div>
                     </div>
                 </div>
             </div>
-             <div class="text-center mt-5">
+            <div class="text-center mt-5">
                 <p class="text-muted mb-0">
                     ¿Dudas? <a href="#contacto" class="text-success fw-bold text-decoration-underline">Contáctanos</a>
                 </p>
@@ -254,11 +271,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h3>Envíanos un Mensaje</h3>
-                    <form 
-                        id="contact-form" 
-                        action="https://api.web3forms.com/submit" 
-                        method="POST">
-
+                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
                         <div class="mb-3">
                             <label for="name" class="form-label">Nombre</label>
                             <input type="text" name="name" class="form-control" id="name" required>
@@ -272,18 +285,16 @@
                             <textarea name="message" class="form-control" id="message" rows="5" required></textarea>
                         </div>
 
-                        <!-- TU ACCESS KEY -->
                         <input type="hidden" name="access_key" value="ebf89d4b-74ce-4f28-9c29-740e03ac6645">
-
-                        <!-- REDIRECCIÓN A TU PÁGINA -->
                         <input type="hidden" name="redirect" value="https://jurentis.es/gracias.html">
-
-                        <!-- ASUNTO DEL EMAIL -->
                         <input type="hidden" name="subject" value="Nuevo mensaje desde Jurentis.es">
 
-                        <button type="submit" id="submit-btn" class="btn w-100">
-                            Enviar Consulta
-                        </button>
+                        <!-- BOTÓN ENVIAR CENTRADO -->
+                        <div class="btn-center-wrapper">
+                            <button type="submit" id="submit-btn">
+                                <i class="fas fa-paper-plane"></i> Enviar Consulta
+                            </button>
+                        </div>
                     </form>
                 </div>
                 <div class="col-md-6">
@@ -303,11 +314,10 @@
                 </div>
             </div>
 
-            <!-- Banner de error (opcional, tu JS lo usa) -->
             <div class="text-center mt-4 p-3 bg-light rounded text-danger d-none" id="whatsapp-fallback">
                 <p class="mb-0">
                     <strong>Error al enviar.</strong> Usa WhatsApp: 
-                    <a href="https://wa.me/+34672857131" class="text-success">+34 672 85 71 31</a>
+                    <a href="https://wa.me/+34672857131" class="text-success">+34 672 85 7131</a>
                 </p>
             </div>
         </div>
@@ -320,25 +330,22 @@
 
     <!-- FOOTER -->
     <footer class="bg-dark text-white text-center py-4">
-        <p>&copy; 2025 Jurentis. Todos los derechos reservados.</p>
+        <p>© 2025 Jurentis. Todos los derechos reservados.</p>
         <p>
-            <a href="https://www.instagram.com/jurentis.abogados" target="_blank" class="text-white mx-2" aria-label="Instagram de Jurentis">
+            <a href="https://www.instagram.com/jurentis.abogados" target="_blank" class="text-white mx-2" aria-label="Instagram">
                 <i class="fab fa-instagram fa-lg"></i>
             </a>
-            <a href="https://www.facebook.com/profile.php?id=61552211551555" target="_blank" class="text-white mx-2" aria-label="Facebook de Jurentis">
+            <a href="https://www.facebook.com/profile.php?id=61552211551555" target="_blank" class="text-white mx-2" aria-label="Facebook">
                 <i class="fab fa-facebook-f fa-lg"></i>
             </a>
-            <a href="https://www.tiktok.com/@jurentis" target="_blank" class="text-white mx-2" aria-label="TikTok de Jurentis">
+            <a href="https://www.tiktok.com/@jurentis" target="_blank" class="text-white mx-2" aria-label="TikTok">
                 <i class="fab fa-tiktok fa-lg"></i>
             </a>
         </p>
     </footer>
 
+    <!-- Bootstrap JS + Tu script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
