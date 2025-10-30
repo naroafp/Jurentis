@@ -17,9 +17,10 @@ if (canvas && ctx && heroSection) {
         reset() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 3 + 1;
-            this.speedX = Math.random() * 1.5 - 0.75;
-            this.speedY = Math.random() * 1.5 - 0.75;
+            this.size = Math.random() * 2.5 + 1;
+            this.speedX = Math.random() * 1.2 - 0.6;
+            this.speedY = Math.random() * 1.2 - 0.6;
+            this.opacity = Math.random() * 0.5 + 0.3;
         }
         update() {
             this.x += this.speedX;
@@ -28,12 +29,13 @@ if (canvas && ctx && heroSection) {
             if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
         }
         draw() {
-            ctx.fillStyle = 'rgba(163, 216, 208, 0.4)';
+            ctx.globalAlpha = this.opacity;
+            ctx.fillStyle = '#A3D8D0';
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fill();
 
-            ctx.strokeStyle = 'rgba(46, 125, 104, 0.3)';
+            ctx.strokeStyle = '#2E7D68';
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(this.x, this.y - this.size);
@@ -42,7 +44,7 @@ if (canvas && ctx && heroSection) {
         }
     }
 
-    const particleCount = window.innerWidth < 768 ? 25 : 50;
+    const particleCount = window.innerWidth < 768 ? 25 : 45;
     const particles = Array.from({ length: particleCount }, () => new Particle());
 
     function animate() {
@@ -55,7 +57,6 @@ if (canvas && ctx && heroSection) {
     }
     animate();
 
-    // Redimensionar con debounce
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
@@ -74,22 +75,22 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// === FORMULARIO CON FORMSPREE + TOAST ===
+// === FORMULARIO CON FORMSPREE ===
 const form = document.getElementById('contact-form');
 if (form) {
-    // === CAMBIA ESTO POR TU ENDPOINT REAL ===
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xdknlkya'; // ← TU ID AQUÍ
+    // REEMPLAZA CON TU ENDPOINT REAL DE FORMSPREE
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xdknlkya'; // <--- AQUÍ TU ID
 
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
 
         const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
+        const originalHTML = submitBtn.innerHTML;
 
         // Estado: enviando
         submitBtn.disabled = true;
         submitBtn.innerHTML = `
-            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
             Enviando...
         `;
 
@@ -104,9 +105,10 @@ if (form) {
 
             if (response.ok) {
                 submitBtn.innerHTML = 'Enviado';
+                submitBtn.classList.remove('btn-primary');
                 submitBtn.classList.add('btn-success');
                 form.reset();
-                showToast('¡Gracias! Te responderemos en menos de 24h.', 'success');
+                showToast('¡Mensaje enviado! Te contactaremos en menos de 24h.', 'success');
             } else if (response.status === 429) {
                 throw new Error('Rate limit');
             } else {
@@ -115,21 +117,22 @@ if (form) {
         } catch (error) {
             const isRateLimit = error.message === 'Rate limit';
             submitBtn.innerHTML = 'Error';
+            submitBtn.classList.remove('btn-primary');
             submitBtn.classList.add('btn-danger');
 
             showToast(
                 isRateLimit
                     ? 'Demasiados envíos. Intenta más tarde.'
-                    : 'Error al enviar. Usa WhatsApp: +34 672 85 71 31',
+                    : 'Error al enviar. Usa WhatsApp: <a href="https://wa.me/+34672857131" style="color:white;text-decoration:underline;">+34 672 85 71 31</a>',
                 'error'
             );
         } finally {
-            // Restaurar botón tras 3 segundos
             setTimeout(() => {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
+                submitBtn.innerHTML = originalHTML;
                 submitBtn.className = submitBtn.className
                     .replace(/btn-(success|danger)/g, '')
+                    .replace(/btn-primary/g, 'btn-primary')
                     .trim();
             }, 3000);
         }
@@ -138,30 +141,31 @@ if (form) {
 
 // === TOAST PERSONALIZADO ===
 function showToast(message, type = 'success') {
-    // Eliminar toast anterior
     document.querySelectorAll('.toast-notification').forEach(t => t.remove());
 
     const toast = document.createElement('div');
-    toast.className = `toast-notification toast-${type}`;
+    toast.className = `toast-notification ${type}`;
     toast.setAttribute('role', 'alert');
     toast.setAttribute('aria-live', 'assertive');
     toast.innerHTML = `
-        <div class="toast-icon">${type === 'success' ? '✓' : '✕'}</div>
-        <div class="toast-message">${message}</div>
-        <button class="toast-close">&times;</button>
+        <div class="toast-content">
+            <span class="toast-icon">${type === 'success' ? '✓' : '✕'}</span>
+            <span class="toast-message">${message}</span>
+        </div>
+        <button class="toast-close" aria-label="Cerrar">&times;</button>
     `;
 
     document.body.appendChild(toast);
 
     // Forzar reflow
     toast.offsetHeight;
-
     toast.classList.add('show');
 
-    // Cerrar al hacer clic
-    toast.querySelector('.toast-close').onclick = () => toast.remove();
+    toast.querySelector('.toast-close').onclick = () => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+    };
 
-    // Auto-cerrar
     setTimeout(() => {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 400);
