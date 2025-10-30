@@ -72,7 +72,7 @@ a:active {
     border-radius: 50px !important;
     font-weight: 600 !important;
     padding: 12px 28px !important;
-    display: inline-flex !important;
+    display: flex !important;                    /* CAMBIO CLAVE: inline-flex → flex */
     align-items: center !important;
     justify-content: center !important;
     gap: 10px !important;
@@ -103,7 +103,7 @@ a:active {
 .article-content .btn:hover,
 .btn-thank-you:hover {
     background-color: var(--verde-aguamarina) !important;
-    color: var(--blanco) !important; /* ¡TEXTO BLANCO! */
+    color: var(--blanco) !important;
     border: 2px solid var(--verde-medio) !important;
     transform: translateY(-3px) !important;
     box-shadow: 0 8px 20px rgba(46, 125, 104, 0.35) !important;
@@ -119,6 +119,10 @@ a:active {
     border: 2px solid var(--verde-medio) !important;
     border-radius: 50px !important;
     padding: 10px 26px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
 }
 .btn-outline-primary:hover,
 .btn-outline-success:hover,
@@ -511,6 +515,10 @@ canvas:not(:supported) + .fallback-bg {
     position: relative;
     overflow: hidden;
     min-width: 200px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
 }
 
 #submit-btn:hover {
@@ -542,4 +550,11 @@ canvas:not(:supported) + .fallback-bg {
     width: 1rem;
     height: 1rem;
     margin-right: 8px;
+}
+
+/* === FORZAR EN GRACIAS.HTML === */
+.btn-thank-you,
+.btn-home {
+    display: flex !important;
+    gap: 10px !important;
 }
