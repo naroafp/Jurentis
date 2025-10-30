@@ -606,3 +606,25 @@ canvas:not(:supported) + .fallback-bg {
     padding: 14px 32px !important;
     font-size: 1.1rem !important;
 }
+
+/* === CENTRAR TODOS LOS BOTONES DE CONSULTA WHATSAPP === */
+.whatsapp-consulta-container {
+    text-align: center !important;
+    margin: 3rem auto !important;
+    width: fit-content !important;
+    display: block !important;
+}
+
+.whatsapp-consulta-container .blog-article-btn,
+.whatsapp-consulta-container .btn-thank-you,
+.whatsapp-consulta-container .btn {
+    display: inline-flex !important;
+    min-width: 280px !important;
+    max-width: 380px !important;
+    width: auto !important;
+    margin: 0 auto !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    padding: 14px 32px !important;
+    font-size: 1.1rem !important;
+}
