@@ -18,6 +18,37 @@ body {
     scroll-behavior: smooth;
 }
 
+/* === TODOS LOS HIPERVÍNCULOS EN VERDE (COMO EL BOTÓN) === */
+a,
+a:link,
+a:visited {
+    color: var(--verde-medio) !important; /* Verde medio, igual que el botón */
+    text-decoration: none !important;
+    transition: color 0.3s ease;
+}
+
+a:hover,
+a:active {
+    color: var(--verde-aguamarina) !important; /* Verde aguamarina al hover */
+    text-decoration: underline !important;
+}
+
+/* Excepción: enlaces dentro del navbar (blancos) */
+.navbar .nav-link,
+.navbar .nav-link:link,
+.navbar .nav-link:visited {
+    color: var(--blanco) !important;
+}
+.navbar .nav-link:hover {
+    color: var(--verde-aguamarina) !important;
+}
+
+/* Excepción: enlaces en toast (heredan del toast) */
+.toast-message a {
+    color: inherit !important;
+    text-decoration: underline !important;
+}
+
 /* NAVBAR */
 .navbar {
     background-color: var(--verde-oscuro) !important;
@@ -106,9 +137,11 @@ canvas:not(:supported) + .fallback-bg {
 .hero .btn {
     background: var(--verde-medio);
     border: none;
+    color: var(--blanco);
 }
 .hero .btn:hover {
     background: var(--verde-aguamarina);
+    color: var(--verde-oscuro);
     transform: translateY(-3px);
 }
 
@@ -159,17 +192,19 @@ canvas:not(:supported) + .fallback-bg {
 .blog-card .btn {
     background: var(--verde-medio);
     border: none;
+    color: var(--blanco);
 }
 .blog-card .btn:hover {
     background: var(--verde-aguamarina);
+    color: var(--verde-oscuro);
 }
 
-/* === FILTRO VERDE EN BLOG: SIEMPRE VISIBLE, SE QUITA EN HOVER === */
+/* FILTRO VERDE EN BLOG */
 .blog-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(26, 60, 52, 0.35); /* Mismo verde que hero, 35% opacidad */
+    background: rgba(26, 60, 52, 0.35);
     transition: opacity 0.4s ease;
     z-index: 1;
     pointer-events: none;
@@ -177,10 +212,10 @@ canvas:not(:supported) + .fallback-bg {
     opacity: 1;
 }
 .blog-card:hover::before {
-    opacity: 0; /* Filtro desaparece al hacer hover */
+    opacity: 0;
 }
 .blog-card:hover .card-img-top {
-    transform: scale(1.05); /* Zoom suave al mostrar imagen limpia */
+    transform: scale(1.05);
 }
 
 /* ARTÍCULO */
@@ -206,6 +241,7 @@ canvas:not(:supported) + .fallback-bg {
 }
 .article-content .btn:hover {
     background: var(--verde-aguamarina);
+    color: var(--verde-oscuro);
 }
 .article-content .btn-outline-primary {
     border-color: var(--verde-medio);
@@ -253,9 +289,11 @@ canvas:not(:supported) + .fallback-bg {
 #contact-form .btn {
     background: var(--verde-medio);
     border: none;
+    color: var(--blanco);
 }
 #contact-form .btn:hover {
     background: var(--verde-aguamarina);
+    color: var(--verde-oscuro);
 }
 
 /* WHATSAPP */
@@ -369,7 +407,7 @@ canvas:not(:supported) + .fallback-bg {
 
 /* BOTÓN ENVIAR CONSULTA - VERDE PERSONALIZADO */
 #submit-btn {
-    background-color: var(--verde-medio) !important; /* #2E7D68 */
+    background-color: var(--verde-medio) !important;
     color: white !important;
     border: none !important;
     padding: 12px 20px;
@@ -381,7 +419,7 @@ canvas:not(:supported) + .fallback-bg {
 }
 
 #submit-btn:hover {
-    background-color: var(--verde-aguamarina) !important; /* #A3D8D0 */
+    background-color: var(--verde-aguamarina) !important;
     color: var(--verde-oscuro) !important;
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(46, 125, 104, 0.3);
@@ -394,19 +432,16 @@ canvas:not(:supported) + .fallback-bg {
     transform: none;
 }
 
-/* Éxito */
 #submit-btn.success {
     background-color: #d4edda !important;
     color: #155724 !important;
 }
 
-/* Error */
 #submit-btn.error {
     background-color: #f8d7da !important;
     color: #721c24 !important;
 }
 
-/* Spinner dentro del botón */
 #submit-btn .spinner-border-sm {
     width: 1rem;
     height: 1rem;
