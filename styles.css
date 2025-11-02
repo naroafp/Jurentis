@@ -557,8 +557,8 @@ footer a.text-white:hover {
 .check-icon {
     width: 90px;
     height: 90px;
-    background-color: var(--verde-medio);
-    color: var(--blanco);
+    background-color: var(--verde-medio) !important;
+    color: var(--blanco) !important;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -569,7 +569,8 @@ footer a.text-white:hover {
 }
 
 .check-icon i {
-    font-size: 2.5rem;
+    font-size: 2.5rem !important;
+    color: var(--blanco) !important;
 }
 
 .thank-you-card h1 {
