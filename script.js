@@ -184,3 +184,42 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+    // ========================================
+    // 7. FORMULARIO CONTACTO - REDIRECCIÓN GRATIS
+    // ========================================
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    
+    if (contactForm && submitBtn) {
+        contactForm.addEventListener('submit', async function (e) {
+            e.preventDefault(); // Evita envío normal
+    
+            // Feedback
+            submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Enviando...`;
+            submitBtn.disabled = true;
+    
+            // Recoger datos
+            const formData = new FormData(contactForm);
+    
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+    
+                if (response.ok) {
+                    // REDIRECCIÓN GRATIS
+                    window.location.href = 'gracias.html';
+                } else {
+                    alert('Error al enviar. Inténtalo de nuevo.');
+                    submitBtn.innerHTML = 'Enviar Consulta';
+                    submitBtn.disabled = false;
+                }
+            } catch (error) {
+                alert('Error de conexión. Inténtalo más tarde.');
+                submitBtn.innerHTML = 'Enviar Consulta';
+                submitBtn.disabled = false;
+            }
+        });
+    }
