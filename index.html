@@ -53,7 +53,6 @@
             <h1 class="display-4 fw-bold">Jurentis</h1>
             <p class="lead">La firma legal en la que puedes confiar, en todo el territorio nacional.</p>
             
-            <!-- BOTÓN HERO CENTRADO -->
             <div class="btn-center-wrapper mt-4">
                 <a href="https://wa.me/+34672857131?text=Hola,%20quiero%20una%20consulta%20gratuita" 
                    class="btn-consulta mx-auto d-block" target="_blank">
@@ -73,7 +72,6 @@
 
             <!-- 8 TARJETAS DE PRODUCTO -->
             <div class="row justify-content-center g-3 mb-5">
-                <!-- 1. Tarjeta revolving -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Tarjeta revolving" id="prod1" class="d-none" required>
                     <label for="prod1" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -84,7 +82,6 @@
                         </div>
                     </label>
                 </div>
-                <!-- 2. Préstamo personal -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Préstamo personal" id="prod2" class="d-none">
                     <label for="prod2" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -95,7 +92,6 @@
                         </div>
                     </label>
                 </div>
-                <!-- 3. Hipoteca -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Hipoteca" id="prod3" class="d-none">
                     <label for="prod3" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -106,7 +102,6 @@
                         </div>
                     </label>
                 </div>
-                <!-- 4. Cuenta corriente -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Cuenta corriente" id="prod4" class="d-none">
                     <label for="prod4" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -117,7 +112,6 @@
                         </div>
                     </label>
                 </div>
-                <!-- 5. Línea de crédito -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Línea de crédito" id="prod5" class="d-none">
                     <label for="prod5" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -128,7 +122,6 @@
                         </div>
                     </label>
                 </div>
-                <!-- 6. Producto inversión -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Producto inversión" id="prod6" class="d-none">
                     <label for="prod6" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -139,7 +132,6 @@
                         </div>
                     </label>
                 </div>
-                <!-- 7. Seguro -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Seguro" id="prod7" class="d-none">
                     <label for="prod7" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -150,7 +142,6 @@
                         </div>
                     </label>
                 </div>
-                <!-- 8. Telefonía -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Telefonía" id="prod8" class="d-none">
                     <label for="prod8" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -163,12 +154,12 @@
                 </div>
             </div>
 
-            <!-- FORMULARIO WEB3FORMS - GRATIS -->
+            <!-- FORMULARIO WEB3FORMS -->
             <form id="formViabilidad" 
                   action="https://api.web3forms.com/submit" 
                   method="POST" 
                   enctype="multipart/form-data" 
-                  target="hidden-iframe" <!-- Envío oculto -->
+                  target="hidden-submit-frame"
                   class="card p-4 shadow-sm mx-auto" 
                   style="max-width: 600px; border-radius: 16px;">
                 
@@ -209,8 +200,8 @@
                 </div>
             </form>
 
-            <!-- IFRAME OCULTO PARA ENVÍO -->
-            <iframe name="hidden-iframe" style="display:none;"></iframe>
+            <!-- IFRAME OCULTO PARA ENVÍO REAL -->
+            <iframe name="hidden-submit-frame" style="display: none;"></iframe>
         </div>
     </section>
 
@@ -306,7 +297,6 @@
             <h2 class="text-center mb-4">Blog y Casos de Éxito</h2>
             <p class="text-center mb-5">Mantente informado con nuestras noticias legales y descubre cómo hemos ayudado a nuestros clientes.</p>
             <div class="row">
-                <!-- NOTICIA 1 -->
                 <div class="col-md-4 mb-4">
                     <div class="card blog-card h-100 shadow-sm">
                         <img src="images/blog1.jpg" class="card-img-top" alt="Financiación con T.A.E. usurario" loading="lazy">
@@ -319,7 +309,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- NOTICIA 2 -->
                 <div class="col-md-4 mb-4">
                     <div class="card blog-card h-100 shadow-sm">
                         <img src="images/blog2.jpg" class="card-img-top" alt="Caso de éxito en derecho civil" loading="lazy">
@@ -332,7 +321,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- NOTICIA 3 -->
                 <div class="col-md-4 mb-4">
                     <div class="card blog-card h-100 shadow-sm">
                         <img src="images/blog3.jpg" class="card-img-top" alt="Reclamación de deuda" loading="lazy">
@@ -500,11 +488,12 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 
-    <!-- JS VIABILIDAD - 100% GRATIS -->
+    <!-- JS VIABILIDAD - ENVÍO REAL + ARCHIVOS + REDIRECCIÓN GRATIS -->
     <script>
     document.getElementById('btnEnviar').addEventListener('click', function() {
         const form = document.getElementById('formViabilidad');
-        
+        const btn = this;
+
         // Validar producto
         const producto = document.querySelector('input[name="producto"]:checked');
         if (!producto) {
@@ -537,12 +526,11 @@
         window.open(`https://wa.me/34672857131?text=${encodeURIComponent(mensaje)}`, '_blank');
 
         // Cambiar botón
-        const btn = this;
         const original = btn.innerHTML;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         btn.disabled = true;
 
-        // Enviar formulario (oculto)
+        // Enviar formulario en iframe oculto
         form.submit();
 
         // Redirigir a gracias.html (GRATIS)
