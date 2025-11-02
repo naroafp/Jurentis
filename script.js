@@ -69,89 +69,51 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ========================================
-    // 3. VIABILIDAD INMEDIATA - ENVÍO REAL + WHATSAPP + REDIRECCIÓN
-    // ========================================
-    const btnEnviar = document.getElementById("btnEnviar");
-    const formViabilidad = document.getElementById("formViabilidad");
-    const archivosInput = document.getElementById("archivos");
-    const fileLabel = document.querySelector('.file-upload label');
+    // VIABILIDAD INMEDIATA - SOLO WHATSAPP
+document.getElementById('btnEnviar')?.addEventListener('click', function () {
+    const form = document.getElementById('formViabilidad');
+    const btn = this;
 
-    if (btnEnviar && formViabilidad) {
+    // Validar producto
+    const producto = document.querySelector('input[name="producto"]:checked');
+    if (!producto) {
+        alert('Por favor, selecciona un producto.');
+        return;
+    }
 
-        // Contador de archivos
-        archivosInput?.addEventListener('change', function () {
-            const count = this.files.length;
-            fileLabel.textContent = count > 0 
-                ? `Seleccionados: ${count} archivo${count > 1 ? 's' : ''}` 
-                : 'Subir contrato, extracto o factura (PDF o foto)';
-        });
+    // Validar campos
+    if (!form.checkValidity()) {
+        alert('Por favor, completa nombre y teléfono.');
+        return;
+    }
 
-        // Efecto visual al seleccionar producto
-        document.querySelectorAll('.producto-card').forEach(card => {
-            card.addEventListener('click', function () {
-                document.querySelectorAll('.producto-card').forEach(c => {
-                    c.classList.remove('border-primary', 'bg-primary-subtle', 'shadow');
-                });
-                this.classList.add('border-primary', 'bg-primary-subtle', 'shadow');
-            });
-        });
+    // Datos
+    const nombre = form.nombre.value.trim() || 'Cliente';
+    const tel = form.telefono.value.trim();
+    const email = form.email.value.trim() || 'No proporcionado';
 
-        // === ENVÍO CON BOTÓN type="button" (NO submit) ===
-        btnEnviar.addEventListener('click', function () {
-            const form = formViabilidad;
+    // Mensaje WhatsApp
+    const mensaje = `¡VIABILIDAD INMEDIATA!\n\n` +
+                   `Producto: *${producto.value}*\n` +
+                   `Nombre: *${nombre}*\n` +
+                   `Teléfono: *${tel}*\n` +
+                   `Email: ${email}\n\n` +
+                   `Por favor, envía aquí tu contrato, extracto o factura (PDF o foto) y te respondemos GRATIS en menos de 24h.\n\n` +
+                   `¡Gracias!`;
 
-            // Validar producto
-            const producto = document.querySelector('input[name="producto"]:checked');
-            if (!producto) {
-                alert('Por favor, selecciona un producto.');
-                return;
-            }
+    // Abrir WhatsApp
+    window.open(`https://wa.me/34672857131?text=${encodeURIComponent(mensaje)}`, '_blank');
 
-            // Validar campos
-            if (!form.checkValidity()) {
-                alert('Por favor, completa todos los campos obligatorios.');
-                return;
-            }
+    // Feedback
+    const original = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-check"></i> Abriendo WhatsApp...';
+    btn.disabled = true;
 
-            // Validar archivo
-            const files = archivosInput.files;
-            if (files.length === 0) {
-                alert('Por favor, adjunta al menos un documento.');
-                return;
-            }
-
-            // === MENSAJE WHATSAPP ===
-            const msg = `*¡VIABILIDAD INMEDIATA!*\n\n` +
-                `Producto: *${producto.value}*\n` +
-                `Nombre: *${form.nombre.value.trim()}*\n` +
-                `Teléfono: *${form.telefono.value.trim()}*\n` +
-                `${form.email.value.trim() ? `Email: ${form.email.value.trim()}\n` : ''}\n` +
-                `Documentos: *${files.length} archivo(s) adjunto(s)*\n\n` +
-                `Revisado GRATIS en < 24h. ¡Gracias!`;
-
-            // Abrir WhatsApp
-            window.open(`https://wa.me/34672857131?text=${encodeURIComponent(msg)}`, '_blank');
-
-            // === CAMBIAR BOTÓN ===
-            const original = this.innerHTML;
-            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-            this.disabled = true;
-
-            // === ENVIAR FORMULARIO (ENVÍO REAL A WEB3FORMS) ===
-            form.submit();
-
-            // === REDIRIGIR A GRACIAS (GRATIS) ===
-            setTimeout(() => {
-                window.location.href = 'gracias.html';
-            }, 1500);
-
-            // === RESTAURAR BOTÓN ===
-            setTimeout(() => {
-                this.innerHTML = original;
-                this.disabled = false;
-            }, 3000);
-        });
+    setTimeout(() => {
+        btn.innerHTML = original;
+        btn.disabled = false;
+    }, 3000);
+});
     }
 
     // ========================================
@@ -238,3 +200,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
