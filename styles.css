@@ -85,7 +85,7 @@ a:hover, a:active {
     max-width: 380px;
     font-size: 1.1rem !important;
     white-space: nowrap;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important; /* 3. CONTRASTE ALTO */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
 }
 
 .btn i,
@@ -114,7 +114,7 @@ a:hover, a:active {
     border: 2px solid var(--verde-medio) !important;
     transform: translateY(-3px) !important;
     box-shadow: 0 8px 20px rgba(46, 125, 104, 0.4) !important;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.4) !important; /* 3. CONTRASTE HOVER */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4) !important;
 }
 
 /* Botones outline */
@@ -338,24 +338,6 @@ canvas:not(:supported) + .fallback-bg { display: block; }
     padding: 5rem 0 !important;
 }
 
-/* 1. TÍTULO Y SUBTÍTULO IGUAL QUE EL RESTO */
-#viabilidad h2.display-5 {
-    color: var(--verde-oscuro) !important;
-    font-weight: 800 !important;
-    font-size: 2.5rem !important;
-    margin-bottom: 1rem !important;
-    text-align: center !important;
-    text-shadow: none !important;
-}
-
-#viabilidad .lead {
-    color: #6c757d !important;
-    font-size: 1.1rem !important;
-    font-weight: 400 !important;
-    text-align: center !important;
-    margin-bottom: 2rem !important;
-}
-
 /* === TARJETAS DE PRODUCTO === */
 .producto-card {
     background: var(--blanco) !important;
@@ -386,7 +368,7 @@ canvas:not(:supported) + .fallback-bg { display: block; }
     transform: scale(1.05);
 }
 
-/* 2. EMOJIS REALES - GRANDES Y VISIBLES */
+/* ICONOS REALES */
 .producto-card .icono {
     font-size: 3.2rem !important;
     color: var(--verde-medio) !important;
@@ -507,7 +489,6 @@ canvas:not(:supported) + .fallback-bg { display: block; }
 
 @media (max-width: 768px) {
     #viabilidad { padding: 3rem 0 !important; }
-    #viabilidad h2.display-5 { font-size: 2rem !important; }
     .btn, .btn-consulta, .btn-leer-mas, #viabilidad .btn-success {
         min-width: 100% !important;
         margin: 0 auto !important;
@@ -528,26 +509,33 @@ footer a.text-white:hover {
     color: var(--verde-aguamarina) !important;
 }
 
-/* ==================== CONTRASTE ALTO EN BOTONES VERDES ==================== */
-.btn,
+/* ==================== FIX DEFINITIVO: CONTRASTE EN BOTONES (AL FINAL) ==================== */
+/* Forzar texto blanco en <a> dentro de botones (sobrescribe regla global de 'a') */
+.btn a,
 .btn-consulta,
 .btn-leer-mas,
 #viabilidad .btn-success,
 .btn-thank-you,
-.blog-article-btn {
-    color: var(--blanco) !important;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.4) !important;
+.blog-article-btn,
+.btn a:link,
+.btn a:visited,
+.btn-consulta:link,
+.btn-consulta:visited,
+.btn-leer-mas:link,
+.btn-leer-mas:visited {
+    color: #FFFFFF !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6) !important;
 }
 
-.btn:hover,
+.btn a:hover,
 .btn-consulta:hover,
 .btn-leer-mas:hover,
 #viabilidad .btn-success:hover {
-    color: var(--blanco) !important;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+    color: #FFFFFF !important;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.7) !important;
 }
 
-/* Asegurar que el texto dentro de botones siempre sea blanco */
+/* Asegurar que cualquier hijo de botón sea blanco */
 .btn *,
 .btn-consulta *,
 .btn-leer-mas *,
