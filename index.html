@@ -163,19 +163,19 @@
                 </div>
             </div>
 
-            <!-- FORMULARIO WEB3FORMS -->
+            <!-- FORMULARIO WEB3FORMS - GRATIS -->
             <form id="formViabilidad" 
                   action="https://api.web3forms.com/submit" 
                   method="POST" 
                   enctype="multipart/form-data" 
+                  target="hidden-iframe" <!-- Envío oculto -->
                   class="card p-4 shadow-sm mx-auto" 
                   style="max-width: 600px; border-radius: 16px;">
                 
                 <!-- Web3Forms Config -->
                 <input type="hidden" name="access_key" value="ebf89d4b-74ce-4f28-9c29-740e03ac6645">
-                <input type="hidden" name="redirect" value="https://jurentis.es/gracias.html">
                 <input type="hidden" name="subject" value="Nueva viabilidad inmediata - Jurentis">
-                <input type="checkbox" name="botcheck" class="d-none" style="display:none;"> <!-- Anti-spam -->
+                <input type="checkbox" name="botcheck" class="d-none">
 
                 <div class="row g-3">
                     <div class="col-md-6">
@@ -198,7 +198,7 @@
                         </div>
                     </div>
                     <div class="col-12 text-center">
-                        <button type="submit" class="btn btn-success btn-lg px-5 d-flex align-items-center justify-content-center gap-2 mx-auto" 
+                        <button type="button" id="btnEnviar" class="btn btn-success btn-lg px-5 d-flex align-items-center justify-content-center gap-2 mx-auto" 
                                 style="min-width: 280px; border-radius: 50px;">
                             Enviar por WhatsApp + Email (en < 60 seg)
                         </button>
@@ -208,6 +208,9 @@
                     </div>
                 </div>
             </form>
+
+            <!-- IFRAME OCULTO PARA ENVÍO -->
+            <iframe name="hidden-iframe" style="display:none;"></iframe>
         </div>
     </section>
 
@@ -436,7 +439,6 @@
                         </div>
 
                         <input type="hidden" name="access_key" value="ebf89d4b-74ce-4f28-9c29-740e03ac6645">
-                        <input type="hidden" name="redirect" value="https://jurentis.es/gracias.html">
                         <input type="hidden" name="subject" value="Nuevo mensaje desde Jurentis.es">
 
                         <div class="btn-center-wrapper mt-4">
@@ -498,13 +500,14 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 
-    <!-- JS FORM VIABILIDAD - CORREGIDO -->
+    <!-- JS VIABILIDAD - 100% GRATIS -->
     <script>
-    document.getElementById('formViabilidad').addEventListener('submit', function(e) {
+    document.getElementById('btnEnviar').addEventListener('click', function() {
+        const form = document.getElementById('formViabilidad');
+        
         // Validar producto
         const producto = document.querySelector('input[name="producto"]:checked');
         if (!producto) {
-            e.preventDefault();
             alert('Por favor, selecciona un producto.');
             return;
         }
@@ -512,17 +515,16 @@
         // Validar archivo
         const archivos = document.getElementById('archivos').files;
         if (!archivos || archivos.length === 0) {
-            e.preventDefault();
             alert('Por favor, adjunta al menos un documento.');
             return;
         }
 
-        // Construir mensaje limpio
-        const nombre = this.nombre.value.trim() || 'No proporcionado';
-        const tel = this.telefono.value.trim() || 'No proporcionado';
-        const email = this.email.value.trim() || 'No proporcionado';
+        // Construir mensaje WhatsApp
+        const nombre = form.nombre.value.trim() || 'No proporcionado';
+        const tel = form.telefono.value.trim() || 'No proporcionado';
+        const email = form.email.value.trim() || 'No proporcionado';
         const numArchivos = archivos.length;
-        
+
         const mensaje = `¡VIABILIDAD INMEDIATA!\n\n` +
                        `Producto: ${producto.value}\n` +
                        `Nombre: ${nombre}\n` +
@@ -531,24 +533,28 @@
                        `Documentos: ${numArchivos} archivo(s) adjunto(s)\n\n` +
                        `Revisado GRATIS en <24h. ¡Gracias!`;
 
-        // Abrir WhatsApp (NO bloquea el envío)
+        // Abrir WhatsApp
         window.open(`https://wa.me/34672857131?text=${encodeURIComponent(mensaje)}`, '_blank');
 
-        // Loading visual
-        const btn = this.querySelector('button[type="submit"]');
+        // Cambiar botón
+        const btn = this;
         const original = btn.innerHTML;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         btn.disabled = true;
 
-        // Restaurar botón tras 5 segundos (por si tarda)
-        setTimeout(() => {
-            if (btn.innerHTML.includes('Enviando')) {
-                btn.innerHTML = original;
-                btn.disabled = false;
-            }
-        }, 5000);
+        // Enviar formulario (oculto)
+        form.submit();
 
-        // NO HAY e.preventDefault() → el form se envía a Web3Forms
+        // Redirigir a gracias.html (GRATIS)
+        setTimeout(() => {
+            window.location.href = 'gracias.html';
+        }, 1500);
+
+        // Restaurar botón
+        setTimeout(() => {
+            btn.innerHTML = original;
+            btn.disabled = false;
+        }, 3000);
     });
     </script>
 </body>
