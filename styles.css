@@ -503,3 +503,77 @@ canvas:not(:supported) + .fallback-bg { display: block; }
     .hero h1 { font-size: 2.5rem !important; }
     .hero p { font-size: 1.1rem !important; }
 }
+
+/* ==================== VIABILIDAD - EMOJIS + CENTRADO + CONTRASTE ==================== */
+.producto-card {
+    background: var(--blanco) !important;
+    border: 2px solid #e9ecef !important;
+    border-radius: 16px !important;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+    padding: 1.5rem 1rem !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    text-align: center !important;
+}
+
+.producto-card:hover {
+    border-color: var(--verde-medio) !important;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(46, 125, 104, 0.15) !important;
+}
+
+.producto-card input:checked + .card-content {
+    background: var(--verde-medio) !important;
+    color: white !important;
+    border-radius: 12px;
+    padding: 1rem;
+    transform: scale(1.05);
+}
+
+/* EMOJIS REALES - VISIBLES Y CENTRADOS */
+.producto-card .icono {
+    font-size: 3rem !important;
+    color: var(--verde-medio) !important;
+    margin-bottom: 0.75rem !important;
+    line-height: 1 !important;
+    display: block !important;
+}
+
+.producto-card input:checked + .card-content .icono {
+    color: white !important;
+}
+
+/* TEXTO CON ALTO CONTRASTE */
+.producto-card strong {
+    color: var(--verde-oscuro) !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+}
+
+.producto-card small {
+    color: #555 !important;
+    font-size: 0.85rem !important;
+}
+
+/* CENTRADO PERFECTO */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+/* BOTONES LEER MÁS CENTRADOS */
+.btn-leer-mas {
+    display: block !important;
+    margin: 1rem auto 0 !important;
+    min-width: 160px !important;
+}
+
+/* FOOTER REDES */
+footer a.text-white:hover {
+    color: var(--verde-aguamarina) !important;
+}
