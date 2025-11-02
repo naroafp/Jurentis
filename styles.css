@@ -570,7 +570,7 @@ canvas:not(:supported) + .fallback-bg {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.8rem !important;     /* ← MÁS SEPARACIÓN ENTRE BOTONES */
+    gap: 1.8rem !important;
     margin-top: 3rem !important;
     padding: 0 1rem;
 }
@@ -770,4 +770,124 @@ canvas:not(:supported) + .fallback-bg {
 .blog-article-buttons .btn-consulta i,
 .article-content .btn-consulta i {
     font-size: 1.3rem !important;
+}
+
+/* ==================== NUEVA SECCIÓN: VIABILIDAD INMEDIATA ==================== */
+#viabilidad {
+    background: linear-gradient(135deg, #e8f5e9 0%, #d4edda 100%);
+    padding: 4rem 0 !important;
+}
+
+#viabilidad .display-5 {
+    color: var(--verde-oscuro);
+    font-weight: 800;
+}
+
+#viabilidad .lead {
+    color: var(--verde-medio);
+    font-weight: 600;
+}
+
+.producto-card {
+    background: var(--blanco);
+    border: 2px solid var(--gris-claro) !important;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.producto-card:hover {
+    border-color: var(--verde-medio) !important;
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(46, 125, 104, 0.15);
+}
+
+.producto-card input:checked + div {
+    background: var(--verde-medio) !important;
+    color: var(--blanco) !important;
+}
+
+.producto-card .icono {
+    font-size: 2.2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    filter: brightness(0) saturate(100%) invert(28%) sepia(67%) saturate(414%) hue-rotate(130deg) brightness(93%) contrast(92%);
+}
+
+.producto-card input:checked + div .icono {
+    filter: brightness(0) saturate(100%) invert(100%);
+}
+
+.producto-card strong {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.producto-card small {
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+/* Formulario */
+#viabilidad .form-control {
+    border: 2px solid var(--verde-oscuro);
+    border-radius: 12px;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+#viabilidad .form-control:focus {
+    border-color: var(--verde-medio);
+    box-shadow: 0 0 0 0.2rem rgba(46, 125, 104, 0.2);
+    background: #f8fff9;
+}
+
+.file-upload {
+    background: #f0fdf4;
+    border: 3px dashed var(--verde-medio);
+    border-radius: 16px;
+    padding: 2rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.file-upload:hover {
+    background: #e6f7eb;
+    border-color: var(--verde-aguamarina);
+}
+
+.file-upload label {
+    color: var(--verde-medio);
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+#viabilidad .btn-success {
+    background: var(--verde-medio) !important;
+    border: none !important;
+    font-size: 1.15rem !important;
+    padding: 1rem 2.5rem !important;
+    min-width: 260px !important;
+}
+
+#viabilidad .btn-success:hover {
+    background: var(--verde-aguamarina) !important;
+    border: 2px solid var(--verde-medio) !important;
+    transform: translateY(-3px);
+}
+
+#viabilidad small.text-muted {
+    font-size: 0.9rem;
+    color: var(--verde-medio) !important;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #viabilidad .col-6 { flex: 0 0 50%; max-width: 50%; }
+    #viabilidad .btn-success { font-size: 1rem; padding: 0.9rem 2rem; }
 }
