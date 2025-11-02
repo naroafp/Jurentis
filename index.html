@@ -52,7 +52,6 @@
         <div class="container position-relative" style="z-index: 2;">
             <h1 class="display-4 fw-bold">Jurentis</h1>
             <p class="lead">La firma legal en la que puedes confiar, en todo el territorio nacional.</p>
-            
             <div class="btn-center-wrapper mt-4">
                 <a href="https://wa.me/+34672857131?text=Hola,%20quiero%20una%20consulta%20gratuita" 
                    class="btn-consulta mx-auto d-block" target="_blank">
@@ -72,6 +71,7 @@
 
             <!-- 8 TARJETAS DE PRODUCTO -->
             <div class="row justify-content-center g-3 mb-5">
+                <!-- 1. Tarjeta revolving -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Tarjeta revolving" id="prod1" class="d-none" required>
                     <label for="prod1" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -82,6 +82,7 @@
                         </div>
                     </label>
                 </div>
+                <!-- 2. Préstamo personal -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Préstamo personal" id="prod2" class="d-none">
                     <label for="prod2" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -92,6 +93,7 @@
                         </div>
                     </label>
                 </div>
+                <!-- 3. Hipoteca -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Hipoteca" id="prod3" class="d-none">
                     <label for="prod3" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -102,6 +104,7 @@
                         </div>
                     </label>
                 </div>
+                <!-- 4. Cuenta corriente -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Cuenta corriente" id="prod4" class="d-none">
                     <label for="prod4" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -112,6 +115,7 @@
                         </div>
                     </label>
                 </div>
+                <!-- 5. Línea de crédito -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Línea de crédito" id="prod5" class="d-none">
                     <label for="prod5" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -122,6 +126,7 @@
                         </div>
                     </label>
                 </div>
+                <!-- 6. Producto inversión -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Producto inversión" id="prod6" class="d-none">
                     <label for="prod6" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -132,6 +137,7 @@
                         </div>
                     </label>
                 </div>
+                <!-- 7. Seguro -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Seguro" id="prod7" class="d-none">
                     <label for="prod7" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -142,6 +148,7 @@
                         </div>
                     </label>
                 </div>
+                <!-- 8. Telefonía -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Telefonía" id="prod8" class="d-none">
                     <label for="prod8" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -154,18 +161,18 @@
                 </div>
             </div>
 
-            <!-- FORMULARIO WEB3FORMS -->
+            <!-- FORMULARIO WEB3FORMS - ENVÍO REAL + ARCHIVOS -->
             <form id="formViabilidad" 
                   action="https://api.web3forms.com/submit" 
                   method="POST" 
-                  enctype="multipart/form-data" 
-                  target="hidden-submit-frame"
+                  enctype="multipart/form-data"
                   class="card p-4 shadow-sm mx-auto" 
                   style="max-width: 600px; border-radius: 16px;">
                 
                 <!-- Web3Forms Config -->
                 <input type="hidden" name="access_key" value="ebf89d4b-74ce-4f28-9c29-740e03ac6645">
                 <input type="hidden" name="subject" value="Nueva viabilidad inmediata - Jurentis">
+                <input type="hidden" name="redirect" value="https://jurentis.es/gracias.html">
                 <input type="checkbox" name="botcheck" class="d-none">
 
                 <div class="row g-3">
@@ -199,9 +206,6 @@
                     </div>
                 </div>
             </form>
-
-            <!-- IFRAME OCULTO PARA ENVÍO REAL -->
-            <iframe name="hidden-submit-frame" style="display: none;"></iframe>
         </div>
     </section>
 
@@ -474,21 +478,12 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- TOAST -->
-    <div class="toast-notification" id="toast">
-        <div class="toast-icon"></div>
-        <div class="toast-content">
-            <div class="toast-message"></div>
-        </div>
-        <button class="toast-close">×</button>
-    </div>
-
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 
-    <!-- JS VIABILIDAD - ENVÍO REAL + ARCHIVOS + REDIRECCIÓN GRATIS -->
+    <!-- JS VIABILIDAD - ENVÍO REAL + ARCHIVOS + REDIRECCIÓN -->
     <script>
     document.getElementById('btnEnviar').addEventListener('click', function() {
         const form = document.getElementById('formViabilidad');
@@ -530,19 +525,8 @@
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         btn.disabled = true;
 
-        // Enviar formulario en iframe oculto
+        // Enviar formulario (ENVÍO REAL)
         form.submit();
-
-        // Redirigir a gracias.html (GRATIS)
-        setTimeout(() => {
-            window.location.href = 'gracias.html';
-        }, 1500);
-
-        // Restaurar botón
-        setTimeout(() => {
-            btn.innerHTML = original;
-            btn.disabled = false;
-        }, 3000);
     });
     </script>
 </body>
