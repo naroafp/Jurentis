@@ -1,4 +1,4 @@
-// script.js - Compatible con tu HTML, ENVÍO REAL + ARCHIVOS + REDIRECCIÓN GRATIS
+// script.js - Compatible con tu HTML, SOLO WHATSAPP + MENSAJE CLARO
 document.addEventListener("DOMContentLoaded", function () {
 
     // ========================================
@@ -69,51 +69,58 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // VIABILIDAD INMEDIATA - SOLO WHATSAPP
-document.getElementById('btnEnviar')?.addEventListener('click', function () {
-    const form = document.getElementById('formViabilidad');
-    const btn = this;
+    // ========================================
+    // 3. VIABILIDAD INMEDIATA - SOLO WHATSAPP (FUNCIONA EN MÓVIL Y ESCRITORIO)
+    // ========================================
+    const btnEnviar = document.getElementById('btnEnviar');
+    const formViabilidad = document.getElementById('formViabilidad');
 
-    // Validar producto
-    const producto = document.querySelector('input[name="producto"]:checked');
-    if (!producto) {
-        alert('Por favor, selecciona un producto.');
-        return;
-    }
+    if (btnEnviar && formViabilidad) {
+        btnEnviar.addEventListener('click', function () {
+            const btn = this;
 
-    // Validar campos
-    if (!form.checkValidity()) {
-        alert('Por favor, completa nombre y teléfono.');
-        return;
-    }
+            // Validar producto
+            const producto = document.querySelector('input[name="producto"]:checked');
+            if (!producto) {
+                alert('Por favor, selecciona un producto.');
+                return;
+            }
 
-    // Datos
-    const nombre = form.nombre.value.trim() || 'Cliente';
-    const tel = form.telefono.value.trim();
-    const email = form.email.value.trim() || 'No proporcionado';
+            // Validar campos
+            if (!formViabilidad.checkValidity()) {
+                alert('Por favor, completa nombre y teléfono.');
+                return;
+            }
 
-    // Mensaje WhatsApp
-    const mensaje = `¡VIABILIDAD INMEDIATA!\n\n` +
-                   `Producto: *${producto.value}*\n` +
-                   `Nombre: *${nombre}*\n` +
-                   `Teléfono: *${tel}*\n` +
-                   `Email: ${email}\n\n` +
-                   `Por favor, envía aquí tu contrato, extracto o factura (PDF o foto) y te respondemos GRATIS en menos de 24h.\n\n` +
-                   `¡Gracias!`;
+            // Datos del formulario
+            const nombre = formViabilidad.nombre.value.trim() || 'Cliente';
+            const tel = formViabilidad.telefono.value.trim();
+            const email = formViabilidad.email.value.trim() || 'No proporcionado';
 
-    // Abrir WhatsApp
-    window.open(`https://wa.me/34672857131?text=${encodeURIComponent(mensaje)}`, '_blank');
+            // Mensaje WhatsApp
+            const mensaje = `¡VIABILIDAD INMEDIATA!\n\n` +
+                           `Producto: *${producto.value}*\n` +
+                           `Nombre: *${nombre}*\n` +
+                           `Teléfono: *${tel}*\n` +
+                           `Email: ${email}\n\n` +
+                           `Por favor, envía aquí tu contrato, extracto o factura (PDF o foto) y te respondemos GRATIS en menos de 24h.\n\n` +
+                           `¡Gracias!`;
 
-    // Feedback
-    const original = btn.innerHTML;
-    btn.innerHTML = '<i class="fas fa-check"></i> Abriendo WhatsApp...';
-    btn.disabled = true;
+            // === ABRIR WHATSAPP EN MÓVIL Y ESCRITORIO ===
+            const whatsappURL = `https://wa.me/34672857131?text=${encodeURIComponent(mensaje)}`;
+            window.location.href = whatsappURL;
 
-    setTimeout(() => {
-        btn.innerHTML = original;
-        btn.disabled = false;
-    }, 3000);
-});
+            // Feedback visual
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Abriendo WhatsApp...';
+            btn.disabled = true;
+
+            // Restaurar botón después de 3 segundos
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 3000);
+        });
     }
 
     // ========================================
@@ -200,4 +207,3 @@ document.getElementById('btnEnviar')?.addEventListener('click', function () {
     });
 
 });
-
