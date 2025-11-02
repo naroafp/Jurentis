@@ -1,4 +1,4 @@
-// script.js - Compatible con tu HTML, SOLO WHATSAPP + MENSAJE CLARO
+// script.js - SOLO WHATSAPP + FUNCIONA EN MÓVIL Y ESCRITORIO
 document.addEventListener("DOMContentLoaded", function () {
 
     // ========================================
@@ -57,11 +57,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ========================================
-    // 2. Manejo del formulario de contacto (Web3Forms)
+    // 2. Formulario de contacto (Web3Forms)
     // ========================================
     const contactForm = document.getElementById("contact-form");
     const submitBtn = document.getElementById("submit-btn");
-
     if (contactForm && submitBtn) {
         contactForm.addEventListener("submit", function () {
             submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status"></span> Enviando...`;
@@ -70,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ========================================
-    // 3. VIABILIDAD INMEDIATA - SOLO WHATSAPP (FUNCIONA EN MÓVIL Y ESCRITORIO)
+    // 3. VIABILIDAD: ABRIR WHATSAPP (MÓVIL + ESCRITORIO)
     // ========================================
     const btnEnviar = document.getElementById('btnEnviar');
     const formViabilidad = document.getElementById('formViabilidad');
@@ -86,13 +85,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Validar campos
+            // Validar formulario
             if (!formViabilidad.checkValidity()) {
                 alert('Por favor, completa nombre y teléfono.');
                 return;
             }
 
-            // Datos del formulario
+            // Datos
             const nombre = formViabilidad.nombre.value.trim() || 'Cliente';
             const tel = formViabilidad.telefono.value.trim();
             const email = formViabilidad.email.value.trim() || 'No proporcionado';
@@ -106,31 +105,25 @@ document.addEventListener("DOMContentLoaded", function () {
                            `Por favor, envía aquí tu contrato, extracto o factura (PDF o foto) y te respondemos GRATIS en menos de 24h.\n\n` +
                            `¡Gracias!`;
 
-            // === ABRIR WHATSAPP EN MÓVIL Y ESCRITORIO ===
+            // ABRIR WHATSAPP EN MÓVIL Y ESCRITORIO
             const whatsappURL = `https://wa.me/34672857131?text=${encodeURIComponent(mensaje)}`;
             window.location.href = whatsappURL;
 
-            // Feedback visual
-            const originalText = btn.innerHTML;
+            // Feedback
+            const original = btn.innerHTML;
             btn.innerHTML = 'Abriendo WhatsApp...';
             btn.disabled = true;
 
-            // Restaurar botón después de 3 segundos
             setTimeout(() => {
-                btn.innerHTML = originalText;
+                btn.innerHTML = original;
                 btn.disabled = false;
             }, 3000);
         });
     }
 
     // ========================================
-    // 4. ANIMACIONES DE ENTRADA SUAVES
+    // 4. Animaciones suaves
     // ========================================
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -139,12 +132,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-    document.querySelectorAll('#viabilidad .producto-card').forEach((card, index) => {
+    document.querySelectorAll('#viabilidad .producto-card').forEach((card, i) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
-        card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+        card.style.transition = `all 0.6s ease ${i * 0.1}s`;
         observer.observe(card);
     });
 
@@ -156,28 +149,13 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(formCard);
     }
 
-    const title = document.querySelector('#viabilidad h2');
-    const subtitle = document.querySelector('#viabilidad p');
-    if (title) {
-        title.style.opacity = '0';
-        title.style.transform = 'translateY(20px)';
-        title.style.transition = 'all 0.6s ease';
-        observer.observe(title);
-    }
-    if (subtitle) {
-        subtitle.style.opacity = '0';
-        subtitle.style.transform = 'translateY(20px)';
-        subtitle.style.transition = 'all 0.6s ease 0.2s';
-        observer.observe(subtitle);
-    }
-
     // ========================================
-    // 5. Scroll suave para anclas internas
+    // 5. Scroll suave
     // ========================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             const href = this.getAttribute("href");
-            if (href === "#" || href.startsWith("#")) {
+            if (href.startsWith("#")) {
                 const target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
@@ -185,9 +163,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         top: target.offsetTop - 90,
                         behavior: "smooth"
                     });
-                    const navbarCollapse = document.querySelector('.navbar-collapse');
-                    if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                        new bootstrap.Collapse(navbarCollapse).hide();
+                    const navbar = document.querySelector('.navbar-collapse');
+                    if (navbar?.classList.contains('show')) {
+                        new bootstrap.Collapse(navbar).hide();
                     }
                 }
             }
@@ -199,11 +177,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // ========================================
     document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
         link.addEventListener('click', () => {
-            const navbarCollapse = document.querySelector('.navbar-collapse');
-            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                new bootstrap.Collapse(navbarCollapse).hide();
+            const navbar = document.querySelector('.navbar-collapse');
+            if (navbar?.classList.contains('show')) {
+                new bootstrap.Collapse(navbar).hide();
             }
         });
     });
-
 });
