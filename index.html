@@ -73,7 +73,7 @@
         </div>
 
         <div class="row justify-content-center g-3 mb-5">
-            <!-- 2. TARJETAS CON ICONOS REALES -->
+            <!-- Tarjeta 1: Tarjeta revolving -->
             <div class="col-6 col-md-3">
                 <label class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
                     <input type="radio" name="producto" value="Tarjeta revolving" class="d-none" required>
@@ -84,6 +84,7 @@
                     </div>
                 </label>
             </div>
+            <!-- Tarjeta 2: Préstamo personal -->
             <div class="col-6 col-md-3">
                 <label class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
                     <input type="radio" name="producto" value="Préstamo personal" class="d-none">
@@ -94,6 +95,7 @@
                     </div>
                 </label>
             </div>
+            <!-- Tarjeta 3: Hipoteca -->
             <div class="col-6 col-md-3">
                 <label class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
                     <input type="radio" name="producto" value="Hipoteca" class="d-none">
@@ -104,6 +106,7 @@
                     </div>
                 </label>
             </div>
+            <!-- Tarjeta 4: Cuenta corriente -->
             <div class="col-6 col-md-3">
                 <label class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
                     <input type="radio" name="producto" value="Cuenta corriente" class="d-none">
@@ -114,6 +117,7 @@
                     </div>
                 </label>
             </div>
+            <!-- Tarjeta 5: Línea de crédito -->
             <div class="col-6 col-md-3">
                 <label class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
                     <input type="radio" name="producto" value="Línea de crédito" class="d-none">
@@ -124,6 +128,7 @@
                     </div>
                 </label>
             </div>
+            <!-- Tarjeta 6: Inversión -->
             <div class="col-6 col-md-3">
                 <label class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
                     <input type="radio" name="producto" value="Producto inversión" class="d-none">
@@ -134,6 +139,7 @@
                     </div>
                 </label>
             </div>
+            <!-- Tarjeta 7: Seguro -->
             <div class="col-6 col-md-3">
                 <label class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
                     <input type="radio" name="producto" value="Seguro" class="d-none">
@@ -144,6 +150,7 @@
                     </div>
                 </label>
             </div>
+            <!-- Tarjeta 8: Telefonía -->
             <div class="col-6 col-md-3">
                 <label class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
                     <input type="radio" name="producto" value="Telefonía" class="d-none">
@@ -156,9 +163,36 @@
             </div>
         </div>
 
-        <!-- FORMULARIO (sin cambios) -->
+        <!-- FORMULARIO (AHORA INCLUIDO COMPLETO) -->
         <form id="formViabilidad" class="card p-4 shadow-sm mx-auto" style="max-width: 600px; border-radius: 16px;">
-            <!-- ... (el resto del formulario queda igual) ... -->
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <input type="text" name="nombre" class="form-control form-control-lg" placeholder="Tu nombre *" required>
+                </div>
+                <div class="col-md-6">
+                    <input type="tel" name="telefono" class="form-control form-control-lg" placeholder="Teléfono (WhatsApp) *" required>
+                </div>
+                <div class="col-12">
+                    <input type="email" name="email" class="form-control" placeholder="Email (opcional)">
+                </div>
+                <div class="col-12">
+                    <div class="file-upload position-relative text-center p-4 rounded-4 border border-3 border-dashed">
+                        <input type="file" id="archivos" name="archivos" multiple accept=".pdf,.jpg,.jpeg,.png" class="position-absolute w-100 h-100 opacity-0 top-0 start-0 cursor-pointer" required>
+                        <label for="archivos" class="d-block mb-0 fw-bold text-success">
+                            Subir contrato, extracto o factura (PDF o foto)
+                        </label>
+                        <small class="d-block text-muted mt-1">Máx. 10 MB por archivo</small>
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-success btn-lg px-5 d-flex align-items-center justify-content-center gap-2 mx-auto" style="min-width: 280px; border-radius: 50px;">
+                        Enviar por WhatsApp (en < 60 seg)
+                    </button>
+                </div>
+                <div class="col-12 text-center">
+                    <small class="text-muted">Sin compromiso · Revisión gratuita · Respuesta en < 24h</small>
+                </div>
+            </div>
         </form>
     </div>
 </section>
@@ -452,4 +486,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
