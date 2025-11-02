@@ -71,8 +71,9 @@
                 <p class="text-center mb-5">Elige tu producto, sube tu contrato y en <strong>menos de 24h</strong> te decimos si puedes reclamar <strong>GRATIS</strong>.</p>
             </div>
 
+            <!-- 8 TARJETAS DE PRODUCTO -->
             <div class="row justify-content-center g-3 mb-5">
-                <!-- Tarjeta 1 -->
+                <!-- 1. Tarjeta revolving -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Tarjeta revolving" id="prod1" class="d-none" required>
                     <label for="prod1" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -83,7 +84,7 @@
                         </div>
                     </label>
                 </div>
-                <!-- Tarjeta 2 -->
+                <!-- 2. Préstamo personal -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Préstamo personal" id="prod2" class="d-none">
                     <label for="prod2" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -94,7 +95,7 @@
                         </div>
                     </label>
                 </div>
-                <!-- Tarjeta 3 -->
+                <!-- 3. Hipoteca -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Hipoteca" id="prod3" class="d-none">
                     <label for="prod3" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -105,7 +106,7 @@
                         </div>
                     </label>
                 </div>
-                <!-- Tarjeta 4 -->
+                <!-- 4. Cuenta corriente -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Cuenta corriente" id="prod4" class="d-none">
                     <label for="prod4" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -116,7 +117,7 @@
                         </div>
                     </label>
                 </div>
-                <!-- Tarjeta 5 -->
+                <!-- 5. Línea de crédito -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Línea de crédito" id="prod5" class="d-none">
                     <label for="prod5" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -127,7 +128,7 @@
                         </div>
                     </label>
                 </div>
-                <!-- Tarjeta 6 -->
+                <!-- 6. Producto inversión -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Producto inversión" id="prod6" class="d-none">
                     <label for="prod6" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -138,7 +139,7 @@
                         </div>
                     </label>
                 </div>
-                <!-- Tarjeta 7 -->
+                <!-- 7. Seguro -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Seguro" id="prod7" class="d-none">
                     <label for="prod7" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -149,7 +150,7 @@
                         </div>
                     </label>
                 </div>
-                <!-- Tarjeta 8 -->
+                <!-- 8. Telefonía -->
                 <div class="col-6 col-md-3">
                     <input type="radio" name="producto" value="Telefonía" id="prod8" class="d-none">
                     <label for="prod8" class="producto-card d-block text-center p-4 rounded-3 shadow-sm h-100 border border-2">
@@ -163,7 +164,14 @@
             </div>
 
             <!-- FORMULARIO WEB3FORMS -->
-            <form id="formViabilidad" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="card p-4 shadow-sm mx-auto" style="max-width: 600px; border-radius: 16px;">
+            <form id="formViabilidad" 
+                  action="https://api.web3forms.com/submit" 
+                  method="POST" 
+                  enctype="multipart/form-data" 
+                  class="card p-4 shadow-sm mx-auto" 
+                  style="max-width: 600px; border-radius: 16px;">
+                
+                <!-- Web3Forms Config -->
                 <input type="hidden" name="access_key" value="ebf89d4b-74ce-4f28-9c29-740e03ac6645">
                 <input type="hidden" name="redirect" value="https://jurentis.es/gracias.html">
                 <input type="hidden" name="subject" value="Nueva viabilidad inmediata - Jurentis">
@@ -181,7 +189,8 @@
                     </div>
                     <div class="col-12">
                         <div class="file-upload position-relative text-center p-4 rounded-4 border border-3 border-dashed">
-                            <input type="file" id="archivos" name="archivos[]" multiple accept=".pdf,.jpg,.jpeg,.png" class="position-absolute w-100 h-100 opacity-0 top-0 start-0 cursor-pointer" required>
+                            <input type="file" id="archivos" name="archivos[]" multiple accept=".pdf,.jpg,.jpeg,.png" 
+                                   class="position-absolute w-100 h-100 opacity-0 top-0 start-0 cursor-pointer" required>
                             <label for="archivos" class="d-block mb-0 fw-bold text-success">
                                 Subir contrato, extracto o factura (PDF o foto)
                             </label>
@@ -189,7 +198,8 @@
                         </div>
                     </div>
                     <div class="col-12 text-center">
-                        <button type="submit" class="btn btn-success btn-lg px-5 d-flex align-items-center justify-content-center gap-2 mx-auto" style="min-width: 280px; border-radius: 50px;">
+                        <button type="submit" class="btn btn-success btn-lg px-5 d-flex align-items-center justify-content-center gap-2 mx-auto" 
+                                style="min-width: 280px; border-radius: 50px;">
                             Enviar por WhatsApp + Email (en < 60 seg)
                         </button>
                     </div>
@@ -212,7 +222,7 @@
                     <div class="value-card p-4 rounded-3 shadow-sm">
                         <svg class="geo-icon mb-3" viewBox="0 0 60 60" aria-label="Experiencia">
                             <circle cx="30" cy="30" r="25" fill="none" stroke="currentColor" stroke-width="2"/>
-                            <line x1="30" y1="10" x2="30" y2="50" stroke="currentColor" stroke-width="1.5"/>
+                            <line x1="30" y1="10" x2="3030" y2="50" stroke="currentColor" stroke-width="1.5"/>
                             <line x1="15" y1="30" x2="45" y2="30" stroke="currentColor" stroke-width="1.5"/>
                         </svg>
                         <h3>Experiencia</h3>
@@ -300,7 +310,7 @@
                         <div class="card-body d-flex flex-column">
                             <h3 class="card-title">Financiación de compras con T.A.E. usurario</h3>
                             <p class="card-text flex-grow-1">Te esperamos como revisar si un interés remuneratorio es o no usurario.</p>
-                            <a href="blog1.html" class="btn-leer-mas mt-auto mx-auto d-block">
+                            <a href="blog1.html" class="btn	leer-mas mt-auto mx-auto d-block">
                                 Leer Más
                             </a>
                         </div>
@@ -429,7 +439,6 @@
                         <input type="hidden" name="redirect" value="https://jurentis.es/gracias.html">
                         <input type="hidden" name="subject" value="Nuevo mensaje desde Jurentis.es">
 
-                        <!-- BOTÓN CENTRADO -->
                         <div class="btn-center-wrapper mt-4">
                             <button type="submit" id="submit-btn" class="mx-auto d-block">
                                 Enviar Consulta
@@ -492,6 +501,7 @@
     <!-- JS FORM VIABILIDAD -->
     <script>
     document.getElementById('formViabilidad').addEventListener('submit', function(e) {
+        // Validar producto
         const producto = document.querySelector('input[name="producto"]:checked');
         if (!producto) {
             e.preventDefault();
@@ -499,6 +509,7 @@
             return;
         }
 
+        // Validar archivo
         const archivos = document.getElementById('archivos').files;
         if (!archivos || archivos.length === 0) {
             e.preventDefault();
@@ -506,19 +517,30 @@
             return;
         }
 
-        const nombre = this.nombre.value || 'No proporcionado';
-        const tel = this.telefono.value || 'No proporcionado';
-        const email = this.email.value || 'No proporcionado';
+        // Construir mensaje limpio
+        const nombre = this.nombre.value.trim() || 'No proporcionado';
+        const tel = this.telefono.value.trim() || 'No proporcionado';
+        const email = this.email.value.trim() || 'No proporcionado';
         const numArchivos = archivos.length;
-        const mensaje = `¡VIABILIDAD INMEDIATA!%0A%0AProducto: ${producto.value}%0ANombre: ${nombre}%0ATeléfono: ${tel}%0AEmail: ${email}%0ADocumentos: ${numArchivos} archivo(s) adjunto(s)%0A%0ARevisado GRATIS en <24h. ¡Gracias!`;
+        
+        const mensaje = `¡VIABILIDAD INMEDIATA!\n\n` +
+                       `Producto: ${producto.value}\n` +
+                       `Nombre: ${nombre}\n` +
+                       `Teléfono: ${tel}\n` +
+                       `Email: ${email}\n` +
+                       `Documentos: ${numArchivos} archivo(s) adjunto(s)\n\n` +
+                       `Revisado GRATIS en <24h. ¡Gracias!`;
 
+        // Abrir WhatsApp
         window.open(`https://wa.me/34672857131?text=${encodeURIComponent(mensaje)}`, '_blank');
 
+        // Loading
         const btn = this.querySelector('button[type="submit"]');
         const original = btn.innerHTML;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         btn.disabled = true;
 
+        // Restaurar botón tras 3s
         setTimeout(() => {
             btn.innerHTML = original;
             btn.disabled = false;
