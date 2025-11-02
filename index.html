@@ -63,142 +63,132 @@
     </section>
 
     <!-- VIABILIDAD INMEDIATA -->
-    <section id="viabilidad" class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold" style="color: var(--verde-oscuro);">Viabilidad Inmediata</h2>
-                <p class="lead" style="color: var(--verde-medio);">
-                    Elige tu producto, sube tu contrato y en <strong>menos de 24h</strong> te decimos si puedes reclamar <strong>GRATIS</strong>.
-                </p>
-            </div>
-
-            <!-- PRODUCTOS -->
-            <div class="row justify-content-center g-3 mb-5">
-                <!-- Tarjeta revolving -->
-                <div class="col-6 col-md-3">
-                    <label class="producto-card d-block p-4 rounded-3 shadow-sm text-center h-100" style="border: 2px solid var(--gris-claro); cursor: pointer;">
-                        <input type="radio" name="producto" value="Tarjeta revolving" class="d-none" required>
-                        <div class="mb-3">
-                            <div class="icono fs-1 text-success mb-2">Tarjeta</div>
-                            <strong class="d-block fs-6 fw-bold">Tarjeta revolving</strong>
-                            <small class="text-muted">(Wizink, Cofidis...)</small>
-                        </div>
-                    </label>
-                </div>
-                <!-- Préstamo personal -->
-                <div class="col-6 col-md-3">
-                    <label class="producto-card d-block p-4 rounded-3 shadow-sm text-center h-100" style="border: 2px solid var(--gris-claro); cursor: pointer;">
-                        <input type="radio" name="producto" value="Préstamo personal" class="d-none">
-                        <div class="mb-3">
-                            <div class="icono fs-1 text-success mb-2">Préstamo</div>
-                            <strong class="d-block fs-6 fw-bold">Préstamo personal</strong>
-                            <small class="text-muted">(usura, comisiones)</small>
-                        </div>
-                    </label>
-                </div>
-                <!-- Hipoteca -->
-                <div class="col-6 col-md-3">
-                    <label class="producto-card d-block p-4 rounded-3 shadow-sm text-center h-100" style="border: 2px solid var(--gris-claro); cursor: pointer;">
-                        <input type="radio" name="producto" value="Hipoteca" class="d-none">
-                        <div class="mb-3">
-                            <div class="icono fs-1 text-success mb-2">Casa</div>
-                            <strong class="d-block fs-6 fw-bold">Hipoteca</strong>
-                            <small class="text-muted">(IRPH, gastos...)</small>
-                        </div>
-                    </label>
-                </div>
-                <!-- Cuenta corriente -->
-                <div class="col-6 col-md-3">
-                    <label class="producto-card d-block p-4 rounded-3 shadow-sm text-center h-100" style="border: 2px solid var(--gris-claro); cursor: pointer;">
-                        <input type="radio" name="producto" value="Cuenta corriente" class="d-none">
-                        <div class="mb-3">
-                            <div class="icono fs-1 text-success mb-2">Banco</div>
-                            <strong class="d-block fs-6 fw-bold">Cuenta corriente</strong>
-                            <small class="text-muted">(comisiones)</small>
-                        </div>
-                    </label>
-                </div>
-                <!-- Línea de crédito -->
-                <div class="col-6 col-md-3">
-                    <label class="producto-card d-block p-4 rounded-3 shadow-sm text-center h-100" style="border: 2px solid var(--gris-claro); cursor: pointer;">
-                        <input type="radio" name="producto" value="Línea de crédito" class="d-none">
-                        <div class="mb-3">
-                            <div class="icono fs-1 text-success mb-2">Recarga</div>
-                            <strong class="d-block fs-6 fw-bold">Línea de crédito</strong>
-                            <small class="text-muted">(intereses altos)</small>
-                        </div>
-                    </label>
-                </div>
-                <!-- Inversión -->
-                <div class="col-6 col-md-3">
-                    <label class="producto-card d-block p-4 rounded-3 shadow-sm text-center h-100" style="border: 2px solid var(--gris-claro); cursor: pointer;">
-                        <input type="radio" name="producto" value="Producto inversión" class="d-none">
-                        <div class="mb-3">
-                            <div class="icono fs-1 text-success mb-2">Gráfico</div>
-                            <strong class="d-block fs-6 fw-bold">Inversión</strong>
-                            <small class="text-muted">(swaps, preferentes)</small>
-                        </div>
-                    </label>
-                </div>
-                <!-- Seguro -->
-                <div class="col-6 col-md-3">
-                    <label class="producto-card d-block p-4 rounded-3 shadow-sm text-center h-100" style="border: 2px solid var(--gris-claro); cursor: pointer;">
-                        <input type="radio" name="producto" value="Seguro" class="d-none">
-                        <div class="mb-3">
-                            <div class="icono fs-1 text-success mb-2">Escudo</div>
-                            <strong class="d-block fs-6 fw-bold">Seguro</strong>
-                            <small class="text-muted">(vinculados)</small>
-                        </div>
-                    </label>
-                </div>
-                <!-- Telefonía -->
-                <div class="col-6 col-md-3">
-                    <label class="producto-card d-block p-4 rounded-3 shadow-sm text-center h-100" style="border: 2px solid var(--gris-claro); cursor: pointer;">
-                        <input type="radio" name="producto" value="Telefonía" class="d-none">
-                        <div class="mb-3">
-                            <div class="icono fs-1 text-success mb-2">Teléfono</div>
-                            <strong class="d-block fs-6 fw-bold">Telefonía</strong>
-                            <small class="text-muted">(permanencia)</small>
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <!-- FORMULARIO -->
-            <form id="formViabilidad" class="card p-5 shadow-sm mx-auto" style="max-width: 600px; border-radius: 16px; border: 1px solid rgba(46,125,104,0.1);">
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <input type="text" name="nombre" class="form-control form-control-lg" placeholder="Tu nombre *" required style="border: 2px solid var(--verde-oscuro); border-radius: 12px;">
-                    </div>
-                    <div class="col-md-6">
-                        <input type="tel" name="telefono" class="form-control form-control-lg" placeholder="Teléfono (WhatsApp) *" required style="border: 2px solid var(--verde-oscuro); border-radius: 12px;">
-                    </div>
-                    <div class="col-12">
-                        <input type="email" name="email" class="form-control" placeholder="Email (opcional)" style="border: 2px solid var(--verde-oscuro); border-radius: 12px;">
-                    </div>
-                    <div class="col-12">
-                        <div class="file-upload position-relative text-center p-5 rounded-4" style="background: #f0fdf4; border: 3px dashed var(--verde-medio); cursor: pointer;">
-                            <input type="file" id="archivos" name="archivos" multiple accept=".pdf,.jpg,.jpeg,.png" class="position-absolute w-100 h-100 opacity-0 top-0 start-0" required>
-                            <label for="archivos" class="d-block mb-0 fw-bold" style="color: var(--verde-medio); font-size: 1.1rem;">
-                                Subir contrato, extracto o factura (PDF o foto)
-                            </label>
-                            <small class="d-block text-muted mt-2">Máx. 10 MB por archivo</small>
-                        </div>
-                    </div>
-                    <div class="col-12 text-center">
-                        <button type="submit" class="btn btn-success btn-lg px-5 mt-3 d-flex align-items-center justify-content-center gap-2 mx-auto" style="min-width: 280px; border-radius: 50px; background: var(--verde-medio); border: none; box-shadow: 0 6px 16px rgba(46,125,104,0.35);">
-                            <i class="fab fa-whatsapp"></i> Enviar por WhatsApp (en < 60 seg)
-                        </button>
-                    </div>
-                    <div class="col-12 text-center">
-                        <small class="text-muted fw-medium" style="color: var(--verde-medio) !important;">
-                            Sin compromiso · Revisión gratuita · Respuesta en < 24h
-                        </small>
-                    </div>
-                </div>
-            </form>
+<section id="viabilidad" class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold text-primary">Viabilidad Inmediata</h2>
+            <p class="lead text-muted">
+                Elige tu producto, sube tu contrato y en <strong>menos de 24h</strong> te decimos si puedes reclamar <strong>GRATIS</strong>.
+            </p>
         </div>
-    </section>
+
+        <!-- 8 PRODUCTOS -->
+        <div class="row justify-content-center g-3 mb-5">
+            <div class="col-6 col-md-3">
+                <label class="producto-card d-block p-4 rounded-3 shadow-sm text-center h-100 border border-2">
+                    <input type="radio" name="producto" value="Tarjeta revolving" class="d-none" required>
+                    <div class="mb-2">
+                        <span class="icono fs-1 text-success d-block mb-2">Credit Card</span>
+                        <strong class="d-block fw-bold">Tarjeta revolving</strong>
+                        <small class="text-muted">(Wizink, Cofidis...)</small>
+                    </div>
+                </label>
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="producto-card d-block p-4 rounded-3 shadow-sm text-center h-100 border border-2">
+                    <input type="radio" name="producto" value="Préstamo personal" class="d-none">
+                    <div class="mb-2">
+                        <span class="icono fs-1 text-success d-block mb-2">Loan</span>
+                        <strong class="d-block fw-bold">Préstamo personal</strong>
+                        <small class="text-muted">(usura, comisiones)</small>
+                    </div>
+                </label>
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="producto-card d-block p-4 rounded-3 shadow-sm text-center h-100 border border-2">
+                    <input type="radio" name="producto" value="Hipoteca" class="d-none">
+                    <div class="mb-2">
+                        <span class="icono fs-1 text-success d-block mb-2">House</span>
+                        <strong class="d-block fw-bold">Hipoteca</strong>
+                        <small class="text-muted">(IRPH, gastos...)</small>
+                    </div>
+                </label>
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="producto-card d-block p-4 rounded-3 shadow-sm text-center h-100 border border-2">
+                    <input type="radio" name="producto" value="Cuenta corriente" class="d-none">
+                    <div class="mb-2">
+                        <span class="icono fs-1 text-success d-block mb-2">Bank</span>
+                        <strong class="d-block fw-bold">Cuenta corriente</strong>
+                        <small class="text-muted">(comisiones)</small>
+                    </div>
+                </label>
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="producto-card d-block p-4 rounded-3 shadow-sm text-center h-100 border border-2">
+                    <input type="radio" name="producto" value="Línea de crédito" class="d-none">
+                    <div class="mb-2">
+                        <span class="icono fs-1 text-success d-block mb-2">Refresh</span>
+                        <strong class="d-block fw-bold">Línea de crédito</strong>
+                        <small class="text-muted">(intereses altos)</small>
+                    </div>
+                </label>
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="producto-card d-block p-4 rounded-3 shadow-sm text-center h-100 border border-2">
+                    <input type="radio" name="producto" value="Producto inversión" class="d-none">
+                    <div class="mb-2">
+                        <span class="icono fs-1 text-success d-block mb-2">Chart</span>
+                        <strong class="d-block fw-bold">Inversión</strong>
+                        <small class="text-muted">(swaps, preferentes)</small>
+                    </div>
+                </label>
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="producto-card d-block p-4 rounded-3 shadow-sm text-center h-100 border border-2">
+                    <input type="radio" name="producto" value="Seguro" class="d-none">
+                    <div class="mb-2">
+                        <span class="icono fs-1 text-success d-block mb-2">Shield</span>
+                        <strong class="d-block fw-bold">Seguro</strong>
+                        <small class="text-muted">(vinculados)</small>
+                    </div>
+                </label>
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="producto-card d-block p-4 rounded-3 shadow-sm text-center h-100 border border-2">
+                    <input type="radio" name="producto" value="Telefonía" class="d-none">
+                    <div class="mb-2">
+                        <span class="icono fs-1 text-success d-block mb-2">Phone</span>
+                        <strong class="d-block fw-bold">Telefonía</strong>
+                        <small class="text-muted">(permanencia)</small>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <!-- FORMULARIO -->
+        <form id="formViabilidad" class="card p-4 shadow-sm mx-auto" style="max-width: 600px; border-radius: 16px;">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <input type="text" name="nombre" class="form-control form-control-lg" placeholder="Tu nombre *" required>
+                </div>
+                <div class="col-md-6">
+                    <input type="tel" name="telefono" class="form-control form-control-lg" placeholder="Teléfono (WhatsApp) *" required>
+                </div>
+                <div class="col-12">
+                    <input type="email" name="email" class="form-control" placeholder="Email (opcional)">
+                </div>
+                <div class="col-12">
+                    <div class="file-upload position-relative text-center p-4 rounded-4 border border-3 border-dashed">
+                        <input type="file" id="archivos" name="archivos" multiple accept=".pdf,.jpg,.jpeg,.png" class="position-absolute w-100 h-100 opacity-0 top-0 start-0 cursor-pointer" required>
+                        <label for="archivos" class="d-block mb-0 fw-bold text-success">
+                            Subir contrato, extracto o factura (PDF o foto)
+                        </label>
+                        <small class="d-block text-muted mt-1">Máx. 10 MB por archivo</small>
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-success btn-lg px-5 d-flex align-items-center justify-content-center gap-2 mx-auto" style="min-width: 280px; border-radius: 50px;">
+                        <i class="fab fa-whatsapp"></i> Enviar por WhatsApp (en < 60 seg)
+                    </button>
+                </div>
+                <div class="col-12 text-center">
+                    <small class="text-muted">Sin compromiso · Revisión gratuita · Respuesta en < 24h</small>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
 
     <!-- SOBRE NOSOTROS -->
     <section id="sobre-nosotros" class="py-5">
@@ -488,3 +478,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
