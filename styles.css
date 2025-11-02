@@ -429,188 +429,137 @@ canvas:not(:supported) + .fallback-bg {
     color: rgba(0,0,0,0.8);
 }
 
-/* ==================== VIABILIDAD INMEDIATA (100% JURENTIS) ==================== */
+/* ==================== VIABILIDAD INMEDIATA (ESTILO JURENTIS) ==================== */
 #viabilidad {
-    background: linear-gradient(135deg, #f8fff9 0%, #e8f5e9 100%);
+    background-color: var(--blanco) !important;
     padding: 5rem 0 !important;
-    position: relative;
-    overflow: hidden;
-}
-
-#viabilidad::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(163, 216, 208, 0.1), transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-}
-
-#viabilidad .container {
-    position: relative;
-    z-index: 1;
 }
 
 #viabilidad .display-5 {
-    color: var(--verde-oscuro);
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    color: var(--verde-oscuro) !important;
+    font-weight: 800 !important;
 }
 
 #viabilidad .lead {
-    color: var(--verde-medio);
-    font-weight: 600;
-    font-size: 1.2rem;
-    margin-bottom: 3rem;
+    color: #6c757d !important;
+    font-size: 1.1rem !important;
 }
 
-/* === TARJETAS DE PRODUCTOS === */
+/* === TARJETAS DE PRODUCTO === */
 .producto-card {
     background: var(--blanco);
-    border: 2px solid var(--gris-claro) !important;
+    border: 2px solid #e9ecef !important;
     border-radius: 16px !important;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.3s ease;
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1.5rem 1rem;
-    box-shadow: 0 4px 12px rgba(26, 60, 52, 0.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .producto-card:hover {
     border-color: var(--verde-medio) !important;
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(46, 125, 104, 0.18) !important;
-    z-index: 2;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(46, 125, 104, 0.15) !important;
 }
 
 .producto-card input:checked + div {
     background: var(--verde-medio) !important;
-    color: var(--blanco) !important;
+    color: white !important;
     border-radius: 12px;
     padding: 1rem;
     transform: scale(1.05);
-    transition: all 0.3s ease;
 }
 
 .producto-card .icono {
-    font-size: 2.8rem;
-    display: block;
-    margin-bottom: 0.75rem;
-    filter: brightness(0) saturate(100%) invert(28%) sepia(67%) saturate(414%) hue-rotate(130deg) brightness(93%) contrast(92%);
-    transition: filter 0.3s ease;
+    font-size: 2.5rem !important;
+    color: var(--verde-medio) !important;
+    margin-bottom: 0.75rem !important;
 }
 
 .producto-card input:checked + div .icono {
-    filter: brightness(0) saturate(100%) invert(100%);
+    color: white !important;
 }
 
 .producto-card strong {
     font-size: 1.1rem;
     font-weight: 700;
-    letter-spacing: 0.3px;
 }
 
 .producto-card small {
     font-size: 0.85rem;
     opacity: 0.9;
-    font-weight: 500;
 }
 
-/* === FORMULARIO VIABILIDAD === */
+/* === FORMULARIO === */
 #viabilidad .card {
-    border: 1px solid rgba(46, 125, 104, 0.15) !important;
-    border-radius: 20px !important;
-    box-shadow: 0 10px 30px rgba(26, 60, 52, 0.1);
-    background: var(--blanco);
-    overflow: hidden;
+    border: 1px solid rgba(46,125,104,0.1) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 }
 
 #viabilidad .form-control {
     border: 2px solid var(--verde-oscuro);
-    border-radius: 14px;
-    padding: 0.9rem 1.1rem;
-    font-size: 1.05rem;
-    transition: all 0.3s ease;
-    background: #f8fff9;
+    border-radius: 12px;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s;
 }
 
 #viabilidad .form-control:focus {
     border-color: var(--verde-medio);
-    box-shadow: 0 0 0 0.25rem rgba(46, 125, 104, 0.2);
-    background: #f0fdf4;
-    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(46,125,104,0.25);
+    background: #f8fff9;
 }
 
 .file-upload {
-    background: linear-gradient(135deg, #f0fdf4, #e6f7eb);
+    background: #f8fff9;
     border: 3px dashed var(--verde-medio) !important;
-    border-radius: 18px;
-    padding: 2.5rem 1.5rem;
+    border-radius: 16px;
+    padding: 2rem 1rem;
     text-align: center;
     cursor: pointer;
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
+    transition: all 0.3s;
 }
 
 .file-upload:hover {
-    background: linear-gradient(135deg, #e6f7eb, #d4edda);
+    background: #f0fdf4;
     border-color: var(--verde-aguamarina) !important;
-    transform: translateY(-3px);
 }
 
 .file-upload label {
     color: var(--verde-medio);
     font-weight: 700;
-    font-size: 1.15rem;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.file-upload:hover label {
-    color: var(--verde-oscuro);
+    font-size: 1.1rem;
 }
 
 #viabilidad .btn-success {
     background: var(--verde-medio) !important;
     border: none !important;
-    font-size: 1.2rem !important;
-    font-weight: 600 !important;
-    padding: 1.1rem 3rem !important;
+    font-size: 1.1rem !important;
+    padding: 1rem 2.5rem !important;
     min-width: 280px !important;
-    border-radius: 50px !important;
-    box-shadow: 0 6px 16px rgba(46, 125, 104, 0.35) !important;
-    transition: all 0.4s ease !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 12px !important;
+    border-radius: 50px !!!!important;
+    box-shadow: 0 6px 16px rgba(46,125,104,0.35) !important;
 }
 
 #viabilidad .btn-success:hover {
     background: var(--verde-aguamarina) !important;
     border: 2px solid var(--verde-medio) !important;
-    transform: translateY(-4px) !important;
-    box-shadow: 0 10px 25px rgba(46, 125, 104, 0.45) !important;
+    transform: translateY(-3px);
 }
 
 #viabilidad .btn-success i {
-    font-size: 1.4rem !important;
+    font-size: 1.3rem !important;
 }
 
 #viabilidad small.text-muted {
     font-size: 0.9rem;
-    color: var(--verde-medio) !important;
-    font-weight: 500;
-    letter-spacing: 0.3px;
+    color: #6c757d !important;
 }
-
 /* Contador de archivos */
 .file-upload::after {
     content: attr(data-count);
@@ -680,3 +629,4 @@ canvas:not(:supported) + .fallback-bg {
         font-size: 1.1rem !important;
     }
 }
+
