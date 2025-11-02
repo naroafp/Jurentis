@@ -85,6 +85,7 @@ a:hover, a:active {
     max-width: 380px;
     font-size: 1.1rem !important;
     white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important; /* 3. CONTRASTE ALTO */
 }
 
 .btn i,
@@ -113,6 +114,7 @@ a:hover, a:active {
     border: 2px solid var(--verde-medio) !important;
     transform: translateY(-3px) !important;
     box-shadow: 0 8px 20px rgba(46, 125, 104, 0.4) !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4) !important; /* 3. CONTRASTE HOVER */
 }
 
 /* Botones outline */
@@ -336,259 +338,13 @@ canvas:not(:supported) + .fallback-bg { display: block; }
     padding: 5rem 0 !important;
 }
 
-#viabilidad .display-5 {
+/* 1. TÍTULO Y SUBTÍTULO IGUAL QUE EL RESTO */
+#viabilidad h2.display-5 {
     color: var(--verde-oscuro) !important;
     font-weight: 800 !important;
-}
-
-#viabilidad .lead {
-    color: #6c757d !important;
-    font-size: 1.1rem !important;
-}
-
-/* === TARJETAS DE PRODUCTO === */
-.producto-card {
-    background: var(--blanco);
-    border: 2px solid #e9ecef !important;
-    border-radius: 16px !important;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    height: 100%;
-    padding: 1.5rem 1rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    text-align: center;
-}
-
-.producto-card:hover {
-    border-color: var(--verde-medio) !important;
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(46, 125, 104, 0.15) !important;
-}
-
-.producto-card input:checked + .card-content {
-    background: var(--verde-medio) !important;
-    color: white !important;
-    border-radius: 12px;
-    padding: 1rem;
-    transform: scale(1.05);
-}
-
-/* EMOJIS REALES */
-.producto-card .icono {
-    font-size: 2.8rem !important;
-    color: var(--verde-medio) !important;
-    margin-bottom: 0.75rem !important;
-    display: block;
-    line-height: 1;
-}
-
-.producto-card input:checked + .card-content .icono {
-    color: white !important;
-}
-
-.producto-card strong {
-    font-size: 1.1rem;
-    font-weight: 700;
-}
-
-.producto-card small {
-    font-size: 0.85rem;
-    opacity: 0.9;
-}
-
-/* === FORMULARIO === */
-#viabilidad .card {
-    border: 1px solid rgba(46,125,104,0.1) !important;
-    border-radius: 16px !important;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-}
-
-#viabilidad .form-control {
-    border: 2px solid var(--verde-oscuro);
-    border-radius: 12px;
-    padding: 0.9rem 1rem;
-    font-size: 1rem;
-    transition: all 0.3s;
-}
-
-#viabilidad .form-control:focus {
-    border-color: var(--verde-medio);
-    box-shadow: 0 0 0 0.2rem rgba(46,125,104,0.25);
-    background: #f8fff9;
-}
-
-.file-upload {
-    position: relative;
-    background: #f8fff9;
-    border: 3px dashed var(--verde-medio) !important;
-    border-radius: 16px;
-    padding: 2rem 1rem;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.file-upload:hover {
-    background: #f0fdf4;
-    border-color: var(--verde-aguamarina) !important;
-}
-
-.file-upload label {
-    color: var(--verde-medio);
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin: 0;
-}
-
-.file-upload::after {
-    content: attr(data-count);
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: var(--verde-medio);
-    color: white;
-    font-size: 0.8rem;
-    font-weight: bold;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.file-upload.has-files::after {
-    opacity: 1;
-}
-
-#viabilidad .btn-success {
-    background: var(--verde-medio) !important;
-    border: none !important;
-    font-size: 1.1rem !important;
-    padding: 1rem 2.5rem !important;
-    min-width: 280px !important;
-    border-radius: 50px !important;
-    box-shadow: 0 6px 16px rgba(46,125,104,0.35) !important;
-}
-
-#viabilidad .btn-success:hover {
-    background: var(--verde-aguamarina) !important;
-    border: 2px solid var(--verde-medio) !important;
-    transform: translateY(-3px);
-}
-
-#viabilidad .btn-success i {
-    font-size: 1.3rem !important;
-}
-
-#viabilidad small.text-muted {
-    font-size: 0.9rem;
-    color: #6c757d !important;
-}
-
-/* ==================== RESPONSIVE ==================== */
-@media (max-width: 992px) {
-    .producto-card .icono { font-size: 2.4rem; }
-}
-
-@media (max-width: 768px) {
-    #viabilidad { padding: 3rem 0 !important; }
-    #viabilidad .display-5 { font-size: 2rem; }
-    .btn, .btn-consulta, .btn-leer-mas { min-width: 100% !important; }
-}
-
-@media (max-width: 576px) {
-    .hero h1 { font-size: 2.5rem !important; }
-    .hero p { font-size: 1.1rem !important; }
-}
-
-/* ==================== VIABILIDAD - EMOJIS + CENTRADO + CONTRASTE ==================== */
-.producto-card {
-    background: var(--blanco) !important;
-    border: 2px solid #e9ecef !important;
-    border-radius: 16px !important;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    height: 100%;
-    padding: 1.5rem 1rem !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    font-size: 2.5rem !important;
+    margin-bottom: 1rem !important;
     text-align: center !important;
-}
-
-.producto-card:hover {
-    border-color: var(--verde-medio) !important;
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(46, 125, 104, 0.15) !important;
-}
-
-.producto-card input:checked + .card-content {
-    background: var(--verde-medio) !important;
-    color: white !important;
-    border-radius: 12px;
-    padding: 1rem;
-    transform: scale(1.05);
-}
-
-/* EMOJIS REALES - VISIBLES Y CENTRADOS */
-.producto-card .icono {
-    font-size: 3rem !important;
-    color: var(--verde-medio) !important;
-    margin-bottom: 0.75rem !important;
-    line-height: 1 !important;
-    display: block !important;
-}
-
-.producto-card input:checked + .card-content .icono {
-    color: white !important;
-}
-
-/* TEXTO CON ALTO CONTRASTE */
-.producto-card strong {
-    color: var(--verde-oscuro) !important;
-    font-size: 1.1rem !important;
-    font-weight: 700 !important;
-}
-
-.producto-card small {
-    color: #555 !important;
-    font-size: 0.85rem !important;
-}
-
-/* CENTRADO PERFECTO */
-.card-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-}
-
-/* BOTONES LEER MÁS CENTRADOS */
-.btn-leer-mas {
-    display: block !important;
-    margin: 1rem auto 0 !important;
-    min-width: 160px !important;
-}
-
-/* FOOTER REDES */
-footer a.text-white:hover {
-    color: var(--verde-aguamarina) !important;
-}
-
-/* ==================== VIABILIDAD - CORRECCIÓN FINAL ==================== */
-/* Fondo blanco limpio, sin verde */
-#viabilidad {
-    background-color: var(--blanco) !important;
-    padding: 5rem 0 !important;
-}
-
-/* Título y subtítulo IGUAL que el resto de la página */
-#viabilidad h2 {
-    color: var(--verde-oscuro) !important;
-    font-weight: 800 !important;
     text-shadow: none !important;
 }
 
@@ -596,9 +352,11 @@ footer a.text-white:hover {
     color: #6c757d !important;
     font-size: 1.1rem !important;
     font-weight: 400 !important;
+    text-align: center !important;
+    margin-bottom: 2rem !important;
 }
 
-/* TARJETAS CENTRADAS + CONTRASTE ALTO */
+/* === TARJETAS DE PRODUCTO === */
 .producto-card {
     background: var(--blanco) !important;
     border: 2px solid #e9ecef !important;
@@ -625,11 +383,12 @@ footer a.text-white:hover {
     color: var(--blanco) !important;
     border-radius: 12px;
     padding: 1rem !important;
+    transform: scale(1.05);
 }
 
-/* EMOJIS REALES - GRANDES Y VISIBLES */
+/* 2. EMOJIS REALES - GRANDES Y VISIBLES */
 .producto-card .icono {
-    font-size: 3rem !important;
+    font-size: 3.2rem !important;
     color: var(--verde-medio) !important;
     margin-bottom: 0.75rem !important;
     line-height: 1 !important;
@@ -640,7 +399,7 @@ footer a.text-white:hover {
     color: var(--blanco) !important;
 }
 
-/* TEXTO CON CONTRASTE ALTO */
+/* TEXTO CON ALTO CONTRASTE */
 .producto-card strong {
     color: var(--verde-oscuro) !important;
     font-size: 1.1rem !important;
@@ -652,6 +411,9 @@ footer a.text-white:hover {
     color: #555 !important;
     font-size: 0.85rem !important;
     text-shadow: 0 1px 1px rgba(0,0,0,0.1) !important;
+    display: block !important;
+    text-align: center !important;
+    margin: 0.25rem auto 0 !important;
 }
 
 /* CENTRADO PERFECTO */
@@ -664,30 +426,26 @@ footer a.text-white:hover {
     text-align: center !important;
 }
 
-/* BOTONES "LEER MÁS" CENTRADO */
-.btn-leer-mas {
-    display: block !important;
-    margin: 1rem auto 0 !important;
-    min-width: 160px !important;
-    text-align: center !important;
+/* === FORMULARIO === */
+#viabilidad .card {
+    border: 1px solid rgba(46,125,104,0.1) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 }
 
-/* CAPSULAS DE TEXTO (small) CENTRADO */
-.producto-card small {
-    display: block !important;
-    margin: 0 auto !important;
-}
-
-/* FORMULARIO */
 #viabilidad .form-control {
     border: 2px solid var(--verde-oscuro) !important;
     border-radius: 12px !important;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
     color: var(--verde-oscuro) !important;
+    transition: all 0.3s;
 }
 
 #viabilidad .form-control:focus {
     border-color: var(--verde-medio) !important;
     box-shadow: 0 0 0 0.2rem rgba(46,125,104,0.25) !important;
+    background: #f8fff9;
     color: var(--verde-oscuro) !important;
 }
 
@@ -697,16 +455,60 @@ footer a.text-white:hover {
     border-radius: 16px !important;
     color: var(--verde-oscuro) !important;
     text-align: center !important;
+    padding: 2rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.file-upload:hover {
+    background: #f0fdf4;
+    border-color: var(--verde-aguamarina) !important;
 }
 
 .file-upload label {
     color: var(--verde-medio) !important;
     font-weight: 700 !important;
+    font-size: 1.1rem;
+    margin: 0;
 }
 
-/* RESPONSIVE - BOTONES CENTRADO MÓVIL */
+/* BOTÓN WHATSAPP VIABILIDAD */
+#viabilidad .btn-success {
+    background: var(--verde-medio) !important;
+    border: none !important;
+    font-size: 1.1rem !important;
+    padding: 1rem 2.5rem !important;
+    min-width: 280px !important;
+    border-radius: 50px !important;
+    box-shadow: 0 6px 16px rgba(46,125,104,0.35) !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+}
+
+#viabilidad .btn-success:hover {
+    background: var(--verde-aguamarina) !important;
+    border: 2px solid var(--verde-medio) !important;
+    transform: translateY(-3px);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4) !important;
+}
+
+#viabilidad .btn-success i {
+    font-size: 1.3rem !important;
+}
+
+#viabilidad small.text-muted {
+    font-size: 0.9rem;
+    color: #6c757d !important;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 992px) {
+    .producto-card .icono { font-size: 2.8rem !important; }
+}
+
 @media (max-width: 768px) {
-    .btn, .btn-consulta, .btn-leer-mas {
+    #viabilidad { padding: 3rem 0 !important; }
+    #viabilidad h2.display-5 { font-size: 2rem !important; }
+    .btn, .btn-consulta, .btn-leer-mas, #viabilidad .btn-success {
         min-width: 100% !important;
         margin: 0 auto !important;
         display: block !important;
@@ -714,4 +516,14 @@ footer a.text-white:hover {
     .producto-card {
         margin-bottom: 1rem !important;
     }
+}
+
+@media (max-width: 576px) {
+    .hero h1 { font-size: 2.5rem !important; }
+    .hero p { font-size: 1.1rem !important; }
+}
+
+/* ==================== FOOTER REDES ==================== */
+footer a.text-white:hover {
+    color: var(--verde-aguamarina) !important;
 }
