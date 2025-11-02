@@ -1,4 +1,4 @@
-// script.js - SOLO WHATSAPP + FUNCIONA EN MÓVIL Y ESCRITORIO
+// script.js - WHATSAPP + CONTACTO CON REDIRECCIÓN GRATIS A gracias.html
 document.addEventListener("DOMContentLoaded", function () {
 
     // ========================================
@@ -57,19 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ========================================
-    // 2. Formulario de contacto (Web3Forms)
-    // ========================================
-    const contactForm = document.getElementById("contact-form");
-    const submitBtn = document.getElementById("submit-btn");
-    if (contactForm && submitBtn) {
-        contactForm.addEventListener("submit", function () {
-            submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status"></span> Enviando...`;
-            submitBtn.disabled = true;
-        });
-    }
-
-    // ========================================
-    // 3. VIABILIDAD: ABRIR WHATSAPP (MÓVIL + ESCRITORIO)
+    // 2. VIABILIDAD: ABRIR WHATSAPP (MÓVIL + ESCRITORIO)
     // ========================================
     const btnEnviar = document.getElementById('btnEnviar');
     const formViabilidad = document.getElementById('formViabilidad');
@@ -122,7 +110,46 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ========================================
-    // 4. Animaciones suaves
+    // 3. FORMULARIO CONTACTO - REDIRECCIÓN GRATIS A gracias.html
+    // ========================================
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    if (contactForm && submitBtn) {
+        contactForm.addEventListener('submit', async function (e) {
+            e.preventDefault(); // Evita envío normal
+
+            // Feedback
+            submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Enviando...`;
+            submitBtn.disabled = true;
+
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // REDIRECCIÓN GRATIS A TU PÁGINA PERSONALIZADA
+                    window.location.href = 'gracias.html';
+                } else {
+                    throw new Error(result.message || 'Error desconocido');
+                }
+            } catch (error) {
+                console.error('Error al enviar formulario:', error);
+                alert('Error al enviar el mensaje. Inténtalo de nuevo.');
+                submitBtn.innerHTML = 'Enviar Consulta';
+                submitBtn.disabled = false;
+            }
+        });
+    }
+
+    // ========================================
+    // 4. Animaciones suaves al hacer scroll
     // ========================================
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -150,12 +177,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ========================================
-    // 5. Scroll suave
+    // 5. Scroll suave en enlaces internos
     // ========================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             const href = this.getAttribute("href");
-            if (href.startsWith("#")) {
+            if (href.startsWith("#") && href !== "#") {
                 const target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
@@ -173,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // ========================================
-    // 6. Cerrar navbar en móvil
+    // 6. Cerrar navbar en móvil al hacer clic
     // ========================================
     document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
         link.addEventListener('click', () => {
@@ -184,42 +211,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
-    // ========================================
-    // 7. FORMULARIO CONTACTO - REDIRECCIÓN GRATIS
-    // ========================================
-    const contactForm = document.getElementById('contact-form');
-    const submitBtn = document.getElementById('submit-btn');
-    
-    if (contactForm && submitBtn) {
-        contactForm.addEventListener('submit', async function (e) {
-            e.preventDefault(); // Evita envío normal
-    
-            // Feedback
-            submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Enviando...`;
-            submitBtn.disabled = true;
-    
-            // Recoger datos
-            const formData = new FormData(contactForm);
-    
-            try {
-                const response = await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    body: formData
-                });
-    
-                if (response.ok) {
-                    // REDIRECCIÓN GRATIS
-                    window.location.href = 'gracias.html';
-                } else {
-                    alert('Error al enviar. Inténtalo de nuevo.');
-                    submitBtn.innerHTML = 'Enviar Consulta';
-                    submitBtn.disabled = false;
-                }
-            } catch (error) {
-                alert('Error de conexión. Inténtalo más tarde.');
-                submitBtn.innerHTML = 'Enviar Consulta';
-                submitBtn.disabled = false;
-            }
-        });
-    }
