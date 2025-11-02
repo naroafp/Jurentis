@@ -222,7 +222,7 @@
                     <div class="value-card p-4 rounded-3 shadow-sm">
                         <svg class="geo-icon mb-3" viewBox="0 0 60 60" aria-label="Experiencia">
                             <circle cx="30" cy="30" r="25" fill="none" stroke="currentColor" stroke-width="2"/>
-                            <line x1="30" y1="10" x2="3030" y2="50" stroke="currentColor" stroke-width="1.5"/>
+                            <line x1="30" y1="10" x2="30" y2="50" stroke="currentColor" stroke-width="1.5"/>
                             <line x1="15" y1="30" x2="45" y2="30" stroke="currentColor" stroke-width="1.5"/>
                         </svg>
                         <h3>Experiencia</h3>
@@ -310,7 +310,7 @@
                         <div class="card-body d-flex flex-column">
                             <h3 class="card-title">Financiación de compras con T.A.E. usurario</h3>
                             <p class="card-text flex-grow-1">Te esperamos como revisar si un interés remuneratorio es o no usurario.</p>
-                            <a href="blog1.html" class="btn	leer-mas mt-auto mx-auto d-block">
+                            <a href="blog1.html" class="btn-leer-mas mt-auto mx-auto d-block">
                                 Leer Más
                             </a>
                         </div>
@@ -498,7 +498,7 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 
-    <!-- JS FORM VIABILIDAD -->
+    <!-- JS FORM VIABILIDAD - CORREGIDO -->
     <script>
     document.getElementById('formViabilidad').addEventListener('submit', function(e) {
         // Validar producto
@@ -531,20 +531,24 @@
                        `Documentos: ${numArchivos} archivo(s) adjunto(s)\n\n` +
                        `Revisado GRATIS en <24h. ¡Gracias!`;
 
-        // Abrir WhatsApp
+        // Abrir WhatsApp (NO bloquea el envío)
         window.open(`https://wa.me/34672857131?text=${encodeURIComponent(mensaje)}`, '_blank');
 
-        // Loading
+        // Loading visual
         const btn = this.querySelector('button[type="submit"]');
         const original = btn.innerHTML;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         btn.disabled = true;
 
-        // Restaurar botón tras 3s
+        // Restaurar botón tras 5 segundos (por si tarda)
         setTimeout(() => {
-            btn.innerHTML = original;
-            btn.disabled = false;
-        }, 3000);
+            if (btn.innerHTML.includes('Enviando')) {
+                btn.innerHTML = original;
+                btn.disabled = false;
+            }
+        }, 5000);
+
+        // NO HAY e.preventDefault() → el form se envía a Web3Forms
     });
     </script>
 </body>
