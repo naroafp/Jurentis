@@ -33,6 +33,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#viabilidad">Viabilidad</a></li>
                     <li class="nav-item"><a class="nav-link" href="#sobre-nosotros">Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
                     <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
@@ -58,6 +59,113 @@
                     <i class="fab fa-whatsapp"></i> CONSULTA A UN ABOGADO GRATIS
                 </a>
             </div>
+        </div>
+    </section>
+
+    <!-- VIABILIDAD INMEDIATA -->
+    <section id="viabilidad" class="py-5 bg-gradient-viabilidad">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold text-primary">Viabilidad Inmediata</h2>
+                <p class="lead text-muted">Elige tu producto, sube tu contrato y en <strong>menos de 24h</strong> te decimos si puedes reclamar <strong>GRATIS</strong>.</p>
+            </div>
+
+            <div class="row justify-content-center mb-4">
+                <!-- 8 PRODUCTOS -->
+                <div class="col-6 col-md-3 col-lg-3 mb-3">
+                    <label class="producto-card text-center d-block p-3 rounded-3 shadow-sm border border-primary-subtle h-100">
+                        <input type="radio" name="producto" value="Tarjeta revolving" class="d-none" required>
+                        <div class="icono mb-2">Tarjeta</div>
+                        <strong>Tarjeta revolving</strong>
+                        <small class="d-block text-muted">(Wizink, Cofidis...)</small>
+                    </label>
+                </div>
+                <div class="col-6 col-md-3 col-lg-3 mb-3">
+                    <label class="producto-card text-center d-block p-3 rounded-3 shadow-sm border border-primary-subtle h-100">
+                        <input type="radio" name="producto" value="Préstamo personal" class="d-none">
+                        <div class="icono mb-2">Préstamo</div>
+                        <strong>Préstamo personal</strong>
+                        <small class="d-block text-muted">(usura, comisiones)</small>
+                    </label>
+                </div>
+                <div class="col-6 col-md-3 col-lg-3 mb-3">
+                    <label class="producto-card text-center d-block p-3 rounded-3 shadow-sm border border-primary-subtle h-100">
+                        <input type="radio" name="producto" value="Hipoteca" class="d-none">
+                        <div class="icono mb-2">Casa</div>
+                        <strong>Hipoteca</strong>
+                        <small class="d-block text-muted">(IRPH, gastos...)</small>
+                    </label>
+                </div>
+                <div class="col-6 col-md-3 col-lg-3 mb-3">
+                    <label class="producto-card text-center d-block p-3 rounded-3 shadow-sm border border-primary-subtle h-100">
+                        <input type="radio" name="producto" value="Cuenta corriente" class="d-none">
+                        <div class="icono mb-2">Banco</div>
+                        <strong>Cuenta corriente</strong>
+                        <small class="d-block text-muted">(comisiones)</small>
+                    </label>
+                </div>
+                <div class="col-6 col-md-3 col-lg-3 mb-3">
+                    <label class="producto-card text-center d-block p-3 rounded-3 shadow-sm border border-primary-subtle h-100">
+                        <input type="radio" name="producto" value="Línea de crédito" class="d-none">
+                        <div class="icono mb-2">Recarga</div>
+                        <strong>Línea de crédito</strong>
+                        <small class="d-block text-muted">(intereses altos)</small>
+                    </label>
+                </div>
+                <div class="col-6 col-md-3 col-lg-3 mb-3">
+                    <label class="producto-card text-center d-block p-3 rounded-3 shadow-sm border border-primary-subtle h-100">
+                        <input type="radio" name="producto" value="Producto inversión" class="d-none">
+                        <div class="icono mb-2">Gráfico</div>
+                        <strong>Inversión</strong>
+                        <small class="d-block text-muted">(swaps, preferentes)</small>
+                    </label>
+                </div>
+                <div class="col-6 col-md-3 col-lg-3 mb-3">
+                    <label class="producto-card text-center d-block p-3 rounded-3 shadow-sm border border-primary-subtle h-100">
+                        <input type="radio" name="producto" value="Seguro" class="d-none">
+                        <div class="icono mb-2">Escudo</div>
+                        <strong>Seguro</strong>
+                        <small class="d-block text-muted">(vinculados)</small>
+                    </label>
+                </div>
+                <div class="col-6 col-md-3 col-lg-3 mb-3">
+                    <label class="producto-card text-center d-block p-3 rounded-3 shadow-sm border border-primary-subtle h-100">
+                        <input type="radio" name="producto" value="Telefonía" class="d-none">
+                        <div class="icono mb-2">Teléfono</div>
+                        <strong>Telefonía</strong>
+                        <small class="d-block text-muted">(permanencia)</small>
+                    </label>
+                </div>
+            </div>
+
+            <!-- FORMULARIO -->
+            <form id="formViabilidad" class="card p-4 shadow-sm border-0 mx-auto" style="max-width: 600px;">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <input type="text" name="nombre" class="form-control" placeholder="Tu nombre *" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="tel" name="telefono" class="form-control" placeholder="Teléfono (WhatsApp) *" required>
+                    </div>
+                    <div class="col-12">
+                        <input type="email" name="email" class="form-control" placeholder="Email (opcional)">
+                    </div>
+                    <div class="col-12">
+                        <div class="file-upload border border-primary-subtle border-3 rounded-3 p-4 text-center bg-light">
+                            <input type="file" id="archivos" name="archivos" multiple accept=".pdf,.jpg,.jpeg,.png" class="position-absolute w-100 h-100 opacity-0 cursor-pointer" required>
+                            <label for="archivos" class="mb-0 text-primary fw-bold">Subir contrato, extracto o factura (PDF o foto)</label>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-success btn-lg px-5">
+                            Enviar por WhatsApp (en < 60 seg)
+                        </button>
+                    </div>
+                    <div class="col-12 text-center">
+                        <small class="text-muted">Sin compromiso · Revisión gratuita · Respuesta en < 24h</small>
+                    </div>
+                </div>
+            </form>
         </div>
     </section>
 
@@ -347,5 +455,62 @@
     <!-- Bootstrap JS + Tu script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+
+    <!-- JS VIABILIDAD INMEDIATA -->
+    <script>
+    document.getElementById('formViabilidad').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const form = e.target;
+        if (!form.checkValidity()) {
+            alert('Por favor, completa todos los campos obligatorios');
+            return;
+        }
+
+        const producto = document.querySelector('input[name="producto"]:checked');
+        if (!producto) {
+            alert('Por favor, selecciona un producto');
+            return;
+        }
+
+        const files = document.getElementById('archivos').files;
+        if (files.length === 0) {
+            alert('Por favor, sube al menos un documento');
+            return;
+        }
+
+        const msg = `*¡VIABILIDAD INMEDIATA!*\n\n` +
+            `Producto: *${producto.value}*\n` +
+            `Nombre: *${form.nombre.value}*\n` +
+            `Teléfono: *${form.telefono.value}*\n` +
+            `${form.email.value ? `Email: ${form.email.value}\n` : ''}\n` +
+            `Documentos: *${files.length} archivo(s) adjunto(s)*\n\n` +
+            `Revisad GRATIS en < 24h. ¡Gracias!`;
+
+        const whatsappURL = `https://wa.me/34672857131?text=${encodeURIComponent(msg)}`;
+        window.open(whatsappURL, '_blank');
+
+        // Feedback visual
+        const btn = form.querySelector('button[type="submit"]');
+        const original = btn.innerHTML;
+        btn.innerHTML = 'Enviando...';
+        btn.disabled = true;
+        setTimeout(() => {
+            btn.innerHTML = 'Enviado!';
+            setTimeout(() => {
+                btn.innerHTML = original;
+                btn.disabled = false;
+            }, 2000);
+        }, 1000);
+    });
+
+    // Efecto selección producto
+    document.querySelectorAll('.producto-card').forEach(card => {
+        card.addEventListener('click', () => {
+            document.querySelectorAll('.producto-card').forEach(c => c.classList.remove('border-primary', 'bg-primary-subtle'));
+            card.classList.add('border-primary', 'bg-primary-subtle');
+        });
+    });
+    </script>
 </body>
 </html>
