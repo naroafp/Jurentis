@@ -1,4 +1,4 @@
-/* COLORES */
+/* ==================== COLORES JURENTIS ==================== */
 :root {
     --verde-oscuro: #1A3C34;
     --verde-medio: #2E7D68;
@@ -9,7 +9,7 @@
     --dark: var(--verde-oscuro);
 }
 
-/* GENERAL */
+/* ==================== GENERAL ==================== */
 body {
     padding-top: 0 !important;
     font-family: 'Trebuchet MS', Arial, sans-serif;
@@ -18,22 +18,18 @@ body {
     scroll-behavior: smooth;
 }
 
-/* === TODOS LOS HIPERVÍNCULOS EN VERDE (excepto navbar y toast) === */
-a,
-a:link,
-a:visited {
+/* === HIPERVÍNCULOS EN VERDE (excepto navbar) === */
+a, a:link, a:visited {
     color: var(--verde-medio) !important;
     text-decoration: none !important;
     transition: color 0.3s ease;
 }
-
-a:hover,
-a:active {
+a:hover, a:active {
     color: var(--verde-aguamarina) !important;
     text-decoration: underline !important;
 }
 
-/* Excepción: enlaces del navbar (blancos) */
+/* Excepción: navbar */
 .navbar .nav-link,
 .navbar .nav-link:link,
 .navbar .nav-link:visited {
@@ -44,13 +40,13 @@ a:active {
     color: var(--verde-aguamarina) !important;
 }
 
-/* Excepción: enlaces en toast (heredan color del toast) */
+/* Excepción: toast */
 .toast-message a {
     color: inherit !important;
     text-decoration: underline !important;
 }
 
-/* === BOTONES: TODOS EN VERDE, TEXTO BLANCO, CONTRASTE PERFECTO === */
+/* ==================== BOTONES VERDES (TODOS) ==================== */
 .btn,
 .btn:link,
 .btn:visited,
@@ -93,7 +89,7 @@ a:active {
     font-size: 1.3rem !important;
 }
 
-/* HOVER: fondo aguamarina, TEXTO BLANCO, borde verde */
+/* HOVER: aguamarina */
 .btn:hover,
 .btn-primary:hover,
 .btn-success:hover,
@@ -116,7 +112,7 @@ a:active {
     text-decoration: none !important;
 }
 
-/* Botones outline (Volver al Blog, etc.) */
+/* Botones outline */
 .btn-outline,
 .btn-home {
     background-color: transparent !important;
@@ -140,19 +136,12 @@ a:active {
     border-color: var(--verde-medio) !important;
 }
 
-/* Asegurar que el texto dentro de botones NO se vea afectado por reglas de 'a' */
-.btn,
-.btn *,
-.btn-primary *,
-.btn-success *,
-.btn-thank-you,
-.btn-thank-you *,
-.blog-article-btn,
-.blog-article-btn * {
+/* Texto dentro de botones */
+.btn, .btn *, .btn-primary *, .btn-success *, .btn-thank-you, .btn-thank-you *, .blog-article-btn, .blog-article-btn * {
     color: inherit !important;
 }
 
-/* NAVBAR */
+/* ==================== NAVBAR ==================== */
 .navbar {
     background-color: var(--verde-oscuro) !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -197,7 +186,7 @@ a:active {
     padding-right: 15px;
 }
 
-/* HERO */
+/* ==================== HERO ==================== */
 .hero {
     min-height: 500px;
     background: linear-gradient(rgba(26, 60, 52, 0.8), rgba(26, 60, 52, 0.8)), url('images/madrid.png') center/cover;
@@ -224,9 +213,7 @@ canvas:not(:supported) + .fallback-bg {
     color: #FFFFFF !important;
     font-weight: 700 !important;
     font-size: 3.2rem !important;
-    text-shadow: 
-        2px 2px 6px rgba(0, 0, 0, 0.7),
-        0 0 12px rgba(0, 0, 0, 0.5) !important;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7), 0 0 12px rgba(0,0,0,0.5) !important;
     letter-spacing: 1.2px !important;
     margin-bottom: 1rem !important;
 }
@@ -234,7 +221,7 @@ canvas:not(:supported) + .fallback-bg {
     color: #E8F5E9 !important;
     font-size: 1.3rem !important;
     font-weight: 500 !important;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6) !important;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.6) !important;
     margin-bottom: 2rem !important;
 }
 .hero .btn {
@@ -249,10 +236,11 @@ canvas:not(:supported) + .fallback-bg {
     transform: translateY(-3px);
 }
 
-/* TARJETAS */
+/* ==================== TARJETAS (Sobre Nosotros, Servicios, Blog) ==================== */
 .value-card, .service-card, .blog-card {
     transition: all 0.4s ease;
     perspective: 1000px;
+    border-radius: 12px !important;
 }
 .value-card:hover, .service-card:hover, .blog-card:hover {
     transform: translateY(-12px) rotateX(5deg);
@@ -269,13 +257,13 @@ canvas:not(:supported) + .fallback-bg {
     transform: rotate(360deg);
 }
 
-/* BLOG - TARJETAS */
+/* Blog tarjetas */
 .blog-card {
     background-color: var(--blanco);
     border: none;
     position: relative;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 12px !important;
 }
 .blog-card .card-img-top {
     height: 200px;
@@ -293,18 +281,22 @@ canvas:not(:supported) + .fallback-bg {
     color: var(--verde-oscuro);
     margin-bottom: 1rem;
 }
-.blog-card .btn {
+.blog-card .btn-leer-mas {
     background: var(--verde-medio);
     border: none;
     color: var(--blanco);
+    border-radius: 50px;
+    padding: 10px 24px;
+    font-size: 1rem;
+    min-width: 160px;
 }
-.blog-card .btn:hover {
+.blog-card .btn-leer-mas:hover {
     background: var(--verde-aguamarina);
     color: var(--blanco);
     border: 2px solid var(--verde-medio);
 }
 
-/* FILTRO VERDE EN BLOG */
+/* Filtro verde en blog */
 .blog-card::before {
     content: '';
     position: absolute;
@@ -313,7 +305,7 @@ canvas:not(:supported) + .fallback-bg {
     transition: opacity 0.4s ease;
     z-index: 1;
     pointer-events: none;
-    border-radius: 8px;
+    border-radius: 12px;
     opacity: 1;
 }
 .blog-card:hover::before {
@@ -323,50 +315,13 @@ canvas:not(:supported) + .fallback-bg {
     transform: scale(1.05);
 }
 
-/* ARTÍCULO */
-.article-content {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-.article-content h2 {
-    font-size: 1.8rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    color: var(--verde-oscuro);
-}
-.article-content p {
-    margin-bottom: 1rem;
-}
-.article-content .btn {
-    background: var(--verde-medio);
-    border: none;
-    color: var(--blanco);
-}
-.article-content .btn:hover {
-    background: var(--verde-aguamarina);
-    color: var(--blanco);
-    border: 2px solid var(--verde-medio);
-}
-.article-content .btn-outline-primary {
-    border-color: var(--verde-medio);
-    background-color: rgba(46, 125, 104, 0.1);
-    color: var(--verde-oscuro);
-    transition: all 0.3s ease;
-}
-.article-content .btn-outline-primary:hover {
-    background: var(--verde-aguamarina);
-    border-color: var(--verde-medio);
-    color: var(--blanco);
-}
-
-/* PREGUNTAS FRECUENTES */
+/* ==================== PREGUNTAS FRECUENTES ==================== */
 #preguntas-frecuentes .accordion-button {
     background-color: var(--blanco);
     color: var(--verde-oscuro);
     font-weight: 500;
     transition: all 0.3s ease;
+    border-radius: 8px !important;
 }
 #preguntas-frecuentes .accordion-button:not(.collapsed) {
     background-color: var(--verde-medio);
@@ -381,29 +336,22 @@ canvas:not(:supported) + .fallback-bg {
     background-color: var(--blanco);
     color: var(--verde-oscuro);
     padding: 1.5rem;
+    border-radius: 0 0 8px 8px;
 }
 
-/* FORMULARIO */
+/* ==================== FORMULARIO CONTACTO ==================== */
 #contact-form .form-control {
-    border-color: var(--verde-oscuro);
+    border: 2px solid var(--verde-oscuro);
+    border-radius: 12px;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 #contact-form .form-control:focus {
     border-color: var(--verde-medio);
-    box-shadow: 0 0 0 0.2rem rgba(46, 125, 104, 0.25);
-}
-#contact-form .btn {
-    background: var(--verde-medio);
-    border: none;
-    color: var(--blanco);
-}
-#contact-form .btn:hover {
-    background: var(--verde-aguamarina);
-    color: var(--blanco);
-    border: 2px solid var(--verde-medio);
+    box-shadow: 0 0 0 0.25rem rgba(46, 125, 104, 0.2);
+    background: #f8fff9;
 }
 
-/* WHATSAPP */
+/* ==================== WHATSAPP FIJO ==================== */
 .whatsapp-btn {
     position: fixed;
     bottom: 20px;
@@ -422,14 +370,11 @@ canvas:not(:supported) + .fallback-bg {
     line-height: 1;
     z-index: 1000;
 }
-.whatsapp-btn i {
-    font-size: 24px;
-}
 .whatsapp-btn:hover, .whatsapp-btn:focus {
     transform: scale(1.1);
 }
 
-/* TOAST MEJORADO */
+/* ==================== TOAST ==================== */
 .toast-notification {
     position: fixed;
     bottom: 90px;
@@ -451,42 +396,20 @@ canvas:not(:supported) + .fallback-bg {
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     border: 1px solid rgba(46, 125, 104, 0.2);
 }
-
 .toast-notification.show {
     opacity: 1;
     transform: translateY(0);
 }
-
 .toast-notification.success {
     background: linear-gradient(135deg, #d4edda, #c3e6cb);
     color: #155724;
     border-color: #c3e6cb;
 }
-
 .toast-notification.error {
     background: linear-gradient(135deg, #f8d7da, #f5c6cb);
     color: #721c24;
     border-color: #f5c6cb;
 }
-
-.toast-icon {
-    font-weight: bold;
-    font-size: 1.4rem;
-}
-
-.toast-content {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex: 1;
-}
-
-.toast-message a {
-    color: inherit;
-    text-decoration: underline;
-    font-weight: bold;
-}
-
 .toast-close {
     background: none;
     border: none;
@@ -501,318 +424,86 @@ canvas:not(:supported) + .fallback-bg {
     border-radius: 50%;
     transition: all 0.2s;
 }
-
 .toast-close:hover {
     background: rgba(0,0,0,0.1);
     color: rgba(0,0,0,0.8);
 }
 
-/* SPINNER EN BOTÓN */
-.spinner-border-sm {
-    width: 1rem;
-    height: 1rem;
-}
-
-/* BOTÓN ENVIAR CONSULTA - VERDE PERSONALIZADO */
-#submit-btn {
-    background-color: var(--verde-medio) !important;
-    color: white !important;
-    border: none !important;
-    padding: 14px 32px !important;
-    font-weight: 600;
-    border-radius: 50px;
-    transition: all 0.3s ease;
+/* ==================== VIABILIDAD INMEDIATA (100% JURENTIS) ==================== */
+#viabilidad {
+    background: linear-gradient(135deg, #f8fff9 0%, #e8f5e9 100%);
+    padding: 5rem 0 !important;
     position: relative;
     overflow: hidden;
-    min-width: 280px;
-    max-width: 380px;
-    width: 100%;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 12px !important;
-    font-size: 1.1rem !important;
 }
 
-#submit-btn:hover {
-    background-color: var(--verde-aguamarina) !important;
-    color: var(--blanco) !important;
-    border: 2px solid var(--verde-medio) !important;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(46, 125, 104, 0.35);
+#viabilidad::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(163, 216, 208, 0.1), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
 }
 
-#submit-btn:disabled {
-    background-color: #1a5c50 !important;
-    opacity: 0.8;
-    cursor: not-allowed;
-    transform: none;
-}
-
-#submit-btn.success {
-    background-color: #d4edda !important;
-    color: #155724 !important;
-}
-
-#submit-btn.error {
-    background-color: #f8d7da !important;
-    color: #721c24 !important;
-}
-
-#submit-btn .spinner-border-sm {
-    width: 1rem;
-    height: 1rem;
-    margin-right: 8px;
-}
-
-/* === BOTONES EN ARTÍCULOS DEL BLOG (MEJOR ESPACIADO) === */
-.blog-article-buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.8rem !important;
-    margin-top: 3rem !important;
-    padding: 0 1rem;
-}
-
-.blog-article-buttons .blog-article-btn,
-.blog-article-buttons .btn-outline {
-    width: 100%;
-    max-width: 380px;
-    min-width: 280px;
-    justify-content: center;
-    gap: 12px !important;
-    font-size: 1.1rem !important;
-    padding: 14px 32px !important;
-}
-
-.blog-article-buttons .btn-outline {
-    background-color: transparent !important;
-    color: var(--verde-medio) !important;
-    border: 2px solid var(--verde-medio) !important;
-}
-
-.blog-article-buttons .btn-outline:hover {
-    background-color: var(--verde-medio) !important;
-    color: var(--blanco) !important;
-}
-
-/* === FORZAR EN GRACIAS.HTML === */
-.btn-thank-you,
-.btn-home {
-    display: flex !important;
-    gap: 12px !important;
-    min-width: 220px !important;
-    padding: 14px 32px !important;
-    font-size: 1.1rem !important;
-}
-
-/* === BOTONES PRINCIPALES CON ICONOS Y CENTRADO === */
-
-/* 1. Botón Hero: "Consulta a un abogado gratis" */
-.hero .btn-consulta {
-    background-color: var(--verde-medio) !important;
-    color: var(--blanco) !important;
-    border: none !important;
-    border-radius: 50px !important;
-    padding: 16px 36px !important;
-    font-weight: 600 !important;
-    font-size: 1.2rem !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 14px !important;
-    box-shadow: 0 6px 16px rgba(46, 125, 104, 0.35) !important;
-    transition: all 0.3s ease !important;
-    min-width: 320px !important;
-    margin: 2rem auto 0 !important;
-    text-align: center !important;
-}
-
-.hero .btn-consulta:hover {
-    background-color: var(--verde-aguamarina) !important;
-    color: var(--blanco) !important;
-    border: 2px solid var(--verde-medio) !important;
-    transform: translateY(-4px) !important;
-    box-shadow: 0 10px 25px rgba(46, 125, 104, 0.45) !important;
-}
-
-.hero .btn-consulta i {
-    font-size: 1.4rem !important;
-}
-
-/* 2. Botones "Leer Más" en tarjetas */
-.card .btn-leer-mas,
-.blog-card .btn-leer-mas {
-    background-color: var(--verde-medio) !important;
-    color: var(--blanco) !important;
-    border: none !important;
-    border-radius: 50px !important;
-    padding: 12px 28px !important;
-    font-weight: 600 !important;
-    font-size: 1rem !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 10px !important;
-    min-width: 160px !important;
-    margin: 1rem auto 0 !important;
-    box-shadow: 0 4px 12px rgba(46, 125, 104, 0.3) !important;
-    transition: all 0.3s ease !important;
-}
-
-.card .btn-leer-mas:hover,
-.blog-card .btn-leer-mas:hover {
-    background-color: var(--verde-aguamarina) !important;
-    color: var(--blanco) !important;
-    border: 2px solid var(--verde-medio) !important;
-    transform: translateY(-3px) !important;
-}
-
-.card .btn-leer-mas i,
-.blog-card .btn-leer-mas i {
-    font-size: 1.1rem !important;
-}
-
-/* 3. Botón "Enviar Consulta" */
-#submit-btn {
-    background-color: var(--verde-medio) !important;
-    color: var(--blanco) !important;
-    border: none !important;
-    border-radius: 50px !important;
-    padding: 14px 36px !important;
-    font-weight: 600 !important;
-    font-size: 1.1rem !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 12px !important;
-    min-width: 240px !important;
-    margin: 1.5rem auto 0 !important;
-    box-shadow: 0 4px 12px rgba(46, 125, 104, 0.3) !important;
-}
-
-#submit-btn i {
-    font-size: 1.3rem !important;
-}
-
-#submit-btn:hover {
-    background-color: var(--verde-aguamarina) !important;
-    border: 2px solid var(--verde-medio) !important;
-    transform: translateY(-3px) !important;
-}
-
-/* 4. Botón "Volver al Blog" */
-.btn-volver-blog {
-    background-color: transparent !important;
-    color: var(--verde-medio) !important;
-    border: 2px solid var(--verde-medio) !important;
-    border-radius: 50px !important;
-    padding: 12px 32px !important;
-    font-weight: 600 !important;
-    font-size: 1rem !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 10px !important;
-    min-width: 220px !important;
-    margin: 2rem auto 0 !important;
-    transition: all 0.3s ease !important;
-}
-
-.btn-volver-blog:hover {
-    background-color: var(--verde-medio) !important;
-    color: var(--blanco) !important;
-}
-
-.btn-volver-blog i {
-    font-size: 1.2rem !important;
-}
-
-/* === CENTRAR TODOS LOS BOTONES === */
-.btn-center-wrapper {
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0;
-}
-
-/* === CORRECCIÓN FINAL: BOTÓN "CONSULTA GRATUITA" EN BLOG (sin afectar hero) === */
-.blog-article-buttons .btn-consulta,
-.article-content .btn-consulta {
-    background-color: var(--verde-medio) !important;
-    color: var(--blanco) !important;
-    border: none !important;
-    border-radius: 50px !important;
-    padding: 14px 32px !important;
-    font-weight: 600 !important;
-    font-size: 1.1rem !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 12px !important;
-    min-width: 280px !important;
-    max-width: 380px !important;
-    width: 100% !important;
-    box-shadow: 0 4px 12px rgba(46, 125, 104, 0.3) !important;
-    transition: all 0.3s ease !important;
-    text-decoration: none !important;
-}
-
-.blog-article-buttons .btn-consulta:hover,
-.article-content .btn-consulta:hover {
-    background-color: var(--verde-aguamarina) !important;
-    color: var(--blanco) !important;
-    border: 2px solid var(--verde-medio) !important;
-    transform: translateY(-3px) !important;
-    box-shadow: 0 8px 20px rgba(46, 125, 104, 0.4) !important;
-}
-
-.blog-article-buttons .btn-consulta i,
-.article-content .btn-consulta i {
-    font-size: 1.3rem !important;
-}
-
-/* ==================== NUEVA SECCIÓN: VIABILIDAD INMEDIATA ==================== */
-#viabilidad {
-    background: linear-gradient(135deg, #e8f5e9 0%, #d4edda 100%);
-    padding: 4rem 0 !important;
+#viabilidad .container {
+    position: relative;
+    z-index: 1;
 }
 
 #viabilidad .display-5 {
     color: var(--verde-oscuro);
     font-weight: 800;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 #viabilidad .lead {
     color: var(--verde-medio);
     font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
 }
 
+/* === TARJETAS DE PRODUCTOS === */
 .producto-card {
     background: var(--blanco);
     border: 2px solid var(--gris-claro) !important;
-    transition: all 0.3s ease;
+    border-radius: 16px !important;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 4px 12px rgba(26, 60, 52, 0.08);
 }
 
 .producto-card:hover {
     border-color: var(--verde-medio) !important;
-    transform: translateY(-6px);
-    box-shadow: 0 12px 25px rgba(46, 125, 104, 0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(46, 125, 104, 0.18) !important;
+    z-index: 2;
 }
 
 .producto-card input:checked + div {
     background: var(--verde-medio) !important;
     color: var(--blanco) !important;
+    border-radius: 12px;
+    padding: 1rem;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
 }
 
 .producto-card .icono {
-    font-size: 2.2rem;
+    font-size: 2.8rem;
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
     filter: brightness(0) saturate(100%) invert(28%) sepia(67%) saturate(414%) hue-rotate(130deg) brightness(93%) contrast(92%);
+    transition: filter 0.3s ease;
 }
 
 .producto-card input:checked + div .icono {
@@ -820,74 +511,172 @@ canvas:not(:supported) + .fallback-bg {
 }
 
 .producto-card strong {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
 }
 
 .producto-card small {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     opacity: 0.9;
+    font-weight: 500;
 }
 
-/* Formulario */
+/* === FORMULARIO VIABILIDAD === */
+#viabilidad .card {
+    border: 1px solid rgba(46, 125, 104, 0.15) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 30px rgba(26, 60, 52, 0.1);
+    background: var(--blanco);
+    overflow: hidden;
+}
+
 #viabilidad .form-control {
     border: 2px solid var(--verde-oscuro);
-    border-radius: 12px;
-    padding: 0.9rem 1rem;
-    font-size: 1rem;
-    transition: all 0.3s;
+    border-radius: 14px;
+    padding: 0.9rem 1.1rem;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    background: #f8fff9;
 }
 
 #viabilidad .form-control:focus {
     border-color: var(--verde-medio);
-    box-shadow: 0 0 0 0.2rem rgba(46, 125, 104, 0.2);
-    background: #f8fff9;
+    box-shadow: 0 0 0 0.25rem rgba(46, 125, 104, 0.2);
+    background: #f0fdf4;
+    outline: none;
 }
 
 .file-upload {
-    background: #f0fdf4;
-    border: 3px dashed var(--verde-medio);
-    border-radius: 16px;
-    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #f0fdf4, #e6f7eb);
+    border: 3px dashed var(--verde-medio) !important;
+    border-radius: 18px;
+    padding: 2.5rem 1.5rem;
     text-align: center;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .file-upload:hover {
-    background: #e6f7eb;
-    border-color: var(--verde-aguamarina);
+    background: linear-gradient(135deg, #e6f7eb, #d4edda);
+    border-color: var(--verde-aguamarina) !important;
+    transform: translateY(-3px);
 }
 
 .file-upload label {
     color: var(--verde-medio);
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     cursor: pointer;
+    transition: color 0.3s;
+}
+
+.file-upload:hover label {
+    color: var(--verde-oscuro);
 }
 
 #viabilidad .btn-success {
     background: var(--verde-medio) !important;
     border: none !important;
-    font-size: 1.15rem !important;
-    padding: 1rem 2.5rem !important;
-    min-width: 260px !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    padding: 1.1rem 3rem !important;
+    min-width: 280px !important;
+    border-radius: 50px !important;
+    box-shadow: 0 6px 16px rgba(46, 125, 104, 0.35) !important;
+    transition: all 0.4s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
 }
 
 #viabilidad .btn-success:hover {
     background: var(--verde-aguamarina) !important;
     border: 2px solid var(--verde-medio) !important;
-    transform: translateY(-3px);
+    transform: translateY(-4px) !important;
+    box-shadow: 0 10px 25px rgba(46, 125, 104, 0.45) !important;
+}
+
+#viabilidad .btn-success i {
+    font-size: 1.4rem !important;
 }
 
 #viabilidad small.text-muted {
     font-size: 0.9rem;
     color: var(--verde-medio) !important;
     font-weight: 500;
+    letter-spacing: 0.3px;
 }
 
-/* Responsive */
+/* Contador de archivos */
+.file-upload::after {
+    content: attr(data-count);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--verde-medio);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.file-upload.has-files::after {
+    opacity: 1;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 992px) {
+    .producto-card {
+        padding: 1.2rem 0.8rem;
+    }
+    .producto-card .icono {
+        font-size: 2.4rem;
+    }
+    #viabilidad .btn-success {
+        font-size: 1.1rem;
+        padding: 1rem 2.5rem;
+    }
+}
+
 @media (max-width: 768px) {
-    #viabilidad .col-6 { flex: 0 0 50%; max-width: 50%; }
-    #viabilidad .btn-success { font-size: 1rem; padding: 0.9rem 2rem; }
+    #viabilidad {
+        padding: 3rem 0 !important;
+    }
+    #viabilidad .display-5 {
+        font-size: 2rem;
+    }
+    .producto-card {
+        margin-bottom: 1rem;
+    }
+    #viabilidad .card {
+        padding: 1.5rem !important;
+    }
+    #viabilidad .btn-success {
+        min-width: 100%;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 2.5rem !important;
+    }
+    .hero p {
+        font-size: 1.1rem !important;
+    }
+    .hero .btn-consulta {
+        min-width: 100% !important;
+        font-size: 1.1rem !important;
+    }
 }
