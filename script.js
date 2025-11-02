@@ -1,4 +1,4 @@
-// script.js - Compatible con tu HTML, REDIRECCIÓN a gracias.html + VIABILIDAD INMEDIATA
+// script.js - Compatible con tu HTML, ENVÍO REAL + ARCHIVOS + REDIRECCIÓN GRATIS
 document.addEventListener("DOMContentLoaded", function () {
 
     // ========================================
@@ -57,34 +57,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ========================================
-    // 2. Manejo del formulario de contacto (Formspree)
+    // 2. Manejo del formulario de contacto (Web3Forms)
     // ========================================
-    const form = document.getElementById("contact-form");
+    const contactForm = document.getElementById("contact-form");
     const submitBtn = document.getElementById("submit-btn");
-    const fallbackBanner = document.getElementById("whatsapp-fallback");
 
-    if (form && submitBtn) {
-        form.addEventListener("submit", function () {
+    if (contactForm && submitBtn) {
+        contactForm.addEventListener("submit", function () {
             submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status"></span> Enviando...`;
             submitBtn.disabled = true;
-        });
-
-        window.addEventListener("pageshow", function () {
-            if (fallbackBanner && !fallbackBanner.classList.contains("d-none")) {
-                submitBtn.innerHTML = "Enviar Consulta";
-                submitBtn.disabled = false;
-            }
         });
     }
 
     // ========================================
-    // 3. VIABILIDAD INMEDIATA - ENVÍO POR WHATSAPP
+    // 3. VIABILIDAD INMEDIATA - ENVÍO REAL + WHATSAPP + REDIRECCIÓN
     // ========================================
-    const viabilidadForm = document.getElementById("formViabilidad");
+    const btnEnviar = document.getElementById("btnEnviar");
+    const formViabilidad = document.getElementById("formViabilidad");
     const archivosInput = document.getElementById("archivos");
     const fileLabel = document.querySelector('.file-upload label');
 
-    if (viabilidadForm) {
+    if (btnEnviar && formViabilidad) {
+
         // Contador de archivos
         archivosInput?.addEventListener('change', function () {
             const count = this.files.length;
@@ -103,61 +97,65 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
-        // Envío por WhatsApp
-        viabilidadForm.addEventListener('submit', function (e) {
-            e.preventDefault();
+        // === ENVÍO CON BOTÓN type="button" (NO submit) ===
+        btnEnviar.addEventListener('click', function () {
+            const form = formViabilidad;
 
-            const form = e.target;
-            if (!form.checkValidity()) {
-                alert('Por favor, completa todos los campos obligatorios');
-                return;
-            }
-
+            // Validar producto
             const producto = document.querySelector('input[name="producto"]:checked');
             if (!producto) {
-                alert('Por favor, selecciona un producto');
+                alert('Por favor, selecciona un producto.');
                 return;
             }
 
+            // Validar campos
+            if (!form.checkValidity()) {
+                alert('Por favor, completa todos los campos obligatorios.');
+                return;
+            }
+
+            // Validar archivo
             const files = archivosInput.files;
             if (files.length === 0) {
-                alert('Por favor, sube al menos un documento');
+                alert('Por favor, adjunta al menos un documento.');
                 return;
             }
 
+            // === MENSAJE WHATSAPP ===
             const msg = `*¡VIABILIDAD INMEDIATA!*\n\n` +
                 `Producto: *${producto.value}*\n` +
-                `Nombre: *${form.nombre.value}*\n` +
-                `Teléfono: *${form.telefono.value}*\n` +
-                `${form.email.value ? `Email: ${form.email.value}\n` : ''}\n` +
+                `Nombre: *${form.nombre.value.trim()}*\n` +
+                `Teléfono: *${form.telefono.value.trim()}*\n` +
+                `${form.email.value.trim() ? `Email: ${form.email.value.trim()}\n` : ''}\n` +
                 `Documentos: *${files.length} archivo(s) adjunto(s)*\n\n` +
-                `Revisad GRATIS en < 24h. ¡Gracias!`;
+                `Revisado GRATIS en < 24h. ¡Gracias!`;
 
-            const whatsappURL = `https://wa.me/34672857131?text=${encodeURIComponent(msg)}`;
-            window.open(whatsappURL, '_blank');
+            // Abrir WhatsApp
+            window.open(`https://wa.me/34672857131?text=${encodeURIComponent(msg)}`, '_blank');
 
-            // Feedback visual
-            const btn = form.querySelector('button[type="submit"]');
-            const original = btn.innerHTML;
-            btn.innerHTML = 'Enviando...';
-            btn.disabled = true;
+            // === CAMBIAR BOTÓN ===
+            const original = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            this.disabled = true;
+
+            // === ENVIAR FORMULARIO (ENVÍO REAL A WEB3FORMS) ===
+            form.submit();
+
+            // === REDIRIGIR A GRACIAS (GRATIS) ===
             setTimeout(() => {
-                btn.innerHTML = 'Enviado!';
-                setTimeout(() => {
-                    btn.innerHTML = original;
-                    btn.disabled = false;
-                    form.reset();
-                    document.querySelectorAll('.producto-card').forEach(c => {
-                        c.classList.remove('border-primary', 'bg-primary-subtle', 'shadow');
-                    });
-                    fileLabel.textContent = 'Subir contrato, extracto o factura (PDF o foto)';
-                }, 2000);
-            }, 1000);
+                window.location.href = 'gracias.html';
+            }, 1500);
+
+            // === RESTAURAR BOTÓN ===
+            setTimeout(() => {
+                this.innerHTML = original;
+                this.disabled = false;
+            }, 3000);
         });
     }
 
     // ========================================
-    // 4. ANIMACIONES DE ENTRADA SUAVES (sin AOS)
+    // 4. ANIMACIONES DE ENTRADA SUAVES
     // ========================================
     const observerOptions = {
         threshold: 0.1,
@@ -174,7 +172,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }, observerOptions);
 
-    // Animar productos
     document.querySelectorAll('#viabilidad .producto-card').forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
@@ -182,7 +179,6 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(card);
     });
 
-    // Animar formulario
     const formCard = document.querySelector('#viabilidad .card');
     if (formCard) {
         formCard.style.opacity = '0';
@@ -191,9 +187,8 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(formCard);
     }
 
-    // Animar título y subtítulo
     const title = document.querySelector('#viabilidad h2');
-    const subtitle = document.querySelector('#viabilidad .lead');
+    const subtitle = document.querySelector('#viabilidad p');
     if (title) {
         title.style.opacity = '0';
         title.style.transform = 'translateY(20px)';
@@ -221,7 +216,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         top: target.offsetTop - 90,
                         behavior: "smooth"
                     });
-                    // Cerrar navbar en móvil
                     const navbarCollapse = document.querySelector('.navbar-collapse');
                     if (navbarCollapse && navbarCollapse.classList.contains('show')) {
                         new bootstrap.Collapse(navbarCollapse).hide();
@@ -232,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // ========================================
-    // 6. Cerrar navbar en móvil al hacer clic
+    // 6. Cerrar navbar en móvil
     // ========================================
     document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
         link.addEventListener('click', () => {
