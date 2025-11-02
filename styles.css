@@ -527,3 +527,30 @@ canvas:not(:supported) + .fallback-bg { display: block; }
 footer a.text-white:hover {
     color: var(--verde-aguamarina) !important;
 }
+
+/* ==================== CONTRASTE ALTO EN BOTONES VERDES ==================== */
+.btn,
+.btn-consulta,
+.btn-leer-mas,
+#viabilidad .btn-success,
+.btn-thank-you,
+.blog-article-btn {
+    color: var(--blanco) !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4) !important;
+}
+
+.btn:hover,
+.btn-consulta:hover,
+.btn-leer-mas:hover,
+#viabilidad .btn-success:hover {
+    color: var(--blanco) !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+}
+
+/* Asegurar que el texto dentro de botones siempre sea blanco */
+.btn *,
+.btn-consulta *,
+.btn-leer-mas *,
+#viabilidad .btn-success * {
+    color: inherit !important;
+}
