@@ -398,7 +398,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h3>Envíanos un Mensaje</h3>
-                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <form id="contact-form">
                         <div class="mb-3">
                             <label for="name" class="form-label">Nombre</label>
                             <input type="text" name="name" class="form-control" id="name" required>
@@ -411,10 +411,12 @@
                             <label for="message" class="form-label">Mensaje</label>
                             <textarea name="message" class="form-control" id="message" rows="5" required></textarea>
                         </div>
-
+    
+                        <!-- CAMPOS OCULTOS -->
                         <input type="hidden" name="access_key" value="ebf89d4b-74ce-4f28-9c29-740e03ac6645">
                         <input type="hidden" name="subject" value="Nuevo mensaje desde Jurentis.es">
-
+                        <input type="hidden" name="redirect" value="https://jurentis.es/gracias.html">
+    
                         <div class="btn-center-wrapper mt-4">
                             <button type="submit" id="submit-btn" class="mx-auto d-block">
                                 Enviar Consulta
@@ -428,7 +430,7 @@
                     <p><strong>Correo:</strong> <a href="mailto:info@jurentis.es">info@jurentis.es</a></p>
                     <p><strong>Dirección:</strong> C/ Rafael de Riego, 39, Madrid</p>
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3030.5!2d-3.686!3d40.408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42262b0d5e1b0d%3A0x9a6c1f8b1e2f3a4b!2sC.%20Rafael%20de%20Riego%2C%2039%2C%2028010%20Madrid!5e0!3m2!1ses!2ses!4v1698765432100!5m2!1ses!2ses"
+                        src="https://www.google.com/maps/embed?pb=..."
                         width="100%" height="250" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
@@ -467,3 +469,4 @@
 
 </body>
 </html>
+
