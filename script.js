@@ -210,4 +210,62 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
+    // ========================================
+    // 7. INTERACCIÓN Y SELECCIÓN DE TARJETAS DE PRODUCTO
+    // ========================================
+    const productoCards = document.querySelectorAll('#viabilidad .producto-card');
+    const productoInputs = document.querySelectorAll('input[name="producto"]');
+
+    productoCards.forEach((card, index) => {
+        const input = productoInputs[index];
+
+        // Hover: efecto suave
+        card.addEventListener('mouseenter', () => {
+            if (!input.checked) {
+                card.style.transform = 'translateY(-8px) scale(1.02)';
+                card.style.boxShadow = '0 12px 24px rgba(0,0,0,0.12)';
+            }
+        });
+
+        card.addEventListener('mouseleave', () => {
+            if (!input.checked) {
+                card.style.transform = 'translateY(0) scale(1)';
+                card.style.boxShadow = '0 8px 16px rgba(0,0,0,0.08)';
+            }
+        });
+
+        // Clic: seleccionar producto
+        card.addEventListener('click', () => {
+            input.checked = true;
+
+            // Resetear todas las tarjetas
+            productoCards.forEach((c, i) => {
+                const inp = productoInputs[i];
+                if (inp.checked && i !== index) {
+                    inp.checked = false;
+                }
+                c.style.transform = 'translateY(0) scale(1)';
+                c.style.boxShadow = '0 8px 16px rgba(0,0,0,0.08)';
+                c.style.border = '2px solid transparent';
+                c.style.background = ''; // respeta el fondo original
+            });
+
+            // Marcar la seleccionada
+            card.style.transform = 'translateY(-8px) scale(1.02)';
+            card.style.boxShadow = '0 16px 32px rgba(0,0,0,0.15)';
+            card.style.border = '2px solid #007bff'; // azul corporativo, ajustable
+            card.style.background = 'linear-gradient(135deg, rgba(0,123,255,0.05), rgba(0,123,255,0.1))';
+            card.style.transition = 'all 0.3s ease';
+        });
+
+        // Inicial: si ya está checked (recarga), aplicar estilo
+        if (input.checked) {
+            card.style.transform = 'translateY(-8px) scale(1.02)';
+            card.style.boxShadow = '0 16px 32px rgba(0,0,0,0.15)';
+            card.style.border = '2px solid #007bff';
+            card.style.background = 'linear-gradient(135deg, rgba(0,123,255,0.05), rgba(0,123,255,0.1))';
+        }
+    });
+
 });
