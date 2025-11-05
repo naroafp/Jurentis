@@ -183,14 +183,20 @@ a:hover, a:active {
     padding-top: 80px !important;
     padding-bottom: 60px !important;
 }
+
+/* PARTÍCULAS */
 #particles-canvas {
-    opacity: 0.6;
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1 !important;
 }
 .fallback-bg {
     display: none;
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: url('images/fallback-bg.jpg') center/cover;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    opacity: 0.9;
+    z-index: 0;
 }
 canvas:not(:supported) + .fallback-bg { display: block; }
 
@@ -341,9 +347,9 @@ canvas:not(:supported) + .fallback-bg { display: block; }
 /* === TARJETAS DE PRODUCTO === */
 .producto-card {
     background: var(--blanco) !important;
-    border: 2px solid #e9ecef !important;
+    border: 2px solid #ced4da !important;
     border-radius: 16px !important;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     cursor: pointer;
     height: 100%;
     padding: 1.5rem 1rem !important;
@@ -354,10 +360,29 @@ canvas:not(:supported) + .fallback-bg { display: block; }
     justify-content: center !important;
 }
 
-.producto-card:hover {
-    border-color: var(--verde-medio) !important;
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(46, 125, 104, 0.15) !important;
+/* HOVER: solo si no está seleccionada */
+.producto-card:hover:not(.producto-seleccionado) {
+    border-color: var(--verde-aguamarina) !important;
+    background: #f8fffc !important;
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(46, 125, 104, 0.12) !important;
+}
+
+/* ESTADO SELECCIONADO = INPUT RELLENADO */
+.producto-card.producto-seleccionado {
+    border: 2px solid var(--verde-aguamarina) !important;
+    background: #f8fffb !important;
+    color: var(--verde-medio) !important;
+    box-shadow: 0 0 0 0.2rem rgba(46, 125, 104, 0.25) !important;
+    transform: translateY(-6px);
+    z-index: 10 !important;
+}
+
+/* Texto e icono dentro de seleccionada */
+.producto-card.producto-seleccionado strong,
+.producto-card.producto-seleccionado small,
+.producto-card.producto-seleccionado i {
+    color: var(--verde-medio) !important;
 }
 
 /* ICONOS REALES */
@@ -373,15 +398,12 @@ canvas:not(:supported) + .fallback-bg { display: block; }
     color: var(--verde-oscuro) !important;
     font-size: 1.1rem !important;
     font-weight: 700 !important;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
 }
 
 .producto-card small {
     color: #555 !important;
     font-size: 0.85rem !important;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.1) !important;
     display: block !important;
-    text-align: center !important;
     margin: 0.25rem auto 0 !important;
 }
 
@@ -416,29 +438,6 @@ canvas:not(:supported) + .fallback-bg { display: block; }
     box-shadow: 0 0 0 0.2rem rgba(46,125,104,0.25) !important;
     background: #f8fff9;
     color: var(--verde-oscuro) !important;
-}
-
-.file-upload {
-    background: var(--blanco) !important;
-    border: 3px dashed var(--verde-medio) !important;
-    border-radius: 16px !important;
-    color: var(--verde-oscuro) !important;
-    text-align: center !important;
-    padding: 2rem 1rem;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.file-upload:hover {
-    background: #f0fdf4;
-    border-color: var(--verde-aguamarina) !important;
-}
-
-.file-upload label {
-    color: var(--verde-medio) !important;
-    font-weight: 700 !important;
-    font-size: 1.1rem;
-    margin: 0;
 }
 
 /* BOTÓN WHATSAPP VIABILIDAD */
@@ -496,8 +495,7 @@ footer a.text-white:hover {
     color: var(--verde-aguamarina) !important;
 }
 
-/* ==================== FIX DEFINITIVO: CONTRASTE EN BOTONES (AL FINAL) ==================== */
-/* Forzar texto blanco en <a> dentro de botones (sobrescribe regla global de 'a') */
+/* ==================== FIX DEFINITIVO: CONTRASTE EN BOTONES ==================== */
 .btn a,
 .btn-consulta,
 .btn-leer-mas,
@@ -522,7 +520,6 @@ footer a.text-white:hover {
     text-shadow: 0 1px 4px rgba(0,0,0,0.7) !important;
 }
 
-/* Asegurar que cualquier hijo de botón sea blanco */
 .btn *,
 .btn-consulta *,
 .btn-leer-mas *,
@@ -530,7 +527,7 @@ footer a.text-white:hover {
     color: inherit !important;
 }
 
-/* ==================== PÁGINA GRACIAS (thank-you-card) ==================== */
+/* ==================== PÁGINA GRACIAS ==================== */
 .thank-you-card {
     background: var(--blanco);
     max-width: 700px;
@@ -584,7 +581,6 @@ footer a.text-white:hover {
     margin: 2.5rem 0;
 }
 
-/* Responsive */
 @media (max-width: 576px) {
     .thank-you-card {
         padding: 2rem;
@@ -593,86 +589,4 @@ footer a.text-white:hover {
     .thank-you-card h1 {
         font-size: 2.2rem;
     }
-}
-
-/* ================================================================= */
-/* ====================== SELECCIÓN DE TARJETAS ===================== */
-/* ================================================================= */
-/* 1. Quitar el estilo viejo que sobrescribe */
-.producto-card input:checked + .card-content {
-    background: transparent !important;
-    color: inherit !important;
-    transform: none !important;
-    padding: 0 !important;
-}
-
-/* 2. Estilo permanente para tarjeta seleccionada */
-#viabilidad .producto-card.producto-seleccionado {
-    border: 3px solid var(--verde-medio) !important;
-    background: linear-gradient(135deg, rgba(46,125,104,0.08), rgba(46,125,104,0.15)) !important;
-    transform: translateY(-10px) scale(1.03) !important;
-    box-shadow: 0 16px 32px rgba(0,0,0,0.18) !important;
-    transition: all 0.2s ease !important;
-    z-index: 10 !important;
-}
-
-/* 3. Hover solo para no seleccionadas */
-#viabilidad .producto-card:not(.producto-seleccionado):hover {
-    border-color: var(--verde-medio) !important;
-    transform: translateY(-6px) scale(1.02) !important;
-    box-shadow: 0 12px 24px rgba(46,125,104,0.14) !important;
-    transition: all 0.2s ease !important;
-}
-
-/* ====================== SELECCIÓN DE TARJETAS ===================== */
-.producto-card input:checked + .card-content {
-    background: transparent !important;
-    transform: none !important;
-}
-
-#viabilidad .producto-card.producto-seleccionado {
-    border: 3px solid var(--verde-medio) !important;
-    background: linear-gradient(135deg, rgba(46,125,104,0.08), rgba(46,125,104,0.15)) !important;
-    transform: translateY(-10px) scale(1.03) !important;
-    box-shadow: 0 16px 32px rgba(0,0,0,0.18) !important;
-    transition: all 0.2s ease !important;
-    z-index: 10 !important;
-}
-
-#viabilidad .producto-card:not(.producto-seleccionado):hover {
-    border-color: var(--verde-medio) !important;
-    transform: translateY(-6px) scale(1.02) !important;
-    box-shadow: 0 12px 24px rgba(46,125,104,0.14) !important;
-}
-
-/* ====================== PARTÍCULAS + SELECCIÓN DE TARJETAS ===================== */
-
-/* PARTÍCULAS: Asegurar que se vean */
-#particles-canvas {
-    z-index: 1 !important;
-}
-.fallback-bg {
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    opacity: 0.9;
-    z-index: 0;
-}
-
-/* SELECCIÓN DE TARJETAS - PERMANENTE Y VISUAL */
-#viabilidad .producto-card {
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-#viabilidad .producto-card:hover:not(.producto-seleccionado) {
-    border-color: #28a745 !important;
-    transform: translateY(-6px) scale(1.02) !important;
-    box-shadow: 0 12px 24px rgba(40,167,69,0.2) !important;
-}
-
-#viabilidad .producto-card.producto-seleccionado {
-    border: 3px solid #28a745 !important;
-    background: linear-gradient(135deg, rgba(40,167,69,0.1), rgba(40,167,69,0.2)) !important;
-    transform: translateY(-10px) scale(1.03) !important;
-    box-shadow: 0 16px 32px rgba(40,167,69,0.25) !important;
-    z-index: 10 !important;
 }
