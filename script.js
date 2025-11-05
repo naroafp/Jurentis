@@ -2,13 +2,14 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // ========================================
-    // 1. Partículas en el Hero (opcional)
+    // 1. Partículas en el Hero (OPTIMIZADO - ANTI-CACHE)
     // ========================================
     const canvas = document.getElementById("particles-canvas");
     if (canvas) {
         const ctx = canvas.getContext("2d");
         let particles = [];
         const particleCount = 80;
+        let animationId = null;
 
         function resizeCanvas() {
             canvas.width = canvas.parentElement.offsetWidth;
@@ -41,9 +42,13 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
         }
+        initParticles();
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -51,9 +56,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 p.update();
                 p.draw();
             });
-            requestAnimationFrame(animate);
+            animationId = requestAnimationFrame(animate);
         }
         animate();
+
+        // Cleanup al salir
+        window.addEventListener('beforeunload', () => {
+            if (animationId) cancelAnimationFrame(animationId);
+        });
     }
 
     // ========================================
@@ -216,30 +226,29 @@ document.addEventListener("DOMContentLoaded", function () {
     // ========================================
     const productoCards = document.querySelectorAll('#viabilidad .producto-card');
     const productoInputs = document.querySelectorAll('input[name="producto"]');
-    
+
     // Función para resaltar tarjeta seleccionada
     function resaltarSeleccionada(card) {
         productoCards.forEach(c => {
             c.classList.remove('seleccionada');
-            c.style.transition = 'all 0.2s ease'; // Hover rápido
+            c.style.transition = 'all 0.2s ease';
             c.style.transform = 'translateY(0) scale(1)';
             c.style.boxShadow = '0 8px 16px rgba(0,0,0,0.08)';
             c.style.border = '2px solid transparent';
             c.style.background = '';
         });
-    
+
         card.classList.add('seleccionada');
         card.style.transition = 'all 0.2s ease';
         card.style.transform = 'translateY(-10px) scale(1.03)';
         card.style.boxShadow = '0 16px 32px rgba(0,0,0,0.18)';
-        card.style.border = '3px solid #28a745'; // Verde más visible
+        card.style.border = '3px solid #28a745';
         card.style.background = 'linear-gradient(135deg, rgba(40,167,69,0.08), rgba(40,167,69,0.15))';
     }
-    
-    // Hover: más rápido y visual
+
     productoCards.forEach((card, index) => {
         const input = productoInputs[index];
-    
+
         // Hover IN
         card.addEventListener('mouseenter', () => {
             if (!card.classList.contains('seleccionada')) {
@@ -249,7 +258,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 card.style.border = '2px solid rgba(40,167,69,0.4)';
             }
         });
-    
+
         // Hover OUT
         card.addEventListener('mouseleave', () => {
             if (!card.classList.contains('seleccionada')) {
@@ -259,25 +268,34 @@ document.addEventListener("DOMContentLoaded", function () {
                 card.style.border = '2px solid transparent';
             }
         });
-    
+
         // Clic: seleccionar
         card.addEventListener('click', () => {
             input.checked = true;
             resaltarSeleccionada(card);
         });
-    
+
         // Al cargar: si ya está checked
         if (input.checked) {
             resaltarSeleccionada(card);
         }
     });
-    
-    // === MANTENER SELECCIÓN HASTA ENVÍO ===
-    // Escuchar el botón de enviar
-    const btnEnviar = document.getElementById('btnEnviar');
+
+    // MANTENER SELECCIÓN HASTA ENVÍO (opcional: no se quita al enviar)
+    // Si quieres que se quite al enviar, descomenta:
+    /*
     if (btnEnviar) {
         btnEnviar.addEventListener('click', () => {
-            // Al enviar: opcional, puedes quitar el resaltado o mantenerlo
-            // Aquí lo mantenemos (no hacemos nada)
+            productoCards.forEach(c => {
+                c.classList.remove('seleccionada');
+                c.style.transition = 'all 0.2s ease';
+                c.style.transform = 'translateY(0) scale(1)';
+                c.style.boxShadow = '0 8px 16px rgba(0,0,0,0.08)';
+                c.style.border = '2px solid transparent';
+                c.style.background = '';
+            });
         });
     }
+    */
+
+});
