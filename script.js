@@ -60,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         animate();
 
-        // Cleanup al salir
         window.addEventListener('beforeunload', () => {
             if (animationId) cancelAnimationFrame(animationId);
         });
@@ -76,25 +75,21 @@ document.addEventListener("DOMContentLoaded", function () {
         btnEnviar.addEventListener('click', function () {
             const btn = this;
 
-            // Validar producto
             const producto = document.querySelector('input[name="producto"]:checked');
             if (!producto) {
                 alert('Por favor, selecciona un producto.');
                 return;
             }
 
-            // Validar formulario
             if (!formViabilidad.checkValidity()) {
                 alert('Por favor, completa nombre y teléfono.');
                 return;
             }
 
-            // Datos
             const nombre = formViabilidad.nombre.value.trim() || 'Cliente';
             const tel = formViabilidad.telefono.value.trim();
             const email = formViabilidad.email.value.trim() || 'No proporcionado';
 
-            // Mensaje WhatsApp
             const mensaje = `¡VIABILIDAD INMEDIATA!\n\n` +
                            `Producto: *${producto.value}*\n` +
                            `Nombre: *${nombre}*\n` +
@@ -103,11 +98,9 @@ document.addEventListener("DOMContentLoaded", function () {
                            `Por favor, envía aquí tu contrato, extracto o factura (PDF o foto) y te respondemos GRATIS en menos de 24h.\n\n` +
                            `¡Gracias!`;
 
-            // ABRIR WHATSAPP EN MÓVIL Y ESCRITORIO
             const whatsappURL = `https://wa.me/34672857131?text=${encodeURIComponent(mensaje)}`;
             window.location.href = whatsappURL;
 
-            // Feedback
             const original = btn.innerHTML;
             btn.innerHTML = 'Abriendo WhatsApp...';
             btn.disabled = true;
@@ -127,9 +120,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (contactForm && submitBtn) {
         contactForm.addEventListener('submit', async function (e) {
-            e.preventDefault(); // Evita envío normal
+            e.preventDefault();
 
-            // Feedback
             submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Enviando...`;
             submitBtn.disabled = true;
 
@@ -144,7 +136,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 const result = await response.json();
 
                 if (result.success) {
-                    // REDIRECCIÓN GRATIS A TU PÁGINA PERSONALIZADA
                     window.location.href = 'gracias.html';
                 } else {
                     throw new Error(result.message || 'Error desconocido');
@@ -222,28 +213,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // ========================================
-    // 7. INTERACCIÓN Y SELECCIÓN DE TARJETAS DE PRODUCTO (CORREGIDO)
+    // 7. INTERACCIÓN Y SELECCIÓN DE TARJETAS DE PRODUCTO (FIJO CON CLASE)
     // ========================================
     const productoCards = document.querySelectorAll('#viabilidad .producto-card');
     const productoInputs = document.querySelectorAll('input[name="producto"]');
 
-    // Función para resaltar tarjeta seleccionada
     function resaltarSeleccionada(card) {
         productoCards.forEach(c => {
             c.classList.remove('seleccionada');
             c.style.transition = 'all 0.2s ease';
-            c.style.transform = 'translateY(0) scale(1)';
-            c.style.boxShadow = '0 8px 16px rgba(0,0,0,0.08)';
-            c.style.border = '2px solid transparent';
+            c.style.transform = '';
+            c.style.boxShadow = '';
+            c.style.border = '';
             c.style.background = '';
         });
 
         card.classList.add('seleccionada');
-        card.style.transition = 'all 0.2s ease';
-        card.style.transform = 'translateY(-10px) scale(1.03)';
-        card.style.boxShadow = '0 16px 32px rgba(0,0,0,0.18)';
-        card.style.border = '3px solid #28a745';
-        card.style.background = 'linear-gradient(135deg, rgba(40,167,69,0.08), rgba(40,167,69,0.15))';
     }
 
     productoCards.forEach((card, index) => {
@@ -263,9 +248,9 @@ document.addEventListener("DOMContentLoaded", function () {
         card.addEventListener('mouseleave', () => {
             if (!card.classList.contains('seleccionada')) {
                 card.style.transition = 'all 0.2s ease';
-                card.style.transform = 'translateY(0) scale(1)';
-                card.style.boxShadow = '0 8px 16px rgba(0,0,0,0.08)';
-                card.style.border = '2px solid transparent';
+                card.style.transform = '';
+                card.style.boxShadow = '';
+                card.style.border = '';
             }
         });
 
@@ -280,22 +265,5 @@ document.addEventListener("DOMContentLoaded", function () {
             resaltarSeleccionada(card);
         }
     });
-
-    // MANTENER SELECCIÓN HASTA ENVÍO (opcional: no se quita al enviar)
-    // Si quieres que se quite al enviar, descomenta:
-    /*
-    if (btnEnviar) {
-        btnEnviar.addEventListener('click', () => {
-            productoCards.forEach(c => {
-                c.classList.remove('seleccionada');
-                c.style.transition = 'all 0.2s ease';
-                c.style.transform = 'translateY(0) scale(1)';
-                c.style.boxShadow = '0 8px 16px rgba(0,0,0,0.08)';
-                c.style.border = '2px solid transparent';
-                c.style.background = '';
-            });
-        });
-    }
-    */
 
 });
