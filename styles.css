@@ -360,14 +360,6 @@ canvas:not(:supported) + .fallback-bg { display: block; }
     box-shadow: 0 12px 25px rgba(46, 125, 104, 0.15) !important;
 }
 
-.producto-card input:checked + .card-content {
-    background: var(--verde-medio) !important;
-    color: var(--blanco) !important;
-    border-radius: 12px;
-    padding: 1rem !important;
-    transform: scale(1.05);
-}
-
 /* ICONOS REALES */
 .producto-card .icono {
     font-size: 3.2rem !important;
@@ -377,11 +369,6 @@ canvas:not(:supported) + .fallback-bg { display: block; }
     display: block !important;
 }
 
-.producto-card input:checked + .card-content .icono {
-    color: var(--blanco) !important;
-}
-
-/* TEXTO CON ALTO CONTRASTE */
 .producto-card strong {
     color: var(--verde-oscuro) !important;
     font-size: 1.1rem !important;
@@ -608,13 +595,31 @@ footer a.text-white:hover {
     }
 }
 
-/* ESTILO PERMANENTE PARA TARJETA SELECCIONADA */
-#viabilidad .producto-card.seleccionada {
-    transform: translateY(-10px) scale(1.03) !important;
-    box-shadow: 0 16px 32px rgba(0,0,0,0.18) !important;
-    border: 3px solid #28a745 !important;
-    background: linear-gradient(135deg, rgba(40,167,69,0.08), rgba(40,167,69,0.15)) !important;
-    transition: all 0.2s ease !important;
-    z-index: 10;
+/* ================================================================= */
+/* ====================== SELECCIÓN DE TARJETAS ===================== */
+/* ================================================================= */
+/* 1. Quitar el estilo viejo que sobrescribe */
+.producto-card input:checked + .card-content {
+    background: transparent !important;
+    color: inherit !important;
+    transform: none !important;
+    padding: 0 !important;
 }
 
+/* 2. Estilo permanente para tarjeta seleccionada */
+#viabilidad .producto-card.producto-seleccionado {
+    border: 3px solid var(--verde-medio) !important;
+    background: linear-gradient(135deg, rgba(46,125,104,0.08), rgba(46,125,104,0.15)) !important;
+    transform: translateY(-10px) scale(1.03) !important;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.18) !important;
+    transition: all 0.2s ease !important;
+    z-index: 10 !important;
+}
+
+/* 3. Hover solo para no seleccionadas */
+#viabilidad .producto-card:not(.producto-seleccionado):hover {
+    border-color: var(--verde-medio) !important;
+    transform: translateY(-6px) scale(1.02) !important;
+    box-shadow: 0 12px 24px rgba(46,125,104,0.14) !important;
+    transition: all 0.2s ease !important;
+}
