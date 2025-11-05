@@ -1,8 +1,8 @@
-// script.js - WHATSAPP + CONTACTO CON REDIRECCIÓN GRATIS A gracias.html
+// script.js - JURENTIS | WHATSAPP + CONTACTO + PARTICULAS + ANIMACIONES
 document.addEventListener("DOMContentLoaded", function () {
 
     // ========================================
-    // 1. Partículas en el Hero (OPTIMIZADO - ANTI-CACHE)
+    // 1. PARTÍCULAS EN HERO (OPTIMIZADO)
     // ========================================
     const canvas = document.getElementById("particles-canvas");
     if (canvas) {
@@ -16,24 +16,28 @@ document.addEventListener("DOMContentLoaded", function () {
             canvas.height = canvas.parentElement.offsetHeight;
         }
         resizeCanvas();
-        window.addEventListener("resize", resizeCanvas);
+        window.addEventListener("resize", () => {
+            resizeCanvas();
+            initParticles();
+        });
 
         class Particle {
             constructor() {
+                this.reset();
+            }
+            reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
                 this.size = Math.random() * 2 + 1;
                 this.speedX = Math.random() * 1.5 - 0.75;
                 this.speedY = Math.random() * 1.5 - 0.75;
             }
-
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
                 if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
                 if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
             }
-
             draw() {
                 ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
                 ctx.beginPath();
@@ -52,10 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
+            particles.forEach(p => { p.update(); p.draw(); });
             animationId = requestAnimationFrame(animate);
         }
         animate();
@@ -66,23 +67,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ========================================
-    // 2. VIABILIDAD: ABRIR WHATSAPP (MÓVIL + ESCRITORIO)
+    // 2. VIABILIDAD: WHATSAPP + DESELECCIÓN
     // ========================================
     const btnEnviar = document.getElementById('btnEnviar');
     const formViabilidad = document.getElementById('formViabilidad');
+    const productoCards = document.querySelectorAll('#viabilidad .producto-card');
+    const productoInputs = document.querySelectorAll('input[name="producto"]');
+
+    function updateSelection() {
+        productoCards.forEach((card, i) => {
+            if (productoInputs[i].checked) {
+                card.classList.add('producto-seleccionado');
+            } else {
+                card.classList.remove('producto-seleccionado');
+            }
+        });
+    }
+
+    productoCards.forEach((card, i) => {
+        card.addEventListener('click', () => {
+            productoInputs[i].checked = true;
+            updateSelection();
+        });
+    });
 
     if (btnEnviar && formViabilidad) {
         btnEnviar.addEventListener('click', function () {
-            const btn = this;
-
             const producto = document.querySelector('input[name="producto"]:checked');
             if (!producto) {
-                alert('Por favor, selecciona un producto.');
+                showToast('Selecciona un producto', 'error');
                 return;
             }
 
             if (!formViabilidad.checkValidity()) {
-                alert('Por favor, completa nombre y teléfono.');
+                showToast('Completa nombre y teléfono', 'error');
                 return;
             }
 
@@ -95,25 +113,32 @@ document.addEventListener("DOMContentLoaded", function () {
                            `Nombre: *${nombre}*\n` +
                            `Teléfono: *${tel}*\n` +
                            `Email: ${email}\n\n` +
-                           `Por favor, envía aquí tu contrato, extracto o factura (PDF o foto) y te respondemos GRATIS en menos de 24h.\n\n` +
+                           `Envía aquí tu contrato o factura (PDF o foto) y te respondemos GRATIS en menos de 24h.\n\n` +
                            `¡Gracias!`;
 
             const whatsappURL = `https://wa.me/34672857131?text=${encodeURIComponent(mensaje)}`;
-            window.location.href = whatsappURL;
+            window.open(whatsappURL, '_blank');
 
-            const original = btn.innerHTML;
-            btn.innerHTML = 'Abriendo WhatsApp...';
-            btn.disabled = true;
+            // DESELECCIONAR + LIMPIAR FORM
+            productoInputs.forEach(input => input.checked = false);
+            updateSelection();
+            formViabilidad.reset();
 
+            showToast('¡Abriendo WhatsApp! Envía tu documento.', 'success');
+
+            // Restaurar botón
+            const original = btnEnviar.innerHTML;
+            btnEnviar.innerHTML = 'Abriendo WhatsApp...';
+            btnEnviar.disabled = true;
             setTimeout(() => {
-                btn.innerHTML = original;
-                btn.disabled = false;
-            }, 3000);
+                btnEnviar.innerHTML = original;
+                btnEnviar.disabled = false;
+            }, 2000);
         });
     }
 
     // ========================================
-    // 3. FORMULARIO CONTACTO - REDIRECCIÓN GRATIS A gracias.html
+    // 3. FORMULARIO CONTACTO → gracias.html
     // ========================================
     const contactForm = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit-btn');
@@ -138,11 +163,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (result.success) {
                     window.location.href = 'gracias.html';
                 } else {
-                    throw new Error(result.message || 'Error desconocido');
+                    throw new Error(result.message || 'Error al enviar');
                 }
             } catch (error) {
-                console.error('Error al enviar formulario:', error);
-                alert('Error al enviar el mensaje. Inténtalo de nuevo.');
+                console.error('Error:', error);
+                showToast('Error al enviar. Inténtalo de nuevo.', 'error');
                 submitBtn.innerHTML = 'Enviar Consulta';
                 submitBtn.disabled = false;
             }
@@ -150,7 +175,33 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ========================================
-    // 4. Animaciones suaves al hacer scroll
+    // 4. TOAST PERSONALIZADO
+    // ========================================
+    function showToast(message, type = 'success') {
+        const toast = document.createElement('div');
+        toast.className = `toast-notification ${type} show`;
+        toast.innerHTML = `
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'}"></i>
+            <span>${message}</span>
+            <button class="toast-close">&times;</button>
+        `;
+
+        document.body.appendChild(toast);
+
+        const closeBtn = toast.querySelector('.toast-close');
+        closeBtn.addEventListener('click', () => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 400);
+        });
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 400);
+        }, 5000);
+    }
+
+    // ========================================
+    // 5. ANIMACIONES AL ENTRAR EN PANTALLA
     // ========================================
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -178,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ========================================
-    // 5. Scroll suave en enlaces internos
+    // 6. SCROLL SUAVE + CIERRE NAVBAR MÓVIL
     // ========================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
@@ -200,9 +251,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // ========================================
-    // 6. Cerrar navbar en móvil al hacer clic
-    // ========================================
+    // Cerrar navbar al hacer clic en enlace
     document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
         link.addEventListener('click', () => {
             const navbar = document.querySelector('.navbar-collapse');
@@ -213,28 +262,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // ========================================
-    // 7. SELECCIÓN DE TARJETAS - FUNCIONA COMO FORMULARIO
+    // 7. INICIALIZAR SELECCIÓN
     // ========================================
-    const productoCards = document.querySelectorAll('#viabilidad .producto-card');
-    const productoInputs = document.querySelectorAll('input[name="producto"]');
-
-    function updateSelection() {
-        productoCards.forEach((card, i) => {
-            const input = productoInputs[i];
-            if (input.checked) {
-                card.classList.add('producto-seleccionado');
-            } else {
-                card.classList.remove('producto-seleccionado');
-            }
-        });
-    }
-
-    productoCards.forEach((card, i) => {
-        card.addEventListener('click', () => {
-            productoInputs[i].checked = true;
-            updateSelection();
-        });
-    });
-
     updateSelection();
 });
