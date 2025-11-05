@@ -217,9 +217,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // ========================================
     const productoCards = document.querySelectorAll('#viabilidad .producto-card');
     const productoInputs = document.querySelectorAll('input[name="producto"]');
-
+    
     function marcarSeleccionada(card) {
-        // Quitar selección de todas
         productoCards.forEach(c => {
             c.classList.remove('producto-seleccionado');
             c.style.transform = '';
@@ -227,23 +226,18 @@ document.addEventListener("DOMContentLoaded", function () {
             c.style.border = '';
             c.style.background = '';
         });
-        // Aplicar clase a la seleccionada
         card.classList.add('producto-seleccionado');
     }
-
+    
     productoCards.forEach((card, index) => {
         const input = productoInputs[index];
-
-        // Clic: marcar como seleccionada
+    
         card.addEventListener('click', () => {
             input.checked = true;
             marcarSeleccionada(card);
         });
-
-        // Al cargar página: si ya está checked
+    
         if (input.checked) {
             marcarSeleccionada(card);
         }
     });
-
-});
