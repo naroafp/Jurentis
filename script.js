@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (formCard) {
         formCard.style.opacity = '0';
         formCard.style.transform = 'translateY(40px)';
-        formCard.style.transition = 'all 0.7s ease 0.4s';
+        card.style.transition = 'all 0.7s ease 0.4s';
         observer.observe(formCard);
     }
 
@@ -213,56 +213,36 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // ========================================
-    // 7. INTERACCIÓN Y SELECCIÓN DE TARJETAS DE PRODUCTO (FIJO CON CLASE)
+    // 7. SELECCIÓN DE TARJETAS - FIJA Y PERMANENTE
     // ========================================
     const productoCards = document.querySelectorAll('#viabilidad .producto-card');
     const productoInputs = document.querySelectorAll('input[name="producto"]');
 
-    function resaltarSeleccionada(card) {
+    function marcarSeleccionada(card) {
+        // Quitar selección de todas
         productoCards.forEach(c => {
-            c.classList.remove('seleccionada');
-            c.style.transition = 'all 0.2s ease';
+            c.classList.remove('producto-seleccionado');
             c.style.transform = '';
             c.style.boxShadow = '';
             c.style.border = '';
             c.style.background = '';
         });
-
-        card.classList.add('seleccionada');
+        // Aplicar clase a la seleccionada
+        card.classList.add('producto-seleccionado');
     }
 
     productoCards.forEach((card, index) => {
         const input = productoInputs[index];
 
-        // Hover IN
-        card.addEventListener('mouseenter', () => {
-            if (!card.classList.contains('seleccionada')) {
-                card.style.transition = 'all 0.2s ease';
-                card.style.transform = 'translateY(-6px) scale(1.02)';
-                card.style.boxShadow = '0 12px 24px rgba(0,0,0,0.14)';
-                card.style.border = '2px solid rgba(40,167,69,0.4)';
-            }
-        });
-
-        // Hover OUT
-        card.addEventListener('mouseleave', () => {
-            if (!card.classList.contains('seleccionada')) {
-                card.style.transition = 'all 0.2s ease';
-                card.style.transform = '';
-                card.style.boxShadow = '';
-                card.style.border = '';
-            }
-        });
-
-        // Clic: seleccionar
+        // Clic: marcar como seleccionada
         card.addEventListener('click', () => {
             input.checked = true;
-            resaltarSeleccionada(card);
+            marcarSeleccionada(card);
         });
 
-        // Al cargar: si ya está checked
+        // Al cargar página: si ya está checked
         if (input.checked) {
-            resaltarSeleccionada(card);
+            marcarSeleccionada(card);
         }
     });
 
