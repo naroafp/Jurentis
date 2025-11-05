@@ -607,3 +607,14 @@ footer a.text-white:hover {
         font-size: 2.2rem;
     }
 }
+
+/* ESTILO PERMANENTE PARA TARJETA SELECCIONADA */
+#viabilidad .producto-card.seleccionada {
+    transform: translateY(-10px) scale(1.03) !important;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.18) !important;
+    border: 3px solid #28a745 !important;
+    background: linear-gradient(135deg, rgba(40,167,69,0.08), rgba(40,167,69,0.15)) !important;
+    transition: all 0.2s ease !important;
+    z-index: 10;
+}
+
