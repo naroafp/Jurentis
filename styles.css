@@ -644,3 +644,35 @@ footer a.text-white:hover {
     transform: translateY(-6px) scale(1.02) !important;
     box-shadow: 0 12px 24px rgba(46,125,104,0.14) !important;
 }
+
+/* ====================== PARTÍCULAS + SELECCIÓN DE TARJETAS ===================== */
+
+/* PARTÍCULAS: Asegurar que se vean */
+#particles-canvas {
+    z-index: 1 !important;
+}
+.fallback-bg {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    opacity: 0.9;
+    z-index: 0;
+}
+
+/* SELECCIÓN DE TARJETAS - PERMANENTE Y VISUAL */
+#viabilidad .producto-card {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#viabilidad .producto-card:hover:not(.producto-seleccionado) {
+    border-color: #28a745 !important;
+    transform: translateY(-6px) scale(1.02) !important;
+    box-shadow: 0 12px 24px rgba(40,167,69,0.2) !important;
+}
+
+#viabilidad .producto-card.producto-seleccionado {
+    border: 3px solid #28a745 !important;
+    background: linear-gradient(135deg, rgba(40,167,69,0.1), rgba(40,167,69,0.2)) !important;
+    transform: translateY(-10px) scale(1.03) !important;
+    box-shadow: 0 16px 32px rgba(40,167,69,0.25) !important;
+    z-index: 10 !important;
+}
