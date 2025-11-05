@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (formCard) {
         formCard.style.opacity = '0';
         formCard.style.transform = 'translateY(40px)';
-        card.style.transition = 'all 0.7s ease 0.4s';
+        formCard.style.transition = 'all 0.7s ease 0.4s';
         observer.observe(formCard);
     }
 
@@ -213,31 +213,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // ========================================
-    // 7. SELECCIÓN DE TARJETAS - FIJA Y PERMANENTE
+    // 7. SELECCIÓN DE TARJETAS - FUNCIONA COMO FORMULARIO
     // ========================================
     const productoCards = document.querySelectorAll('#viabilidad .producto-card');
     const productoInputs = document.querySelectorAll('input[name="producto"]');
-    
-    function marcarSeleccionada(card) {
-        productoCards.forEach(c => {
-            c.classList.remove('producto-seleccionado');
-            c.style.transform = '';
-            c.style.boxShadow = '';
-            c.style.border = '';
-            c.style.background = '';
+
+    function updateSelection() {
+        productoCards.forEach((card, i) => {
+            const input = productoInputs[i];
+            if (input.checked) {
+                card.classList.add('producto-seleccionado');
+            } else {
+                card.classList.remove('producto-seleccionado');
+            }
         });
-        card.classList.add('producto-seleccionado');
     }
-    
-    productoCards.forEach((card, index) => {
-        const input = productoInputs[index];
-    
+
+    productoCards.forEach((card, i) => {
         card.addEventListener('click', () => {
-            input.checked = true;
-            marcarSeleccionada(card);
+            productoInputs[i].checked = true;
+            updateSelection();
         });
-    
-        if (input.checked) {
-            marcarSeleccionada(card);
-        }
     });
+
+    updateSelection();
+});
