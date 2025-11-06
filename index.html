@@ -19,8 +19,43 @@
     
     <!-- TU CSS - FORZAR CACHE -->
     <link rel="stylesheet" href="styles.css?v=6.0">
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <style>
+      .circle-wrapper {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+      .circle-wrapper svg {
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 200px; height: 200px;
+        transform: translate(-50%, -50%);
+      }
+      .circle-path {
+        fill: none;
+        stroke: #64ccc5;
+        stroke-width: 32;
+        stroke-dasharray: 1256;
+        stroke-dashoffset: 1256;
+      }
+      .section-trigger { position: relative; }
+    </style>
 </head>
 <body>
+
+    <!-- CÍRCULO FIJO -->
+    <div class="circle-wrapper">
+      <svg viewBox="0 0 400 400">
+        <path class="circle-path" d="M200,50 a150,150 0 1,1 0,300 a150,150 0 1,1 0,-300"/>
+      </svg>
+    </div>
 
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -47,6 +82,7 @@
     </nav>
 
     <!-- HERO -->
+    <div class="section-trigger">
     <section id="inicio" class="hero text-white text-center py-5 position-relative overflow-hidden">
         <canvas id="particles-canvas" class="position-absolute top-0 start-0 w-100 h-100"></canvas>
         <div class="fallback-bg"></div>
@@ -61,8 +97,10 @@
             </div>
         </div>
     </section>
+    </div>
 
     <!-- VIABILIDAD INMEDIATA -->
+    <div class="section-trigger">
     <section id="viabilidad" class="py-5 bg-white">
         <div class="container">
             <div class="text-center mb-5">
@@ -191,8 +229,10 @@
             </form>
         </div>
     </section>
+    </div>
 
     <!-- SOBRE NOSOTROS -->
+    <div class="section-trigger">
     <section id="sobre-nosotros" class="py-5">
         <div class="container">
             <h2 class="text-center mb-4">Sobre Nosotros</h2>
@@ -234,8 +274,10 @@
             </div>
         </div>
     </section>
+    </div>
 
     <!-- SERVICIOS -->
+    <div class="section-trigger">
     <section id="servicios" class="bg-light py-5">
         <div class="container">
             <h2 class="text-center mb-4">Nuestros Servicios Jurídicos</h2>
@@ -277,8 +319,10 @@
             </div>
         </div>
     </section>
+    </div>
 
     <!-- BLOG -->
+    <div class="section-trigger">
     <section id="blog" class="py-5">
         <div class="container">
             <h2 class="text-center mb-4">Blog y Casos de Éxito</h2>
@@ -323,8 +367,10 @@
             </div>
         </div>
     </section>
+    </div>
 
     <!-- PREGUNTAS FRECUENTES -->
+    <div class="section-trigger">
     <section id="preguntas-frecuentes" class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center mb-4">Preguntas Frecuentes</h2>
@@ -391,8 +437,10 @@
             </div>
         </div>
     </section>
+    </div>
 
     <!-- CONTACTO -->
+    <div class="section-trigger">
     <section id="contacto" class="py-5">
         <div class="container">
             <h2 class="text-center mb-4">Contáctanos</h2>
@@ -436,6 +484,7 @@
             </div>
         </div>
     </section>
+    </div>
 
     <!-- FOOTER -->
     <footer class="bg-dark text-white text-center py-4">
@@ -464,12 +513,27 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- SIN particles.js EXTERNA -->
     <script src="script.js?v=6.0"></script>
+
+    <!-- ANIMACIÓN DEL CÍRCULO -->
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+      const path = document.querySelector('.circle-path');
+      const length = 1256;
+      const sections = document.querySelectorAll('.section-trigger');
+      sections.forEach((section, i) => {
+        const progress = (i + 1) / sections.length;
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top 80%",
+          end: "bottom 20%",
+          onUpdate: self => {
+            const draw = length * self.progress * progress;
+            gsap.to(path, { strokeDashoffset: length - draw, ease: "none" });
+          }
+        });
+      });
+    </script>
 
 </body>
 </html>
-
-
-
-
