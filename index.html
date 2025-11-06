@@ -28,37 +28,46 @@
       .title-wrapper {
         position: relative;
         display: inline-block;
-        padding: 0 60px;
+        padding: 0 70px;
       }
       .title-oval {
         position: absolute;
-        top: 50%; left: 50%;
-        width: calc(100% + 60px);
-        height: 80px;
-        min-width: 180px;
+        top: 50%; 
+        left: 50%;
+        width: calc(100% + 80px);
+        height: 90px;
+        min-width: 200px;
         transform: translate(-50%, -50%);
         pointer-events: none;
         z-index: -1;
       }
       .title-oval svg {
-        width: 100%; height: 100%;
+        width: 100%; 
+        height: 100%;
       }
       .title-oval .oval-path {
         fill: none;
         stroke: #64ccc5;
         stroke-width: 12;
-        stroke-dasharray: 1000;
-        stroke-dashoffset: 1000;
         opacity: 0.7;
       }
 
       /* Responsivo */
+      @media (max-width: 768px) {
+        .title-wrapper {
+          padding: 0 50px;
+        }
+        .title-oval {
+          width: calc(100% + 60px);
+          height: 80px;
+        }
+      }
       @media (max-width: 576px) {
         .title-wrapper {
           padding: 0 40px;
         }
         .title-oval {
-          width: calc(100% + 40px);
+          width: calc(100% + 50px);
           height: 70px;
         }
       }
@@ -67,7 +76,7 @@
           padding: 0 30px;
         }
         .title-oval {
-          width: calc(100% + 30px);
+          width: calc(100% + 40px);
           height: 60px;
         }
       }
@@ -122,8 +131,8 @@
                 <div class="title-wrapper">
                     <h2>Viabilidad Inmediata</h2>
                     <div class="title-oval">
-                      <svg viewBox="0 0 450 200" preserveAspectRatio="none">
-                        <ellipse class="oval-path" cx="225" cy="100" rx="205" ry="70"/>
+                      <svg viewBox="0 0 500 200" preserveAspectRatio="none">
+                        <ellipse class="oval-path" cx="250" cy="100" rx="230" ry="70"/>
                       </svg>
                     </div>
                 </div>
@@ -237,7 +246,7 @@
 
                     <div class="col-12 text-center mt-4">
                         <button type="button" id="btnEnviar" class="btn btn-success btn-lg px-5 d-flex align-items-center justify-content-center gap-2 mx-auto" 
-                                style="rsa min-width: 280px; border-radius: 50px;">
+                                style="min-width: 280px; border-radius: 50px;">
                             Abrir WhatsApp y enviar documentos
                         </button>
                     </div>
@@ -259,8 +268,8 @@
                 <div class="title-wrapper">
                     <h2>Sobre Nosotros</h2>
                     <div class="title-oval">
-                      <svg viewBox="0 0 400 200" preserveAspectRatio="none">
-                        <ellipse class="oval-path" cx="200" cy="100" rx="180" ry="70"/>
+                      <svg viewBox="0 0 500 200" preserveAspectRatio="none">
+                        <ellipse class="oval-path" cx="250" cy="100" rx="230" ry="70"/>
                       </svg>
                     </div>
                 </div>
@@ -311,8 +320,8 @@
                 <div class="title-wrapper">
                     <h2>Nuestros Servicios Jurídicos</h2>
                     <div class="title-oval">
-                      <svg viewBox="0 0 500 200" preserveAspectRatio="none">
-                        <ellipse class="oval-path" cx="250" cy="100" rx="230" ry="70"/>
+                      <svg viewBox="0 0 600 200" preserveAspectRatio="none">
+                        <ellipse class="oval-path" cx="300" cy="100" rx="280" ry="70"/>
                       </svg>
                     </div>
                 </div>
@@ -343,7 +352,7 @@
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card service-card h-100 text-center p-4 shadow-sm">
-                        <svg class="geo-icon mb-3" viewBox="0 0 : 60 60" aria-label="Cancelación datos">
+                        <svg class="geo-icon mb-3" viewBox="0 0 60 60" aria-label="Cancelación datos">
                             <circle cx="30" cy="30" r="25" fill="none" stroke="currentColor" stroke-width="2"/>
                             <path d="M25 20 L30 35 L35 20" fill="none" stroke="currentColor" stroke-width="2"/>
                             <line x1="30" y1="35" x2="30" y2="45" stroke="currentColor" stroke-width="2"/>
@@ -363,8 +372,8 @@
                 <div class="title-wrapper">
                     <h2>Blog y Casos de Éxito</h2>
                     <div class="title-oval">
-                      <svg viewBox="0 0 450 200" preserveAspectRatio="none">
-                        <ellipse class="oval-path" cx="225" cy="100" rx="205" ry="70"/>
+                      <svg viewBox="0 0 550 200" preserveAspectRatio="none">
+                        <ellipse class="oval-path" cx="275" cy="100" rx="255" ry="70"/>
                       </svg>
                     </div>
                 </div>
@@ -418,8 +427,8 @@
                 <div class="title-wrapper">
                     <h2>Preguntas Frecuentes</h2>
                     <div class="title-oval">
-                      <svg viewBox="0 0 480 200" preserveAspectRatio="none">
-                        <ellipse class="oval-path" cx="240" cy="100" rx="220" ry="70"/>
+                      <svg viewBox="0 0 580 200" preserveAspectRatio="none">
+                        <ellipse class="oval-path" cx="290" cy="100" rx="270" ry="70"/>
                       </svg>
                     </div>
                 </div>
@@ -434,7 +443,7 @@
                     </h2>
                     <div id="faqCollapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Haz clic en <strong>"CONSULTA A UN ABOGADO GRATIS"</strong arriba o llena el formulario. Te respondemos en <strong>menos de 24h</strong> por WhatsApp o email.
+                            Haz clic en <strong>"CONSULTA A UN ABOGADO GRATIS"</strong> arriba o llena el formulario. Te respondemos en <strong>menos de 24h</strong> por WhatsApp o email.
                         </div>
                     </div>
                 </div>
@@ -495,8 +504,8 @@
                 <div class="title-wrapper">
                     <h2>Contáctanos</h2>
                     <div class="title-oval">
-                      <svg viewBox="0 0 400 200" preserveAspectRatio="none">
-                        <ellipse class="oval-path" cx="200" cy="100" rx="180" ry="70"/>
+                      <svg viewBox="0 0 500 200" preserveAspectRatio="none">
+                        <ellipse class="oval-path" cx="250" cy="100" rx="230" ry="70"/>
                       </svg>
                     </div>
                 </div>
@@ -580,20 +589,21 @@
           const path = oval.querySelector('.oval-path');
           const length = path.getTotalLength();
 
+          // Inicializar el trazo
           gsap.set(path, { 
             strokeDasharray: length, 
             strokeDashoffset: length 
           });
 
+          // Animar al entrar en pantalla
           gsap.to(path, {
             strokeDashoffset: 0,
-            duration: 1.5,
+            duration: 1.8,
             ease: "power2.out",
             scrollTrigger: {
               trigger: oval,
               start: "top 90%",
-              toggleActions: "play none none reverse",
-              once: false
+              toggleActions: "play none none reverse"
             }
           });
         });
