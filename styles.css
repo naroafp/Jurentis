@@ -590,50 +590,56 @@ footer a.text-white:hover {
         font-size: 2.2rem;
     }
 }
-    /* ==================== ÓVALOS DE TÍTULOS - COMPATIBILIDAD TOTAL ==================== */
-    .title-wrapper {
-        position: relative;
-        display: inline-block;
-        padding: 0 65px;
-        margin: 0 auto 1.5rem;
-        line-height: 1;
-    }
-    
-    .title-oval {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: calc(100% + 80px);
-        height: 90px;
-        min-width: 240px;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        z-index: 0;
-        overflow: visible !important;
-    }
-    
-    .title-oval svg {
-        width: 100%;
-        height: 100%;
-        display: block;
-    }
-    
-    .title-oval .oval-path {
-        fill: none;
-        stroke: #64ccc5;
-        stroke-width: 10;
-        opacity: 0;
-        stroke-dasharray: 1000;
-        stroke-dashoffset: 1000;
-    }
-    
-    /* RESPONSIVO */
-    @media (max-width: 768px) {
-        .title-wrapper { padding: 0 50px; }
-        .title-oval { width: calc(100% + 60px); height: 80px; }
-    }
-    @media (max-width: 576px) {
-        .title-wrapper { padding: 0 40px; }
-        .title-oval { width: calc(100% + 50px); height: 70px; min-width: 200px; }
-    }
+/* ==================== ÓVALOS MODERNOS - PROFESIONAL & ANIMADO ==================== */
+.title-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 0 70px;
+    margin: 0 auto 2rem;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.title-oval {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100% + 90px);
+    height: 100px;
+    min-width: 260px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+    overflow: visible !important;
+}
+
+.title-oval svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: drop-shadow(0 0 8px rgba(100, 204, 197, 0.3));
+}
+
+.title-oval .oval-path {
+    fill: none;
+    stroke: #64ccc5;
+    stroke-width: 3;
+    opacity: 0;
+    stroke-linecap: round;
+    filter: url(#glow);
+}
+
+/* FILTRO GLOW SUAVE (SVG) */
+.title-oval svg defs {
+    display: block;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .title-wrapper { padding: 0 55px; }
+    .title-oval { width: calc(100% + 70px); height: 85px; }
+}
+@media (max-width: 576px) {
+    .title-wrapper { padding: 0 45px; }
+    .title-oval { width: calc(100% + 60px); height: 75px; min-width: 220px; }
 }
