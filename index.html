@@ -17,70 +17,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
-    <!-- TU CSS - FORZAR CACHE -->
-    <link rel="stylesheet" href="styles.css?v=6.0">
+    <!-- TU CSS -->
+    <link rel="stylesheet" href="styles.css?v=7.1">
 
-    <!-- GSAP + ScrollTrigger -->
+    <!-- GSAP (solo core) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-    <style>
-      .title-wrapper {
-        position: relative;
-        display: inline-block;
-        padding: 0 70px;
-      }
-      .title-oval {
-        position: absolute;
-        top: 50%; 
-        left: 50%;
-        width: calc(100% + 80px);
-        height: 90px;
-        min-width: 200px;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        z-index: -1;
-      }
-      .title-oval svg {
-        width: 100%; 
-        height: 100%;
-      }
-      .title-oval .oval-path {
-        fill: none;
-        stroke: #64ccc5;
-        stroke-width: 12;
-        opacity: 0.7;
-      }
-
-      /* Responsivo */
-      @media (max-width: 768px) {
-        .title-wrapper {
-          padding: 0 50px;
-        }
-        .title-oval {
-          width: calc(100% + 60px);
-          height: 80px;
-        }
-      }
-      @media (max-width: 576px) {
-        .title-wrapper {
-          padding: 0 40px;
-        }
-        .title-oval {
-          width: calc(100% + 50px);
-          height: 70px;
-        }
-      }
-      @media (max-width: 400px) {
-        .title-wrapper {
-          padding: 0 30px;
-        }
-        .title-oval {
-          width: calc(100% + 40px);
-          height: 60px;
-        }
-      }
-    </style>
 </head>
 <body>
 
@@ -131,9 +72,20 @@
                 <div class="title-wrapper">
                     <h2>Viabilidad Inmediata</h2>
                     <div class="title-oval">
-                      <svg viewBox="0 0 500 200" preserveAspectRatio="none">
-                        <ellipse class="oval-path" cx="260" cy="100" rx="240" ry="70"/>
-                      </svg>
+                        <svg viewBox="0 0 540 220" preserveAspectRatio="none">
+                            <defs>
+                                <filter id="glow-viabilidad" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                                    <feFlood flood-color="#64ccc5" flood-opacity="0.4"/>
+                                    <feComposite in2="blur" operator="in"/>
+                                    <feMerge>
+                                        <feMergeNode/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <ellipse class="oval-path" cx="270" cy="110" rx="250" ry="75" filter="url(#glow-viabilidad)"/>
+                        </svg>
                     </div>
                 </div>
                 <p class="text-center mb-5">Elige tu producto, envíanos la documentación y en <strong>menos de 24h</strong> te decimos si puedes reclamar <strong>GRATIS</strong>.</p>
@@ -268,9 +220,20 @@
                 <div class="title-wrapper">
                     <h2>Sobre Nosotros</h2>
                     <div class="title-oval">
-                      <svg viewBox="0 0 500 200" preserveAspectRatio="none">
-                        <ellipse class="oval-path" cx="250" cy="100" rx="230" ry="70"/>
-                      </svg>
+                        <svg viewBox="0 0 480 220" preserveAspectRatio="none">
+                            <defs>
+                                <filter id="glow-nosotros" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                                    <feFlood flood-color="#64ccc5" flood-opacity="0.4"/>
+                                    <feComposite in2="blur" operator="in"/>
+                                    <feMerge>
+                                        <feMergeNode/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <ellipse class="oval-path" cx="240" cy="110" rx="220" ry="75" filter="url(#glow-nosotros)"/>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -320,9 +283,20 @@
                 <div class="title-wrapper">
                     <h2>Nuestros Servicios Jurídicos</h2>
                     <div class="title-oval">
-                      <svg viewBox="0 0 620 200" preserveAspectRatio="none">
-                        <ellipse class="oval-path" cx="300" cy="100" rx="290" ry="70"/>
-                      </svg>
+                        <svg viewBox="0 0 640 220" preserveAspectRatio="none">
+                            <defs>
+                                <filter id="glow-servicios" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                                    <feFlood flood-color="#64ccc5" flood-opacity="0.4"/>
+                                    <feComposite in2="blur" operator="in"/>
+                                    <feMerge>
+                                        <feMergeNode/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <ellipse class="oval-path" cx="320" cy="110" rx="300" ry="75" filter="url(#glow-servicios)"/>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -372,9 +346,20 @@
                 <div class="title-wrapper">
                     <h2>Blog y Casos de Éxito</h2>
                     <div class="title-oval">
-                      <svg viewBox="0 0 550 200" preserveAspectRatio="none">
-                        <ellipse class="oval-path" cx="275" cy="100" rx="255" ry="70"/>
-                      </svg>
+                        <svg viewBox="0 0 550 220" preserveAspectRatio="none">
+                            <defs>
+                                <filter id="glow-blog" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                                    <feFlood flood-color="#64ccc5" flood-opacity="0.4"/>
+                                    <feComposite in2="blur" operator="in"/>
+                                    <feMerge>
+                                        <feMergeNode/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <ellipse class="oval-path" cx="275" cy="110" rx="255" ry="75" filter="url(#glow-blog)"/>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -427,9 +412,20 @@
                 <div class="title-wrapper">
                     <h2>Preguntas Frecuentes</h2>
                     <div class="title-oval">
-                      <svg viewBox="0 0 600 200" preserveAspectRatio="none">
-                        <ellipse class="oval-path" cx="300" cy="100" rx="280" ry="70"/>
-                      </svg>
+                        <svg viewBox="0 0 620 220" preserveAspectRatio="none">
+                            <defs>
+                                <filter id="glow-faq" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                                    <feFlood flood-color="#64ccc5" flood-opacity="0.4"/>
+                                    <feComposite in2="blur" operator="in"/>
+                                    <feMerge>
+                                        <feMergeNode/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <ellipse class="oval-path" cx="310" cy="110" rx="290" ry="75" filter="url(#glow-faq)"/>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -504,9 +500,20 @@
                 <div class="title-wrapper">
                     <h2>Contáctanos</h2>
                     <div class="title-oval">
-                      <svg viewBox="0 0 500 200" preserveAspectRatio="none">
-                        <ellipse class="oval-path" cx="250" cy="100" rx="230" ry="70"/>
-                      </svg>
+                        <svg viewBox="0 0 480 220" preserveAspectRatio="none">
+                            <defs>
+                                <filter id="glow-contacto" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                                    <feFlood flood-color="#64ccc5" flood-opacity="0.4"/>
+                                    <feComposite in2="blur" operator="in"/>
+                                    <feMerge>
+                                        <feMergeNode/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <ellipse class="oval-path" cx="240" cy="110" rx="220" ry="75" filter="url(#glow-contacto)"/>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -578,33 +585,42 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js?v=6.0"></script>
+    <script src="script.js?v=7.1"></script>
 
-    <!-- ANIMACIÓN DE ÓVALOS -->
+    <!-- ANIMACIÓN PREMIUM DE ÓVALOS -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        gsap.registerPlugin(ScrollTrigger);
-
-        document.querySelectorAll('.title-oval').forEach(oval => {
+        gsap.utils.toArray('.title-oval').forEach((oval, i) => {
           const path = oval.querySelector('.oval-path');
           const length = path.getTotalLength();
 
-          // Inicializar el trazo
-          gsap.set(path, { 
-            strokeDasharray: length, 
-            strokeDashoffset: length 
+          // Inicial: invisible + dash
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+            opacity: 0
           });
 
-          // Animar al entrar en pantalla
+          // Animación: entrada suave + glow
           gsap.to(path, {
             strokeDashoffset: 0,
+            opacity: 1,
             duration: 1.8,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: oval,
-              start: "top 90%",
-              toggleActions: "play none none reverse"
+            ease: "power3.out",
+            delay: i * 0.2,
+            onUpdate: () => {
+              const progress = gsap.getProperty(path, "strokeDashoffset") / length;
+              const glowOpacity = 0.3 + (0.1 * Math.sin(progress * Math.PI));
+              path.closest('svg').style.filter = `drop-shadow(0 0 ${8 + 4 * progress}px rgba(100, 204, 197, ${glowOpacity}))`;
             }
+          });
+
+          // Efecto hover: pulso
+          oval.addEventListener('mouseenter', () => {
+            gsap.to(path, { strokeWidth: 4, duration: 0.3 });
+          });
+          oval.addEventListener('mouseleave', () => {
+            gsap.to(path, { strokeWidth: 3, duration: 0.3 });
           });
         });
       });
@@ -612,4 +628,3 @@
 
 </body>
 </html>
-
