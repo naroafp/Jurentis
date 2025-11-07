@@ -1,4 +1,4 @@
-// script.js - JURENTIS | WHATSAPP + CONTACTO + PARTICULAS + ANIMACIONES
+// script.js - JURENTIS | WHATSAPP + CONTACTO + PARTÍCULAS + ANIMACIONES + ÓVALOS PREMIUM
 document.addEventListener("DOMContentLoaded", function () {
 
     // ========================================
@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
         toast.innerHTML = `
             <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'}"></i>
             <span>${message}</span>
-            <button class="toast-close">&times;</button>
+            <button class="toast-close">×</button>
         `;
 
         document.body.appendChild(toast);
@@ -265,4 +265,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // 7. INICIALIZAR SELECCIÓN
     // ========================================
     updateSelection();
+
+    // ========================================
+    // 8. ÓVALOS ANIMADOS (GSAP) — YA NO ESTÁ EN index.html
+    // ========================================
+    // → Se movió a index.html para evitar conflictos de carga
+    // → GSAP ya está cargado en <head>
+    // → Animación premium: glow + pulso + hover
 });
