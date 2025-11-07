@@ -586,7 +586,7 @@
     <script src="script.js?v=7.2"></script>
 
     <!-- ANIMACIÓN ÉPICA DE ÓVALOS (AL SCROLL) -->
-    <script>
+      <script>
       document.addEventListener("DOMContentLoaded", () => {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
@@ -594,56 +594,55 @@
               const oval = entry.target;
               const path = oval.querySelector('.oval-path');
               const length = path.getTotalLength();
-
-              // Inicial
-              gsap.set(oval, { opacity: 1, scale: 0.8 });
+    
+              // Estado inicial
+              gsap.set(oval, { opacity: 0, scale: 0.9 });
               gsap.set(path, {
                 strokeDasharray: length,
                 strokeDashoffset: length,
                 opacity: 0
               });
-
-              // Animación épica
-              const tl = gsap.timeline({ defaults: { ease: "elastic.out(1, 0.5)" } });
-
-              tl.to(oval, { scale: 1.05, duration: 0.6 })
-                .to(path, { strokeDashoffset: 0, opacity: 1, duration: 1.2 }, "-=0.4")
-                .to(oval, { scale: 1, duration: 0.5 }, "-=0.6")
-                .to(path, {
-                  strokeWidth: 8,
-                  duration: 0.3,
-                  yoyo: true,
-                  repeat: 1
-                }, "-=0.3");
-
-              // Glow pulsante infinito
-              gsap.to(oval.querySelector('svg'), {
-                filter: "drop-shadow(0 0 12px rgba(100, 204, 197, 0.6))",
+    
+              // Animación moderna: entrada suave + dibujo limpio
+              gsap.to(oval, {
+                opacity: 1,
+                scale: 1,
                 duration: 0.8,
-                yoyo: true,
-                repeat: -1,
-                ease: "sine.inOut"
+                ease: "power2.out"
               });
-
+    
+              gsap.to(path, {
+                strokeDashoffset: 0,
+                opacity: 1,
+                duration: 1.2,
+                ease: "power3.out",
+                delay: 0.2
+              });
+    
+              // Glow sutil al final
+              gsap.to(oval.querySelector('svg'), {
+                filter: "drop-shadow(0 0 10px rgba(100, 204, 197, 0.3))",
+                duration: 0.6,
+                delay: 1.2
+              });
+    
               observer.unobserve(oval);
             }
           });
-        }, { threshold: 0.5 });
-
+        }, { threshold: 0.6 });
+    
         // Observar todos los óvalos
         document.querySelectorAll('.title-oval').forEach(oval => {
           observer.observe(oval);
         });
-
-        // Hover: pulso extra
+    
+        // Hover: solo micro-interacción (sin pulso)
         document.querySelectorAll('.title-oval').forEach(oval => {
           oval.addEventListener('mouseenter', () => {
-            gsap.to(oval, { scale: 1.08, duration: 0.3 });
-            gsap.to(oval.querySelector('.oval-path'), { strokeWidth: 9, duration: 0.3 });
+            gsap.to(oval, { scale: 1.02, duration: 0.3, ease: "power2.out" });
           });
           oval.addEventListener('mouseleave', () => {
-            gsap.to(oval, { scale: 1, duration: 0.3 });
-            gsap.to(oval.querySelector('.oval-path'), { strokeWidth: 6, duration: 0.3 });
+            gsap.to(oval, { scale: 1, duration: 0.3, ease: "power2.out" });
           });
         });
       });
@@ -651,3 +650,4 @@
 
 </body>
 </html>
+
