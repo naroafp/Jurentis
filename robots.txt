@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://<tu-usuario>.github.io/<nombre-repositorio>/sitemap.xml
+
+Sitemap: https://jurentis.es/sitemap.xml
