@@ -590,6 +590,7 @@ footer a.text-white:hover {
         font-size: 2.2rem;
     }
 }
+
 /* ==================== ÓVALOS MODERNOS 2025 - LIMPIO & PROFESIONAL ==================== */
 .title-wrapper {
     position: relative;
@@ -649,3 +650,107 @@ footer a.text-white:hover {
     .title-oval { width: calc(100% + 70px); height: 85px; min-width: 240px; }
 }
 
+/* ====================== BANNER DE COOKIES - 100% JURENTIS ====================== */
+#cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(26, 60, 52, 0.97);
+    backdrop-filter: blur(12px);
+    color: #fff;
+    padding: 20px 15px;
+    z-index: 9999;
+    font-family: inherit;
+    box-shadow: 0 -6px 30px rgba(0,0,0,0.4);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(100%);
+}
+
+#cookie-banner.show {
+    transform: translateY(0);
+}
+
+#cookie-banner .cookie-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+#cookie-banner p {
+    margin: 0;
+    flex: 1;
+    min-width: 280px;
+}
+
+#cookie-banner a {
+    color: var(--verde-aguamarina);
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+#cookie-banner a:hover {
+    color: #fff;
+}
+
+#cookie-banner .cookie-buttons {
+    display: flex;
+    gap: 14px;
+    flex-shrink: 0;
+}
+
+#cookie-banner button {
+    padding: 11px 26px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.92rem;
+    min-width: 130px;
+}
+
+#cookie-banner .btn-config {
+    background: transparent;
+    color: #fff;
+    border: 2px solid var(--verde-aguamarina) !important;
+}
+
+#cookie-banner .btn-config:hover {
+    background: var(--verde-aguamarina);
+    color: var(--verde-oscuro);
+}
+
+#cookie-banner .btn-aceptar {
+    background: var(--verde-medio);
+    color: white;
+}
+
+#cookie-banner .btn-aceptar:hover {
+    background: var(--verde-aguamarina);
+    color: var(--verde-oscuro);
+    transform: translateY(-2px);
+}
+
+/* Responsive móvil */
+@media (max-width: 768px) {
+    #cookie-banner .cookie-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    #cookie-banner .cookie-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+    #cookie-banner button {
+        flex: 1;
+        max-width: 200px;
+    }
+}
