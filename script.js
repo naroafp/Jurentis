@@ -265,46 +265,45 @@ document.addEventListener("DOMContentLoaded", function () {
     // ========================================
     updateSelection();
 
-    // ========================================
-    // 8. BANNER DE COOKIES - CORREGIDO Y 100% FUNCIONAL
+     // ========================================
+    // 8. BANNER DE COOKIES - 100% FUNCIONAL (SOLUCIÓN DEFINITIVA)
     // ========================================
     const cookieBanner = document.getElementById('cookie-banner');
 
     if (cookieBanner) {
-        // Mostrar banner si no se han aceptado cookies
+        // Forzar que esté visible en el DOM aunque esté oculto por CSS
+        cookieBanner.style.display = 'block';
+
+        // Mostrar si no se han aceptado cookies
         if (!localStorage.getItem('cookies-aceptadas')) {
             setTimeout(() => {
                 cookieBanner.classList.add('show');
-            }, 1500);
+            }, 1000);
         }
 
-        // Aceptar todas las cookies
         window.aceptarCookies = function () {
             localStorage.setItem('cookies-aceptadas', 'true');
             cookieBanner.classList.remove('show');
             setTimeout(() => {
                 cookieBanner.style.display = 'none';
-            }, 600);
+            }, 700);
         };
 
-        // Botón Configurar (por ahora acepta todo)
         window.configurarCookies = function () {
-            alert('En breve tendrás opciones avanzadas de cookies.\n\nPor ahora, aceptamos todas para que disfrutes de la web completa.');
-            aceptarCookies();
+            aceptarCookies(); // por ahora mismo comportamiento
         };
 
-        // Aceptar automáticamente al hacer scroll (práctica legal y muy común)
-        let scrollAccepted = false;
-        const handleScroll = function () {
-            if (!scrollAccepted && !localStorage.getItem('cookies-aceptadas')) {
-                scrollAccepted = true;
+        // Aceptar con scroll
+        let scrollDone = false;
+        window.addEventListener('scroll', function handler() {
+            if (!scrollDone && !localStorage.getItem('cookies-aceptadas')) {
+                scrollDone = true;
                 aceptarCookies();
-                window.removeEventListener('scroll', handleScroll);
+                window.removeEventListener('scroll', handler);
             }
-        };
-        window.addEventListener('scroll', handleScroll);
+        });
     }
-
+    
     // ========================================
     // 9. ÓVALOS ANIMADOS CON GSAP (ya cargado en <head>)
     // ========================================
@@ -343,3 +342,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
