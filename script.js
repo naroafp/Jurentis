@@ -1,4 +1,4 @@
-// script.js - JURENTIS | WHATSAPP + CONTACTO + PARTÍCULAS + ANIMACIONES + ÓVALOS PREMIUM
+// script.js - JURENTIS | WHATSAPP + CONTACTO + PARTÍCULAS + COOKIES + ANIMACIONES + ÓVALOS PREMIUM
 document.addEventListener("DOMContentLoaded", function () {
 
     // ========================================
@@ -251,7 +251,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Cerrar navbar al hacer clic en enlace
     document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
         link.addEventListener('click', () => {
             const navbar = document.querySelector('.navbar-collapse');
@@ -267,9 +266,75 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSelection();
 
     // ========================================
-    // 8. ÓVALOS ANIMADOS (GSAP) — YA NO ESTÁ EN index.html
+    // 8. BANNER DE COOKIES - NUEVO Y PERFECTO
     // ========================================
-    // → Se movió a index.html para evitar conflictos de carga
-    // → GSAP ya está cargado en <head>
-    // → Animación premium: glow + pulso + hover
+    const cookieBanner = document.getElementById('cookie-banner');
+
+    if (cookieBanner && !localStorage.getItem('cookies-aceptadas')) {
+        setTimeout(() => {
+            cookieBanner.classList.add('show');
+        }, 1800); // Aparece suavemente tras cargar la web
+    }
+
+    // Aceptar todas las cookies
+    window.aceptarCookies = function () {
+        localStorage.setItem('cookies-aceptadas', 'true');
+        cookieBanner.classList.remove('show');
+        setTimeout(() => {
+            cookieBanner.style.display = 'none';
+        }, 500);
+    };
+
+    // Configurar (por ahora solo acepta, pero queda preparado para futuro modal)
+    window.configurarCookies = function () {
+        alert('En breve tendrás la configuración detallada de cookies.\n\nPor ahora, aceptamos todas para que disfrutes de la web completa.');
+        aceptarCookies();
+    };
+
+    // Aceptar al hacer scroll (práctica común y legalmente válida)
+    let scrollAccepted = false;
+    window.addEventListener('scroll', function () {
+        if (!scrollAccepted && !localStorage.getItem('cookies-aceptadas')) {
+            scrollAccepted = true;
+            aceptarCookies();
+        }
+    });
+
+    // ========================================
+    // 9. ÓVALOS ANIMADOS CON GSAP (ya cargado en <head>)
+    // ========================================
+    const titleOvals = document.querySelectorAll('.title-oval');
+    if (titleOvals.length > 0 && typeof gsap !== 'undefined') {
+        const ovalObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const oval = entry.target;
+                    const path = oval.querySelector('.oval-path');
+                    const length = path.getTotalLength();
+
+                    gsap.set(oval, { opacity: 0, scale: 0.9 });
+                    gsap.set(path, {
+                        strokeDasharray: length,
+                        strokeDashoffset: length,
+                        opacity: 0
+                    });
+
+                    gsap.to(oval, { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" });
+                    gsap.to(path, { strokeDashoffset: 0, opacity: 1, duration: 1.4, ease: "power3.out", delay: 0.2 });
+                    gsap.to(oval.querySelector('svg'), { filter: "drop-shadow(0 0 12px rgba(100, 204, 197, 0.35))", duration: 0.8, delay: 1.4 });
+
+                    ovalObserver.unobserve(oval);
+                }
+            });
+        }, { threshold: 0.6 });
+
+        titleOvals.forEach(oval => ovalObserver.observe(oval));
+
+        // Hover sutil
+        titleOvals.forEach(oval => {
+            oval.addEventListener('mouseenter', () => gsap.to(oval, { scale: 1.03, duration: 0.4 }));
+            oval.addEventListener('mouseleave', () => gsap.to(oval, { scale: 1, duration: 0.4 }));
+        });
+    }
+
 });
