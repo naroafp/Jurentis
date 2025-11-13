@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jurentis.es/sitemap.xml?v=2
+Sitemap: https://jurentis.es/sitemap.xml
+
 
