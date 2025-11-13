@@ -515,7 +515,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div classISON="row">
                 <div class="col-md-6">
                     <h3>Envíanos un Mensaje</h3>
                     <form id="contact-form">
@@ -556,7 +556,7 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER CON LOS TRES ENLACES LEGALES -->
     <footer class="bg-dark text-white text-center py-4">
         <div class="container">
             <p class="mb-2">© 2025 Jurentis. Todos los derechos reservados.</p>
@@ -570,6 +570,11 @@
                 <a href="https://www.tiktok.com/@jurentis" target="_blank" class="text-white mx-2" aria-label="TikTok">
                     <i class="fab fa-tiktok fa-lg"></i>
                 </a>
+            </p>
+            <p class="mb-0 small">
+                <a href="aviso-legal.html" class="text-white text-decoration-underline">Aviso Legal</a> · 
+                <a href="politica-privacidad.html" class="text-white text-decoration-underline">Política de Privacidad</a> · 
+                <a href="politica-cookies.html" class="text-white text-decoration-underline">Política de Cookies</a>
             </p>
             <p class="mb-0"><a href="#inicio" class="text-white text-decoration-underline">Volver arriba</a></p>
         </div>
@@ -586,7 +591,7 @@
     <script src="script.js?v=7.2"></script>
 
     <!-- ANIMACIÓN ÉPICA DE ÓVALOS (AL SCROLL) -->
-      <script>
+    <script>
       document.addEventListener("DOMContentLoaded", () => {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
@@ -595,7 +600,6 @@
               const path = oval.querySelector('.oval-path');
               const length = path.getTotalLength();
     
-              // Estado inicial
               gsap.set(oval, { opacity: 0, scale: 0.9 });
               gsap.set(path, {
                 strokeDasharray: length,
@@ -603,51 +607,23 @@
                 opacity: 0
               });
     
-              // Animación moderna: entrada suave + dibujo limpio
-              gsap.to(oval, {
-                opacity: 1,
-                scale: 1,
-                duration: 0.8,
-                ease: "power2.out"
-              });
-    
-              gsap.to(path, {
-                strokeDashoffset: 0,
-                opacity: 1,
-                duration: 1.2,
-                ease: "power3.out",
-                delay: 0.2
-              });
-    
-              // Glow sutil al final
-              gsap.to(oval.querySelector('svg'), {
-                filter: "drop-shadow(0 0 10px rgba(100, 204, 197, 0.3))",
-                duration: 0.6,
-                delay: 1.2
-              });
+              gsap.to(oval, { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" });
+              gsap.to(path, { strokeDashoffset: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 0.2 });
+              gsap.to(oval.querySelector('svg'), { filter: "drop-shadow(0 0 10px rgba(100, 204, 197, 0.3))", duration: 0.6, delay: 1.2 });
     
               observer.unobserve(oval);
             }
           });
         }, { threshold: 0.6 });
     
-        // Observar todos los óvalos
-        document.querySelectorAll('.title-oval').forEach(oval => {
-          observer.observe(oval);
-        });
+        document.querySelectorAll('.title-oval').forEach(oval => observer.observe(oval));
     
-        // Hover: solo micro-interacción (sin pulso)
-        document.querySelectorAll('.title-oval').forEach(oval => {
-          oval.addEventListener('mouseenter', () => {
-            gsap.to(oval, { scale: 1.02, duration: 0.3, ease: "power2.out" });
-          });
-          oval.addEventListener('mouseleave', () => {
-            gsap.to(oval, { scale: 1, duration: 0.3, ease: "power2.out" });
-          });
+        document.querySelectorAll('.title- osiąoval').forEach(oval => {
+          oval.addEventListener('mouseenter', () => gsap.to(oval, { scale: 1.02, duration: 0.3, ease: "power2.out" }));
+          oval.addEventListener('mouseleave', () => gsap.to(oval, { scale: 1, duration: 0.3, ease: "power2.out" }));
         });
       });
     </script>
 
 </body>
 </html>
-
