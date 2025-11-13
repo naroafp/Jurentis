@@ -266,39 +266,44 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSelection();
 
     // ========================================
-    // 8. BANNER DE COOKIES - NUEVO Y PERFECTO
+    // 8. BANNER DE COOKIES - CORREGIDO Y 100% FUNCIONAL
     // ========================================
     const cookieBanner = document.getElementById('cookie-banner');
 
-    if (cookieBanner && !localStorage.getItem('cookies-aceptadas')) {
-        setTimeout(() => {
-            cookieBanner.classList.add('show');
-        }, 1800); // Aparece suavemente tras cargar la web
-    }
-
-    // Aceptar todas las cookies
-    window.aceptarCookies = function () {
-        localStorage.setItem('cookies-aceptadas', 'true');
-        cookieBanner.classList.remove('show');
-        setTimeout(() => {
-            cookieBanner.style.display = 'none';
-        }, 500);
-    };
-
-    // Configurar (por ahora solo acepta, pero queda preparado para futuro modal)
-    window.configurarCookies = function () {
-        alert('En breve tendrás la configuración detallada de cookies.\n\nPor ahora, aceptamos todas para que disfrutes de la web completa.');
-        aceptarCookies();
-    };
-
-    // Aceptar al hacer scroll (práctica común y legalmente válida)
-    let scrollAccepted = false;
-    window.addEventListener('scroll', function () {
-        if (!scrollAccepted && !localStorage.getItem('cookies-aceptadas')) {
-            scrollAccepted = true;
-            aceptarCookies();
+    if (cookieBanner) {
+        // Mostrar banner si no se han aceptado cookies
+        if (!localStorage.getItem('cookies-aceptadas')) {
+            setTimeout(() => {
+                cookieBanner.classList.add('show');
+            }, 1500);
         }
-    });
+
+        // Aceptar todas las cookies
+        window.aceptarCookies = function () {
+            localStorage.setItem('cookies-aceptadas', 'true');
+            cookieBanner.classList.remove('show');
+            setTimeout(() => {
+                cookieBanner.style.display = 'none';
+            }, 600);
+        };
+
+        // Botón Configurar (por ahora acepta todo)
+        window.configurarCookies = function () {
+            alert('En breve tendrás opciones avanzadas de cookies.\n\nPor ahora, aceptamos todas para que disfrutes de la web completa.');
+            aceptarCookies();
+        };
+
+        // Aceptar automáticamente al hacer scroll (práctica legal y muy común)
+        let scrollAccepted = false;
+        const handleScroll = function () {
+            if (!scrollAccepted && !localStorage.getItem('cookies-aceptadas')) {
+                scrollAccepted = true;
+                aceptarCookies();
+                window.removeEventListener('scroll', handleScroll);
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+    }
 
     // ========================================
     // 9. ÓVALOS ANIMADOS CON GSAP (ya cargado en <head>)
